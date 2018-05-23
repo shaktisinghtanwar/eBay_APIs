@@ -22,3 +22,10 @@ C:\Users\Windows10\Desktop\ebay(2)\ebay\EbaySdkLib\obj\Debug\EbaySdkLib.csproj.C
 C:\Users\Windows10\Desktop\ebay(2)\ebay\EbaySdkLib\obj\Debug\EbaySdkLib.csproj.CopyComplete
 C:\Users\Windows10\Desktop\ebay(2)\ebay\EbaySdkLib\obj\Debug\EbaySdkLib.dll
 C:\Users\Windows10\Desktop\ebay(2)\ebay\EbaySdkLib\obj\Debug\EbaySdkLib.pdb
+D:\Niharika\niharika_work\Ebay_Apis\eBay_APIs\EbaySdkLib\bin\Debug\EbaySdkLib.dll
+D:\Niharika\niharika_work\Ebay_Apis\eBay_APIs\EbaySdkLib\bin\Debug\EbaySdkLib.pdb
+D:\Niharika\niharika_work\Ebay_Apis\eBay_APIs\EbaySdkLib\bin\Debug\Newtonsoft.Json.dll
+D:\Niharika\niharika_work\Ebay_Apis\eBay_APIs\EbaySdkLib\bin\Debug\Newtonsoft.Json.xml
+D:\Niharika\niharika_work\Ebay_Apis\eBay_APIs\EbaySdkLib\obj\Debug\EbaySdkLib.csprojResolveAssemblyReference.cache
+D:\Niharika\niharika_work\Ebay_Apis\eBay_APIs\EbaySdkLib\obj\Debug\EbaySdkLib.dll
+D:\Niharika\niharika_work\Ebay_Apis\eBay_APIs\EbaySdkLib\obj\Debug\EbaySdkLib.pdb

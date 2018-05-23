@@ -45,8 +45,25 @@
   <ItemGroup>
     <Compile Include="Constants\ApplicationConstants.cs" />
     <Compile Include="Enums\CategoryTypeEnum.cs" />
+    <Compile Include="Enums\PaymentInstrumentBrandEnum.cs" />
+    <Compile Include="Enums\PaymentMethodTypeEnum.cs" />
+    <Compile Include="Enums\RecipientAccountReferenceTypeEnum.cs" />
+    <Compile Include="Messages\Createpaymentpolicyresponse.cs" />
+    <Compile Include="Messages\CreatePaymerntPolicyRequest.cs" />
+    <Compile Include="Messages\GetFulfillmentPolicyByNameRequest.cs" />
+    <Compile Include="Messages\GetFulfillmentpolicyByNameResponse.cs" />
+    <Compile Include="Messages\GetFulfillmentPolicyRequest.cs" />
+    <Compile Include="Messages\GetFulfillmentPolicyResponse.cs" />
     <Compile Include="Messages\GetFulfilmentPoliciesRequest.cs" />
     <Compile Include="Messages\GetFulfilmentPoliciesResponse.cs" />
+    <Compile Include="Messages\GetPaymentpolicyByNameresponse.cs" />
+    <Compile Include="Messages\GetPaymentPolicyByNameRequest.cs" />
+    <Compile Include="Messages\GetPaymentpolicyRequest.cs" />
+    <Compile Include="Messages\GetpaymentpoliciesRequest.cs" />
+    <Compile Include="Messages\GetPaymentpoliciesResponse.cs" />
+    <Compile Include="Messages\GetPaymentpolicyresponse.cs" />
+    <Compile Include="Messages\UpdateFulfillmentPolicyRequest.cs" />
+    <Compile Include="Messages\UpdateFulfillmentPolicyResponse.cs" />
     <Compile Include="Models\AdditionalShippingCost.cs" />
     <Compile Include="Models\Amount.cs" />
     <Compile Include="Models\CashOnDeliveryFee.cs" />
@@ -54,9 +71,15 @@
     <Compile Include="Messages\CreateFulfillmentRequest.cs" />
     <Compile Include="Messages\CreateFulfillmentResponse.cs" />
     <Compile Include="Enums\CurrencyCodeEnum.cs" />
+    <Compile Include="Models\Deposit.cs" />
+    <Compile Include="Models\DueIn.cs" />
     <Compile Include="Models\FulfillmentPolicy.cs" />
     <Compile Include="Models\ErrorParameterV3.cs" />
     <Compile Include="Enums\MarketplaceIdEnum.cs" />
+    <Compile Include="Models\FullPaymentDueIn.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
+    <Compile Include="Models\PaymentPolicy.cs" />
+    <Compile Include="Models\RecipientAccountReference.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\RegionSet.cs" />
     <Compile Include="Enums\RegionTypeEnum.cs" />
@@ -73,6 +96,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FulfilmentPolicyService.cs" />
     <Compile Include="Rest\RestHelper.cs" />
+    <Compile Include="Services\PaymentpolicyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
