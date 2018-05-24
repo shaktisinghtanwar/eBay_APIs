@@ -9,17 +9,10 @@ using System.Threading.Tasks;
 
 namespace EbaySdkLib.Messages
     {
- public   class CreatePaymerntPolicyRequest
+    public class GetReturnPolicyByNameRequest
         {
-        public CategoryType[] categoryTypes { get; set; }
-        public Deposit deposit { get; set; }
-        public string description { get; set; }
-        public TimeDuration fullPaymentDueIn { get; set; }
-        public bool immediatePay { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public MarketplaceIdEnum marketplaceId { get; set; }
         public string name { get; set; }
-        public string paymentInstructions { get; set; }
-        public PaymentMethod[] paymentMethods { get; set; }
         }
     }

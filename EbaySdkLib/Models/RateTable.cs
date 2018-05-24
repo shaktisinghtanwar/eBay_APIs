@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EbaySdkLib.Models
-{
-    public class PaymentMethod
+    {
+    public class RateTable
         {
-        public List<string> brands { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public PaymentMethodTypeEnum paymentMethodType { get; set; }
-        public RecipientAccountReference recipientAccountReference { get; set; }
+        public CountryCodeEnum countryCode { get; set; }
+        public string locality { get; set; }
+        public string name { get; set; }
+        public string rateTableId { get; set; }
         }
-}
+    }

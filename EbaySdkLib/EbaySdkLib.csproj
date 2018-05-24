@@ -45,11 +45,17 @@
   <ItemGroup>
     <Compile Include="Constants\ApplicationConstants.cs" />
     <Compile Include="Enums\CategoryTypeEnum.cs" />
+    <Compile Include="Enums\CountryCodeEnum.cs" />
     <Compile Include="Enums\PaymentInstrumentBrandEnum.cs" />
     <Compile Include="Enums\PaymentMethodTypeEnum.cs" />
     <Compile Include="Enums\RecipientAccountReferenceTypeEnum.cs" />
+    <Compile Include="Enums\RefundMethodEnum.cs" />
+    <Compile Include="Enums\ReturnMethodEnum.cs" />
+    <Compile Include="Enums\ReturnShippingCostPayerEnum.cs" />
     <Compile Include="Messages\Createpaymentpolicyresponse.cs" />
     <Compile Include="Messages\CreatePaymerntPolicyRequest.cs" />
+    <Compile Include="Messages\CreateReturnPolicyrequest.cs" />
+    <Compile Include="Messages\CreateReturnPolicyResponse.cs" />
     <Compile Include="Messages\GetFulfillmentPolicyByNameRequest.cs" />
     <Compile Include="Messages\GetFulfillmentpolicyByNameResponse.cs" />
     <Compile Include="Messages\GetFulfillmentPolicyRequest.cs" />
@@ -62,6 +68,18 @@
     <Compile Include="Messages\GetpaymentpoliciesRequest.cs" />
     <Compile Include="Messages\GetPaymentpoliciesResponse.cs" />
     <Compile Include="Messages\GetPaymentpolicyresponse.cs" />
+    <Compile Include="Messages\GetRateTablesRequest.cs" />
+    <Compile Include="Messages\GetRateTablesResponse.cs" />
+    <Compile Include="Messages\GetReturnPoliciesRequest.cs" />
+    <Compile Include="Messages\GetReturnPoliciesResponse.cs" />
+    <Compile Include="Messages\GetReturnPolicyByNameRequest.cs" />
+    <Compile Include="Messages\GetReturnPolicyByNameResponse.cs" />
+    <Compile Include="Messages\GetReturnPolicyResponse.cs" />
+    <Compile Include="Messages\UpdateReturnPolicyRequest.cs" />
+    <Compile Include="Messages\updatePaymentPolicyRequest.cs" />
+    <Compile Include="Messages\updatePaymentPolicyResponse.cs" />
+    <Compile Include="Messages\UpdatereturnPolicyresponse.cs" />
+    <Compile Include="Models\InternationalOverride.cs" />
     <Compile Include="Models\PaymentPolicy.cs" />
     <Compile Include="Messages\UpdateFulfillmentPolicyRequest.cs" />
     <Compile Include="Messages\UpdateFulfillmentPolicyResponse.cs" />
@@ -78,10 +96,13 @@
     <Compile Include="Models\ErrorParameterV3.cs" />
     <Compile Include="Enums\MarketplaceIdEnum.cs" />
     <Compile Include="Models\PaymentMethod.cs" />
+    <Compile Include="Models\RateTable.cs" />
     <Compile Include="Models\RecipientAccountReference.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\RegionSet.cs" />
     <Compile Include="Enums\RegionTypeEnum.cs" />
+    <Compile Include="Models\ReturnPeriod.cs" />
+    <Compile Include="Models\ReturnPolicy.cs" />
     <Compile Include="Models\ShippingCost.cs" />
     <Compile Include="Enums\ShippingCostTypeEnum.cs" />
     <Compile Include="Models\ShippingOption.cs" />
@@ -96,6 +117,7 @@
     <Compile Include="Services\FulfilmentPolicyService.cs" />
     <Compile Include="Rest\RestHelper.cs" />
     <Compile Include="Services\PaymentpolicyService.cs" />
+    <Compile Include="Services\ReturnPolicyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

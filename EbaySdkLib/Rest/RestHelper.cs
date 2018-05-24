@@ -47,7 +47,7 @@ namespace EbaySdkLib
 
                     var stringContent = new StringContent(body, UnicodeEncoding.UTF8, "application/json");
 
-                    var result = client.PostAsync("sell/account/v1/fulfillment_policy", stringContent).Result;
+                    var result = client.PostAsync(url, stringContent).Result;
                     resultContent = await result.Content.ReadAsStringAsync();
                     Console.WriteLine(resultContent);
                     }
@@ -59,13 +59,9 @@ namespace EbaySdkLib
                 }
 
             return resultContent;
-            //HttpClient httpClient = new HttpClient();
-            //httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_token}");
-            //// httpClient.bo
-            ////httpClient.DefaultRequestHeaders.Add("", "");
-            //var response = await httpClient.PostAsync(url,);
-            //return await response.Content.ReadAsStringAsync();
             }
+
+
         public async Task<string> Delete(string ID)
             {
             string resultContent = null;
@@ -73,6 +69,8 @@ namespace EbaySdkLib
                 {
                 using (var client = new HttpClient())
                     {
+                    client.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer {0}", ApplicationConstants.TOKEN));
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationConstants.CONTENT_TYPE));
                     client.BaseAddress = new Uri(ApplicationConstants.BASE_URL);
                     var content = new FormUrlEncodedContent(new[]
                     {
@@ -108,9 +106,6 @@ namespace EbaySdkLib
 
 
                     var stringContent = new StringContent(body, UnicodeEncoding.UTF8, "application/json");
-
-                    //var result = client.PostAsync("sell/account/v1/fulfillment_policy", stringContent).Result;
-
                     var result = client.PutAsync(url, stringContent).Result;
                     resultContent = await result.Content.ReadAsStringAsync();
                     Console.WriteLine(resultContent);

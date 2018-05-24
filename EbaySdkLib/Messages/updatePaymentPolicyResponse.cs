@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EbaySdkLib.Messages
     {
- public   class CreatePaymerntPolicyRequest
+    public class updatePaymentPolicyResponse
         {
         public CategoryType[] categoryTypes { get; set; }
         public Deposit deposit { get; set; }
@@ -21,5 +21,8 @@ namespace EbaySdkLib.Messages
         public string name { get; set; }
         public string paymentInstructions { get; set; }
         public PaymentMethod[] paymentMethods { get; set; }
+        public string paymentPolicyId { get; set; }
+        public List<Warning> warnings { get; set; }
         }
     }
+

@@ -40,11 +40,9 @@ C:\Users\Windows10\Desktop\ebay(2)\ebay\UnitTestProject1\obj\Debug\EbaySdkLib.Te
 C:\Users\Windows10\Desktop\ebay(2)\ebay\UnitTestProject1\obj\Debug\EbaySdkLib.Tests.csproj.CopyComplete
 C:\Users\Windows10\Desktop\ebay(2)\ebay\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 C:\Users\Windows10\Desktop\ebay(2)\ebay\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
-D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\UnitTestProject1.dll
-D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
 D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\EbaySdkLib.dll
-D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\System.Web.Http.dll
 D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\Newtonsoft.Json.dll
+D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\System.Web.Http.dll
 D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\System.Net.Http.Formatting.dll
 D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\EbaySdkLib.pdb
 D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\System.Web.Http.xml
@@ -53,3 +51,5 @@ D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\System.Net.Http.Formatting.xml
 D:\Niharika\eBay_APIs\UnitTestProject1\obj\Debug\EbaySdkLib.Tests.csprojResolveAssemblyReference.cache
 D:\Niharika\eBay_APIs\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 D:\Niharika\eBay_APIs\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+D:\Niharika\eBay_APIs\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
