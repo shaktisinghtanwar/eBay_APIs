@@ -62,6 +62,7 @@
     <Compile Include="Messages\GetpaymentpoliciesRequest.cs" />
     <Compile Include="Messages\GetPaymentpoliciesResponse.cs" />
     <Compile Include="Messages\GetPaymentpolicyresponse.cs" />
+    <Compile Include="Models\PaymentPolicy.cs" />
     <Compile Include="Messages\UpdateFulfillmentPolicyRequest.cs" />
     <Compile Include="Messages\UpdateFulfillmentPolicyResponse.cs" />
     <Compile Include="Models\AdditionalShippingCost.cs" />
@@ -76,9 +77,7 @@
     <Compile Include="Models\FulfillmentPolicy.cs" />
     <Compile Include="Models\ErrorParameterV3.cs" />
     <Compile Include="Enums\MarketplaceIdEnum.cs" />
-    <Compile Include="Models\FullPaymentDueIn.cs" />
     <Compile Include="Models\PaymentMethod.cs" />
-    <Compile Include="Models\PaymentPolicy.cs" />
     <Compile Include="Models\RecipientAccountReference.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\RegionSet.cs" />

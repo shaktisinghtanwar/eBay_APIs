@@ -15,17 +15,6 @@ namespace UnitTestProject1
         public void DeleteFulfillmentPolicyTest()
         {
             AccountService accountService = new AccountService();
-            EbaySdkLib.Messages.CreateFulfillmentRequest createFulfillmentRequest = new EbaySdkLib.Messages.CreateFulfillmentRequest();
-            createFulfillmentRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
-            var response = accountService.FulfilmentPolicyService.DeleteFulfillmentPolicy(createFulfillmentRequest);
-            Assert.IsNotNull(response);
-        }
-
-        [TestMethod]
-        [Priority(2)]
-        public void CreateFulfillmentPolicyTest()
-        {
-            AccountService accountService = new AccountService();
 
            CreateFulfillmentRequest createFulfillmentRequest = new CreateFulfillmentRequest();
             createFulfillmentRequest.categoryTypes = new EbaySdkLib.Models.CategoryType[] {new EbaySdkLib.Models.CategoryType(){name = CategoryTypeEnum.ALL_EXCLUDING_MOTORS_VEHICLES }};
@@ -67,5 +56,41 @@ namespace UnitTestProject1
             GetFulfilmentPoliciesResponse response = accountService.FulfilmentPolicyService.GetFulfilmentPolicies(Id).Result;
             Assert.IsNotNull(response);
         }
+
+        [TestMethod]
+        public void getPaymentPolicy()
+            {
+            AccountService accountService = new AccountService();
+            EbaySdkLib.Messages.GetPaymentpolicyRequest getPaymentpolicy = new EbaySdkLib.Messages.GetPaymentpolicyRequest();
+            getPaymentpolicy.payment_policy_id = "5486492000";
+            string Id = getPaymentpolicy.payment_policy_id.ToString();
+            GetPaymentpolicyresponse response = accountService.PaymentpolicyService.getPaymentpolicyService(Id).Result;
+            Assert.IsNotNull(response);
+            }
+
+        [TestMethod]
+        public void getPaymentPolicies()
+            {
+            AccountService accountService = new AccountService();
+            EbaySdkLib.Messages.GetpaymentpoliciesRequest getpaymentpoliciesRequest = new EbaySdkLib.Messages.GetpaymentpoliciesRequest();
+            getpaymentpoliciesRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
+            string Id = getpaymentpoliciesRequest.marketplaceId.ToString();
+            GetPaymentpoliciesResponse response = accountService.PaymentpolicyService.getPaymentpoliciesService(Id).Result;
+            Assert.IsNotNull(response);
+            }
+
+
+        [TestMethod]
+        public void getPaymentPolicyByName()
+            {
+            AccountService accountService = new AccountService();
+            EbaySdkLib.Messages.GetPaymentPolicyByNameRequest getPaymentPolicyByNameRequest = new EbaySdkLib.Messages.GetPaymentPolicyByNameRequest();
+            getPaymentPolicyByNameRequest.name = "default payment policy";
+            getPaymentPolicyByNameRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
+            string marketplaceId = getPaymentPolicyByNameRequest.marketplaceId.ToString();
+            string name = getPaymentPolicyByNameRequest.name;
+            GetPaymentpolicyByNameresponse response = accountService.PaymentpolicyService.getPaymentPolicyByNameService(name, marketplaceId).Result;
+            Assert.IsNotNull(response);
+            }
     }
 }
