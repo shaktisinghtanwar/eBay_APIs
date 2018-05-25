@@ -39,12 +39,13 @@ namespace EbaySdkLib
                 {
                 using (var client = new HttpClient())
                     {
-
+                    if (url.ToString().Contains(ApplicationConstants.InventoryOffer_Url))
+                        {
+                        client.DefaultRequestHeaders.Add("Content-Language", ApplicationConstants.CONTENT_LANGUAGE);
+                        }
                     client.BaseAddress = new Uri(ApplicationConstants.BASE_URL);
                     client.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer {0}", ApplicationConstants.TOKEN));
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationConstants.CONTENT_TYPE));
-                    //Dictionary<string, string> content;
-
                     var stringContent = new StringContent(body, UnicodeEncoding.UTF8, "application/json");
 
                     var result = client.PostAsync(url, stringContent).Result;
