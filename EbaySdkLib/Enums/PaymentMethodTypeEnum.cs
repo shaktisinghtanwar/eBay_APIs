@@ -22,7 +22,7 @@ namespace EbaySdkLib.Enums
         PAISA_PAY_ESCROW_EMI,
         PAYPAL,
         PERSONAL_CHECK,
-        OTHER
-
+        OTHER,
+        Support
         }
     }

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EbaySdkLib.Models
+{
+   public  class SellingLimit
     {
-    public class MinimumAdvertisedPrice
-        {
-        public string value { get; set; }
-        public string currency { get; set; }
-        }
+        public Amount amount { get; set; }
+        public string quantity { get; set; }
     }
+}

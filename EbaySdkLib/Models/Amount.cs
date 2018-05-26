@@ -8,5 +8,8 @@ namespace EbaySdkLib.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public CurrencyCodeEnum currency { get; set; }
         public string value { get; set; }
+
+       
+    
     }
 }

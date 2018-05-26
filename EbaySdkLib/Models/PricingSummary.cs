@@ -10,9 +10,10 @@ namespace EbaySdkLib.Models
     public class PricingSummary
         {
         public Amount minimumAdvertisedPrice { get; set; }
-        public string pricingVisibility { get; set; }
+        public MinimumAdvertisedPriceHandlingEnum pricingVisibility { get; set; }
         public SoldOnEnum originallySoldForRetailPriceOn { get; set; }
         public Amount originalRetailPrice { get; set; }
         public Amount price { get; set; }
+
         }
     }
