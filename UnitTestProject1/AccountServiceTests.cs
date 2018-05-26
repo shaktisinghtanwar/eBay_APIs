@@ -4,6 +4,7 @@ using System.Web;
 using EbaySdkLib;
 using EbaySdkLib.Models;
 using EbaySdkLib.Messages;
+using EbaySdkLib.Enums;
 
 namespace UnitTestProject1
 {
@@ -17,19 +18,19 @@ namespace UnitTestProject1
             AccountService accountService = new AccountService();
 
            CreateFulfillmentRequest createFulfillmentRequest = new CreateFulfillmentRequest();
-            createFulfillmentRequest.categoryTypes = new EbaySdkLib.Models.CategoryType[] {new EbaySdkLib.Models.CategoryType(){name = CategoryTypeEnum.ALL_EXCLUDING_MOTORS_VEHICLES }};
-            createFulfillmentRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
+            createFulfillmentRequest.categoryTypes = new CategoryType[] {new CategoryType(){name = CategoryTypeEnum.ALL_EXCLUDING_MOTORS_VEHICLES }};
+            createFulfillmentRequest.marketplaceId = MarketplaceIdEnum.EBAY_US;
             createFulfillmentRequest.name = "Domestic free shipping";
-            createFulfillmentRequest.handlingTime = new EbaySdkLib.Models.TimeDuration() {
+            createFulfillmentRequest.handlingTime = new TimeDuration() {
                 value = "1",
-                unit = EbaySdkLib.Models.TimeDurationUnitEnum.DAY
+                unit = TimeDurationUnitEnum.DAY
             };
-            createFulfillmentRequest.shippingOptions = new EbaySdkLib.Models.ShippingOption[]{
-                new EbaySdkLib.Models.ShippingOption()
+            createFulfillmentRequest.shippingOptions = new ShippingOption[]{
+                new ShippingOption()
                 {
-                    costType= EbaySdkLib.Models.ShippingCostTypeEnum.FLAT_RATE,
-            optionType=EbaySdkLib.Models.ShippingOptionTypeEnum.DOMESTIC,
-            shippingServices = new EbaySdkLib.Models.ShippingService[]{ new EbaySdkLib.Models.ShippingService()
+                    costType= ShippingCostTypeEnum.FLAT_RATE,
+            optionType=ShippingOptionTypeEnum.DOMESTIC,
+            shippingServices = new ShippingService[]{ new ShippingService()
                 {
                     buyerResponsibleForShipping= "false",
                     freeShipping= "true",
@@ -51,7 +52,7 @@ namespace UnitTestProject1
         {
             AccountService accountService = new AccountService();
             EbaySdkLib.Messages.GetFulfilmentPoliciesRequest createFulfillmentRequest = new EbaySdkLib.Messages.GetFulfilmentPoliciesRequest();
-            createFulfillmentRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
+            createFulfillmentRequest.marketplaceId = MarketplaceIdEnum.EBAY_US;
             string Id = createFulfillmentRequest.marketplaceId.ToString();
             GetFulfilmentPoliciesResponse response = accountService.FulfilmentPolicyService.GetFulfilmentPolicies(Id).Result;
             Assert.IsNotNull(response);
@@ -73,7 +74,7 @@ namespace UnitTestProject1
             {
             AccountService accountService = new AccountService();
             EbaySdkLib.Messages.GetpaymentpoliciesRequest getpaymentpoliciesRequest = new EbaySdkLib.Messages.GetpaymentpoliciesRequest();
-            getpaymentpoliciesRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
+            getpaymentpoliciesRequest.marketplaceId = MarketplaceIdEnum.EBAY_US;
             string Id = getpaymentpoliciesRequest.marketplaceId.ToString();
             GetPaymentpoliciesResponse response = accountService.PaymentpolicyService.getPaymentpoliciesService(Id).Result;
             Assert.IsNotNull(response);
@@ -84,9 +85,9 @@ namespace UnitTestProject1
         public void getPaymentPolicyByName()
             {
             AccountService accountService = new AccountService();
-            EbaySdkLib.Messages.GetPaymentPolicyByNameRequest getPaymentPolicyByNameRequest = new EbaySdkLib.Messages.GetPaymentPolicyByNameRequest();
+            GetPaymentPolicyByNameRequest getPaymentPolicyByNameRequest = new GetPaymentPolicyByNameRequest();
             getPaymentPolicyByNameRequest.name = "default payment policy";
-            getPaymentPolicyByNameRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
+            getPaymentPolicyByNameRequest.marketplaceId = MarketplaceIdEnum.EBAY_US;
             string marketplaceId = getPaymentPolicyByNameRequest.marketplaceId.ToString();
             string name = getPaymentPolicyByNameRequest.name;
             GetPaymentpolicyByNameresponse response = accountService.PaymentpolicyService.getPaymentPolicyByNameService(name, marketplaceId).Result;

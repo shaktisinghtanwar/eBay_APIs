@@ -56,12 +56,16 @@
   <ItemGroup>
     <Compile Include="AccountServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaxonomyApiServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EbaySdkLib\EbaySdkLib.csproj">
       <Project>{76d94166-6612-447f-8033-f1c500a9d868}</Project>
       <Name>EbaySdkLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EbaySdkLib\Messages\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

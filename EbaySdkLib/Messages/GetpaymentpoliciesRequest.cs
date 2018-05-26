@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EbaySdkLib.Enums;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,6 @@ namespace EbaySdkLib.Messages
  public  class GetpaymentpoliciesRequest
     {
      [JsonConverter(typeof(StringEnumConverter))]
-     public Models.MarketplaceIdEnum marketplaceId { get; set; }
+     public MarketplaceIdEnum marketplaceId { get; set; }
     }
 }

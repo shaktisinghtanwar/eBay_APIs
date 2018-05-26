@@ -1,4 +1,5 @@
-﻿using EbaySdkLib.Models;
+﻿using EbaySdkLib.Enums;
+using EbaySdkLib.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EbaySdkLib.Messages
 {
-   public  class UpdateFulfillmentPolicyResponse
+    public  class UpdateFulfillmentPolicyResponse
     {
 
         public List<CategoryType> categoryTypes { get; set; }

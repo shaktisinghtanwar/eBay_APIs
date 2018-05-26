@@ -1,4 +1,5 @@
-﻿using EbaySdkLib.Models;
+﻿using EbaySdkLib.Enums;
+using EbaySdkLib.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;

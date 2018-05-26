@@ -1,4 +1,4 @@
-﻿namespace EbaySdkLib.Models
+﻿namespace EbaySdkLib.Enums
 {
     public enum TimeDurationUnitEnum
     {
@@ -12,4 +12,5 @@
         SECOND,
         MILLISECOND
     }
+
 }
