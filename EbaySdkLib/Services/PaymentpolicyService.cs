@@ -54,7 +54,7 @@ namespace EbaySdkLib.Services
         public async Task<updatePaymentPolicyResponse> updatePaymentPolicyService(updatePaymentPolicyRequest updatePaymentPolicyrequest, string Id)
             {
             var body = JsonConvert.SerializeObject(updatePaymentPolicyrequest);
-            RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url + "{" + Id + "}");
+            RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url  + Id );
             var response = await helper.Put(body);
             updatePaymentPolicyResponse updatePaymentPolicyresponse = JsonConvert.DeserializeObject<updatePaymentPolicyResponse>(response);
             return updatePaymentPolicyresponse;
@@ -63,14 +63,14 @@ namespace EbaySdkLib.Services
 
         public async Task<GetRateTablesResponse> getratePolicyService(RateTable ratetable)
             {
-            RestHelper helper = new RestHelper(ApplicationConstants.RateTable_Url + ratetable.countryCode);
+            RestHelper helper = new RestHelper(ApplicationConstants.RATETABLE_URL + ratetable.countryCode);
             var response = await helper.Get();
             GetRateTablesResponse getRateTablesResponse = JsonConvert.DeserializeObject<GetRateTablesResponse>(response);
             return getRateTablesResponse;
             }
         public async Task<string> deleteReturnPolicyService(string Id)
             {
-            RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url + "{" + Id + "}");
+            RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url + Id );
             var response = await helper.Delete(Id);
             return response;
             }

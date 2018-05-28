@@ -25,12 +25,9 @@ namespace EbaySdkLib
             httpClient.BaseAddress = new Uri(ApplicationConstants.BASE_URL);
             httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer {0}", ApplicationConstants.TOKEN));
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));//ACCEPT header
-            // httpClient.DefaultRequestHeaders.Add("Content-Type","application/json");
-
             var response = await httpClient.GetAsync(url);
             return await response.Content.ReadAsStringAsync();
             }
-
 
         public async Task<string> Post(string body)
             {
@@ -39,10 +36,7 @@ namespace EbaySdkLib
                 {
                 using (var client = new HttpClient())
                     {
-                    if (url.ToString().Contains(ApplicationConstants.InventoryOffer_Url))
-                        {
-                        client.DefaultRequestHeaders.Add("Content-Language", ApplicationConstants.CONTENT_LANGUAGE);
-                        }
+                  
                     client.BaseAddress = new Uri(ApplicationConstants.BASE_URL);
                     client.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer {0}", ApplicationConstants.TOKEN));
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationConstants.CONTENT_TYPE));

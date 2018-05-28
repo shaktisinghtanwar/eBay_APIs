@@ -5,6 +5,7 @@ using EbaySdkLib;
 using EbaySdkLib.Models;
 using EbaySdkLib.Messages;
 using EbaySdkLib.Enums;
+using EbaySdkLib.Services;
 
 namespace UnitTestProject1
     {
@@ -463,86 +464,7 @@ namespace UnitTestProject1
             Assert.IsNotNull(response);
             }
         #endregion
-        #region InventoryLocation
-        [TestMethod]
-        public void getInventoryLocation()
-            {
-            AccountService accountService = new AccountService();
-            string merchantLocationKey = "Warehouse-1";
-            GetInventryLocationResponse response = accountService.InventoryApiService.getInventoryLocationService(merchantLocationKey).Result;
-            Assert.IsNotNull(response);
-            }
-
-        [TestMethod]
-        public void getInventoryLocations()
-            {
-            AccountService accountService = new AccountService();
-            int limit = 2; int offset = 2;
-            GetInventoryLocationsResponce response = accountService.InventoryApiService.getInventoryLocationsService(limit,offset).Result;
-            Assert.IsNotNull(response);
-            }
-
-
-        [TestMethod]
-        public void enableInventoryLocation()
-            {
-            AccountService accountService = new AccountService();
-            string merchantLocationKey = "warehouse-1";
-            var response = accountService.InventoryApiService.enableInventoryLocationService(merchantLocationKey).Result;
-            Assert.IsNotNull(response);
-            }
-        [TestMethod]
-        public void disableInventoryLocation()
-            {
-            AccountService accountService = new AccountService();
-            string merchantLocationKey = "warehouse-1";
-            var response = accountService.InventoryApiService.disableInventoryLocationService(merchantLocationKey).Result;
-            Assert.IsNotNull(response);
-            }
-
-
-        //[TestMethod]
-        //public void createInventoryLocations()
-        //    {
-        //    AccountService accountService = new AccountService();
-        //    EbaySdkLib.Messages.CreateInventoryLocationRequest createInventoryLocationRequest = new EbaySdkLib.Messages.CreateInventoryLocationRequest();
-        //    createInventoryLocationRequest.location = new EbaySdkLib.Models.Location()
-        //    {
-        //        address = new Address()
-        //        {
-        //            addressLine1 = "2055 Hamilton Ave",
-        //            addressLine2 = "Building 3",
-        //            city = "San Jose",
-        //            country = CountryCodeEnum.US,
-        //            postalCode = "12",
-        //            stateOrProvince = "12"
-        //        },
-        //        geoCoordinates = new GeoCoordinates()
-        //        {
-        //            latitude = "12",
-        //            longitude = "a34c"
-        //        },
-        //        locationId = "abc"
-        //    };
-        //    createInventoryLocationRequest.merchantLocationStatus = EbaySdkLib.Enums.StatusEnum.ENABLED;
-        //    createInventoryLocationRequest.operatingHours = new EbaySdkLib.Models.OperatingHour[] { new EbaySdkLib.Models.OperatingHour()
-        //    { 
-        //        DayOfWeekEnum=DayOfWeekEnum.MONDAY,
-               
-        //    };
-        //    //var response = accountService.InventoryApiService.createInventoryLocationsService().Result;
-        //   // Assert.IsNotNull(response);
-        //    }
-
-        [TestMethod]
-        public void deleteInventoryLocation()
-            {
-            AccountService accountService = new AccountService();
-            string merchantLocationKey = "warehouse-1";
-            var response = accountService.InventoryApiService.deleteInventoryLocationService(merchantLocationKey).Result;
-            Assert.IsNotNull(response);
-            }
-        #endregion
+        
         #region Offers
         /// <summary>
         /// header issue
@@ -550,7 +472,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void createOffers()
             {
-            AccountService accountService = new AccountService();
+            InventoryApiService inventoryApiService = new InventoryApiService();
             EbaySdkLib.Messages.CreateOffersRequest createOffersRequest = new EbaySdkLib.Messages.CreateOffersRequest();
             createOffersRequest.marketplaceId=EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
             createOffersRequest.format=EbaySdkLib.Enums.FormatTypeEnum.FIXED_PRICE;
@@ -569,13 +491,14 @@ namespace UnitTestProject1
 
                }
            };
-            CreateOffersResponse response = accountService.InventoryApiService.createOffersService(createOffersRequest).Result;
+            CreateOffersResponse response = inventoryApiService.createOffersService(createOffersRequest).Result;
             Assert.IsNotNull(response);
+            Assert.Fail();
             }
         [TestMethod]
         public void UpdateOffers()
             {
-            AccountService accountService = new AccountService();
+            InventoryApiService inventoryApiService = new InventoryApiService();
             string OfferId = "36445435465";
             EbaySdkLib.Messages.UpdateInventoryOfferRequest updateInventoryOfferRequest = new EbaySdkLib.Messages.UpdateInventoryOfferRequest();
             updateInventoryOfferRequest.categoryId = "30120";
@@ -596,44 +519,84 @@ namespace UnitTestProject1
                 
             };
 
-            UpdateInventoryOffersResponse response = accountService.InventoryApiService.updateOffersService(updateInventoryOfferRequest, OfferId).Result;
+            UpdateInventoryOffersResponse response = inventoryApiService.updateOffersService(updateInventoryOfferRequest, OfferId).Result;
             Assert.IsNotNull(response);
+            Assert.Fail();
             }
 
         [TestMethod]
         public void getOffers()
             {
-            AccountService accountService = new AccountService();
+            InventoryApiService inventoryApiService = new InventoryApiService();
             string sku = "3455632452345";
-            GetOffersResponse response = accountService.InventoryApiService.getOffersService(sku).Result;
+            GetOffersResponse response = inventoryApiService.getOffersService(sku).Result;
             Assert.IsNotNull(response);
+            Assert.Fail();
             }
 
         [TestMethod]
         public void getOffer()
             {
-            AccountService accountService = new AccountService();
+            InventoryApiService inventoryApiService = new InventoryApiService();
             string offerId = "36445435465";
-            GetofferResponse response = accountService.InventoryApiService.getOfferService(offerId).Result;
+            GetofferResponse response = inventoryApiService.getOfferService(offerId).Result;
             Assert.IsNotNull(response);
+            Assert.Fail();
             }
         [TestMethod]
         public void deleteOffer()
             {
-            AccountService accountService = new AccountService();
+            InventoryApiService inventoryApiService = new InventoryApiService();
             string offerId = "3455632452345";
-            var response = accountService.InventoryApiService.deleteOffersService(offerId).Result;
+            var response = inventoryApiService.deleteOffersService(offerId).Result;
             Assert.IsNotNull(response);
+            Assert.Fail();
             }
         [TestMethod]
         public void publishOffer()
             {
-            AccountService accountService = new AccountService();
+            InventoryApiService inventoryApiService = new InventoryApiService();
             string offerId = "36445435465";
-            var response = accountService.InventoryApiService.publishOfferService(offerId).Result;
+            var response = inventoryApiService.publishOfferService(offerId).Result;
             Assert.IsNotNull(response);
+            Assert.Fail();
             }
-        //deleteOffersService
+        [TestMethod]
+        public void getListingFees()
+            {
+            InventoryApiService inventoryApiService = new InventoryApiService();
+            string get_listing_fees = "get_listing_fees";
+            var response = inventoryApiService.getListingFeesService(get_listing_fees).Result;
+            Assert.IsNotNull(response);
+            Assert.Fail();
+            }
+        [TestMethod]
+        public void publishOfferByInventoryItemGroup()
+            {
+            InventoryApiService inventoryApiService = new InventoryApiService();
+            string get_listing_fees = "get_listing_fees";
+            var response = inventoryApiService.publishOfferByInventoryItemGroupService(get_listing_fees).Result;
+            Assert.IsNotNull(response);
+            Assert.Fail();
+            }
+
+            
+        [TestMethod]
+        public void WithdrawOrder()
+            {
+            InventoryApiService inventoryApiService = new InventoryApiService();
+            string Listing_Id = "3455632452346";
+            var response = inventoryApiService.WithdrawOfferService(Listing_Id).Result;
+            Assert.IsNotNull(response);
+            Assert.Fail();
+            }
+       
         #endregion
+        
+
+        
+
+
+
         }
     }

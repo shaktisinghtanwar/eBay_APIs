@@ -19,7 +19,7 @@ namespace EbaySdkLib.Services
 
       public async Task<GetReturnPolicyResponse> getReturnPolicy(string return_policy_id)
            {
-           RestHelper helper = new RestHelper(ApplicationConstants.RateTable_Url + return_policy_id);
+           RestHelper helper = new RestHelper(ApplicationConstants.RATETABLE_URL + return_policy_id);
            var response = await helper.Get();
            GetReturnPolicyResponse getReturnPolicyResponse = JsonConvert.DeserializeObject<GetReturnPolicyResponse>(response);
            return getReturnPolicyResponse;
@@ -27,7 +27,7 @@ namespace EbaySdkLib.Services
 
       public async Task<GetReturnPoliciesResponse> getReturnPolicies(string marketplaceId)
           {
-          RestHelper helper = new RestHelper(ApplicationConstants.ReturnPolicy_Url + "?marketplace_id= " + marketplaceId );
+          RestHelper helper = new RestHelper(ApplicationConstants.RETURNPOLICY_URL + "?marketplace_id= " + marketplaceId );
           var response = await helper.Get();
           GetReturnPoliciesResponse getReturnPoliciesResponse = JsonConvert.DeserializeObject<GetReturnPoliciesResponse>(response);
           return getReturnPoliciesResponse;
@@ -44,7 +44,7 @@ namespace EbaySdkLib.Services
       public async Task<CreateReturnPolicyResponse> createReturnPolicyService(CreateReturnPolicyrequest createReturnPolicyrequest)
           {
           var body = JsonConvert.SerializeObject(createReturnPolicyrequest);
-          RestHelper helper = new RestHelper(ApplicationConstants.ReturnPolicy_Url);
+          RestHelper helper = new RestHelper(ApplicationConstants.RETURNPOLICY_URL);
           var response = await helper.Post(body);
           CreateReturnPolicyResponse createReturnpolicyResponse = JsonConvert.DeserializeObject<CreateReturnPolicyResponse>(response);
           return createReturnpolicyResponse;
@@ -52,14 +52,14 @@ namespace EbaySdkLib.Services
 
       public async Task<string> deleteReturnPolicyService(string Id)
           {
-          RestHelper helper = new RestHelper(ApplicationConstants.ReturnPolicy_Url+"{"+Id+"}");
+          RestHelper helper = new RestHelper(ApplicationConstants.RETURNPOLICY_URL+Id);
           var response = await helper.Delete(Id);
           return response;
           }
       public async Task<UpdatereturnPolicyresponse> updateReturnPolicyService(UpdateReturnPolicyRequest updateReturnPolicyRequest, string Id)
           {
           var body = JsonConvert.SerializeObject(updateReturnPolicyRequest);
-          RestHelper helper = new RestHelper(ApplicationConstants.ReturnPolicy_Url + "{" + Id + "}");
+          RestHelper helper = new RestHelper(ApplicationConstants.RETURNPOLICY_URL +  Id );
           var response = await helper.Put(body);
           UpdatereturnPolicyresponse updatereturnPolicyresponse = JsonConvert.DeserializeObject<UpdatereturnPolicyresponse>(response);
           return updatereturnPolicyresponse;
