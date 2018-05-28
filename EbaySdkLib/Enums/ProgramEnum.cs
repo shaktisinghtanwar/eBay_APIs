@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EbaySdkLib.Enums
 {
-    public enum ProgramEnum
+  public  enum ProgramEnum
     {
         PROGRAM_DE,
         PROGRAM_UK,

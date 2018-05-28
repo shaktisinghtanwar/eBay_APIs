@@ -26,7 +26,7 @@ namespace EbaySdkLib.Constants
         public const string _URLPROMOTION = "sell/marketing/v1/item_promotion";
         public const string PRODCOMPATIBILITY_URL = "sell/inventory/v1/inventory_item/";
 
-        public const string ANALYTICS_URL = "sell/analytics/v1/traffic_report/?filter=";
+        public const string ANALYTICS_URL = "sell/analytics/v1/traffic_report/";
 
         public const string COMPLIANCE_URL = "sell/compliance/v1/listing_violation_summary";
         public const string SELLER_STANDARDS_URL = "sell/analytics/v1/seller_standards_profile";
@@ -35,6 +35,14 @@ namespace EbaySdkLib.Constants
         public const string PRODUCTMETADATA_URL = "commerce/catalog/v1_beta/get_product_metadata";
         public const string PRODUCTMETADATAFORCATEGORIES_URL = "commerce/catalog/v1_beta/product";
         public const string GETCHANGEREQUEST_URL = "commerce/catalog/v1_beta/change_request";
+        public const string SELLER_ANALYTICS_URL = "sell/analytics/v1/seller_standards_profile";
+
+        public const string BULKCREATEADSBYINVENTORY_URL = "sell/marketing/v1/ad_campaign/";
+        public const string GETREPORT_URL = "sell/marketing/v1/ad_report/";
+        public const string GETREPORTMETADATA_URL = "sell/marketing/v1/ad_report_metadata/";
+
+
+        public const string ADDREPORTTASK_URL = "sell/marketing/v1/ad_report_task";
 
         }
     }

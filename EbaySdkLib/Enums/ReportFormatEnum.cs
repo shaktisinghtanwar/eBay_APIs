@@ -6,15 +6,8 @@ using System.Threading.Tasks;
 
 namespace EbaySdkLib.Enums
 {
-    public enum DataTypeEnum
+    public enum ReportFormatEnum
     {
-        NUMBER,
-        STRING,
-        DATE,
-        INTEGER,
-        DOUBLE,
-        LONG
-
-
+        TSV_GZIP
     }
 }

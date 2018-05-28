@@ -17,13 +17,13 @@ namespace EbaySdkLib.Services
         }
 
       //Shilpa Work
-        public async Task<GetTrafficReportResponse> getAnalyticsService(string marketplaceId,string metric)  
-        {
-            RestHelper helper = new RestHelper(ApplicationConstants.ANALYTICS_URL+"marketplace_ids:"+ marketplaceId+"&metric="+ metric); 
+        public async Task<GetTrafficReportResponse> getAnalyticsService(string filter, string dimension, string metric, string sort)
+            {
+            RestHelper helper = new RestHelper(ApplicationConstants.ANALYTICS_URL + filter + dimension + metric);
             var response = await helper.Get();
             GetTrafficReportResponse getAnalyticsResponse = JsonConvert.DeserializeObject<GetTrafficReportResponse>(response);
             return getAnalyticsResponse;
-        }
+            }
 
 
         public async Task<FindSellerStandardsProfilesResponse> findSellerStandardsProfilesResponseAnalyticsService()
@@ -33,5 +33,14 @@ namespace EbaySdkLib.Services
             FindSellerStandardsProfilesResponse findSellerStandardsProfilesAnalyticsResponse = JsonConvert.DeserializeObject<FindSellerStandardsProfilesResponse>(response);
             return findSellerStandardsProfilesAnalyticsResponse;
         }
+
+      //LodhiSir
+        public async Task<getSellerStandardsProfileResponse> getSellerStandards(getSellerStandardsProfileResponse getSellerStandards, string cycle)
+            {
+            RestHelper helper = new RestHelper(ApplicationConstants.SELLER_ANALYTICS_URL + "/" + getSellerStandards.cycle + "/" + cycle);
+            var response = await helper.Get();
+            getSellerStandardsProfileResponse getSellerStandardsResponse = JsonConvert.DeserializeObject<getSellerStandardsProfileResponse>(response);
+            return getSellerStandardsResponse;
+            }
     }
 }

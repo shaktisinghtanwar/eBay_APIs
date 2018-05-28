@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace EbaySdkLib.Models
 {
-    public class Cycle
+    public class DimensionKeyAnnotation
     {
-        public CycleTypeEnum cycleType { get; set; } 
-        public string evaluationDate { get; set; }
-        public string evaluationMonth { get; set; }
+        public string annotationKey { get; set; }
+        public DataTypeEnum dataType { get; set; }
     }
 }

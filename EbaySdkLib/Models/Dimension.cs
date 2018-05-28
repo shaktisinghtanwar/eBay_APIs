@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace EbaySdkLib.Models
 {
-    public class Metric
+    public class Dimension
     {
-        public string dataType { get; set; }
-        public string key { get; set; }
-        public string localizedName { get; set; }
+        public string[] annotationKeys { get; set; }
+        public string dimensionKey { get; set; }
     }
 }

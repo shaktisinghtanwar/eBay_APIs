@@ -87,6 +87,8 @@
     <Compile Include="Enums\ReferenceTypeEnum.cs" />
     <Compile Include="Enums\RefundMethodEnum.cs" />
     <Compile Include="Enums\RefundStatusEnum.cs" />
+    <Compile Include="Enums\ReportFormatEnum.cs" />
+    <Compile Include="Enums\ReportTypeEnum.cs" />
     <Compile Include="Enums\ReturnMethodEnum.cs" />
     <Compile Include="Enums\ReturnShippingCostPayerEnum.cs" />
     <Compile Include="Enums\SoldFormatEnum.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Enums\StandardsLevelEnum.cs" />
     <Compile Include="Enums\StatusEnum.cs" />
     <Compile Include="Enums\StoreTypeEnum.cs" />
+    <Compile Include="Messages\bulkCreateAdsByInventoryReferenceRequest.cs" />
     <Compile Include="Messages\BulkMigrateListingRequest.cs" />
     <Compile Include="Messages\BulkMigratelistingresponse.cs" />
     <Compile Include="Messages\BulkUpdatePriceQualityRequest.cs" />
@@ -118,6 +121,7 @@
     <Compile Include="Messages\CreateOrReplaceSalesTaxResponse.cs" />
     <Compile Include="Messages\Createpaymentpolicyresponse.cs" />
     <Compile Include="Messages\CreatePaymerntPolicyRequest.cs" />
+    <Compile Include="Messages\CreateReportTaskRequest.cs" />
     <Compile Include="Messages\CreateReturnPolicyrequest.cs" />
     <Compile Include="Messages\CreateReturnPolicyResponse.cs" />
     <Compile Include="Messages\CreateShippingFulfillmentRequest.cs" />
@@ -133,6 +137,7 @@
     <Compile Include="Messages\EndCampaignResponse.cs" />
     <Compile Include="Messages\FindSellerStandardsProfilesResponse.cs" />
     <Compile Include="Messages\FundingStrategy.cs" />
+    <Compile Include="Messages\GetAdsResponse.cs" />
     <Compile Include="Messages\GetAutomotivePartsCompatibilityPolicies.cs" />
     <Compile Include="Messages\GetCampaignByNameResponse.cs" />
     <Compile Include="Messages\GetCampaignResponse.cs" />
@@ -180,6 +185,8 @@
     <Compile Include="Messages\GetProductResponse.cs" />
     <Compile Include="Messages\GetRateTablesRequest.cs" />
     <Compile Include="Messages\GetRateTablesResponse.cs" />
+    <Compile Include="Messages\GetReportMetadataResponse.cs" />
+    <Compile Include="Messages\GetReportTasksResonse.cs" />
     <Compile Include="Messages\GetReturnPoliciesRequest.cs" />
     <Compile Include="Messages\GetReturnPoliciesResponse.cs" />
     <Compile Include="Messages\GetReturnPolicyByNameRequest.cs" />
@@ -190,6 +197,7 @@
     <Compile Include="Messages\GetSalesTaxJurisdictions.cs" />
     <Compile Include="Messages\GetSalesTaxRequest.cs" />
     <Compile Include="Messages\GetSalesTaxResponse.cs" />
+    <Compile Include="Messages\getSellerStandardsProfileResponse.cs" />
     <Compile Include="Messages\GetShippingFulfillmentRequest.cs" />
     <Compile Include="Messages\GetShippingFulfillmentResponse.cs" />
     <Compile Include="Messages\GetShippingFulfillmentsRequest.cs" />
@@ -215,6 +223,7 @@
     <Compile Include="Messages\ShippingFulfillment.cs" />
     <Compile Include="Messages\UpdateCampaignIdentificationRequest.cs" />
     <Compile Include="Messages\UpdateCampaignIdentificationResponse.cs" />
+    <Compile Include="Models\Ad.cs" />
     <Compile Include="Models\AdditionalImage.cs" />
     <Compile Include="Models\Aspect.cs" />
     <Compile Include="Models\AspectDistribution.cs" />
@@ -230,13 +239,19 @@
     <Compile Include="Models\CorrectiveRecommendations.cs" />
     <Compile Include="Models\Cycle.cs" />
     <Compile Include="Models\DifferentiatingAspect.cs" />
+    <Compile Include="Models\Dimension.cs" />
+    <Compile Include="Models\DimensionKeyAnnotation.cs" />
     <Compile Include="Models\DimensionMetadata.cs" />
     <Compile Include="Models\DimentionKey.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Header.cs" />
+    <Compile Include="Models\InventoryReference.cs" />
     <Compile Include="Models\ListingViolation.cs" />
     <Compile Include="Models\MetadataHeader.cs" />
     <Compile Include="Models\MetadataRecord.cs" />
     <Compile Include="Models\Metric.cs" />
+    <Compile Include="Models\MetricMetadata.cs" />
+    <Compile Include="Models\Parameter.cs" />
     <Compile Include="Models\PriceQuality.cs" />
     <Compile Include="Messages\Specification.cs" />
     <Compile Include="Messages\VariesBy.cs" />
@@ -325,6 +340,7 @@
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\RegionSet.cs" />
     <Compile Include="Enums\RegionTypeEnum.cs" />
+    <Compile Include="Models\ReportTask.cs" />
     <Compile Include="Models\ReturnPeriod.cs" />
     <Compile Include="Models\ReturnPolicy.cs" />
     <Compile Include="Models\SalesTax.cs" />

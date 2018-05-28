@@ -10,6 +10,5 @@ namespace EbaySdkLib.Models
     {
         public bool applicable { get; set; }
         public string value { get; set; }
-        public ValueConstraint[] valueConstraints { get; set; }
     }
 }

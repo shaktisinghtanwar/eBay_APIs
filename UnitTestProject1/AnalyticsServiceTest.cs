@@ -16,11 +16,14 @@ namespace UnitTestProject1
         public void getTrafficreport()
             {
             AnalyticsService analyticsService = new AnalyticsService();
-            string marketPlaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US.ToString();
+            string filter = "marketplace_ids:%7BEBAY_US%7D,date_range:%5B20161007..20161009%5D";
+            string dimension = "LISTING";
             string metric = "LISTING_IMPRESSION_SEARCH_RESULTS_PAGE,LISTING_IMPRESSION_STORE,SALES_CONVERSION_RATE";
-            GetTrafficReportResponse response = analyticsService.getAnalyticsService(marketPlaceId, metric).Result;
+            string sort = "LISTING_IMPRESSION_STORE";
+            GetTrafficReportResponse response = analyticsService.getAnalyticsService(filter, dimension, metric, sort).Result;
             Assert.IsNotNull(response);
             }
+
 
         [TestMethod]
         public void findSellerStandardsProfile()
@@ -28,6 +31,17 @@ namespace UnitTestProject1
             AnalyticsService analyticsService = new AnalyticsService();
             //Return status is 200, but there is issue in response
             FindSellerStandardsProfilesResponse response = analyticsService.findSellerStandardsProfilesResponseAnalyticsService().Result;
+            Assert.IsNotNull(response);
+            }
+
+        [TestMethod]
+        public void getSellerAnalytics()
+            {
+            AnalyticsService analyticsService = new AnalyticsService();
+            getSellerStandardsProfileResponse getSellerStandards = new getSellerStandardsProfileResponse();
+            getSellerStandards.program = EbaySdkLib.Enums.ProgramEnum.PROGRAM_DE;
+            string cycle = "CURRENT";
+            getSellerStandardsProfileResponse response = analyticsService.getSellerStandards(getSellerStandards, cycle).Result;
             Assert.IsNotNull(response);
             }
 

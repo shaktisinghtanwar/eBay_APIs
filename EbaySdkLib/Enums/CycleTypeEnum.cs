@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace EbaySdkLib.Enums
 {
-    public enum CycleTypeEnum
+  public  enum CycleTypeEnum
     {
         CURRENT,
         PROJECTED
+
     }
 }

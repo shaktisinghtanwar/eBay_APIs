@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace UnitTestProject1
     {
     [TestClass]
-    class MarketingServiceTest
+    class marketingAPIService 
         {
         #region marketingApi/compaign
         [TestMethod]
@@ -189,6 +189,248 @@ namespace UnitTestProject1
 
 
 
+        #endregion
+
+        #region Lodhiwork
+        [TestMethod]
+        public void bulkCreateAdsByInventory()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest bulkCreateAds = new bulkCreateAdsByInventoryReferenceRequest();
+            bulkCreateAds.inventoryReferenceId = "66352443";
+            bulkCreateAds.inventoryReferenceType = "INVENTORY_ITEM";
+            string campaign_id = "10001741014";
+            string bulk_create_ads = "bulk_create_ads_by_inventory_reference";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkCreateAdsByInventory(bulkCreateAds, campaign_id, bulk_create_ads).Result;
+
+            Assert.IsNotNull(response.statusCode);
+            }
+        [TestMethod]
+        public void bulkCreateAdsByListingId()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest bulkCreateAds = new bulkCreateAdsByInventoryReferenceRequest();
+            bulkCreateAds.inventoryReferenceId = "66352443";
+            bulkCreateAds.inventoryReferenceType = "INVENTORY_ITEM";
+            string campaign_id = "10001741014";
+            string bulk_create_ads_by_listing = "bulk_create_ads_by_listing_id";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkCreateAdsByListingId(bulkCreateAds, campaign_id, bulk_create_ads_by_listing).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void bulkDeleteAdsByInventoryReference()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest bulkCreateAds = new bulkCreateAdsByInventoryReferenceRequest();
+            bulkCreateAds.inventoryReferenceId = "66352443";
+            bulkCreateAds.inventoryReferenceType = "INVENTORY_ITEM";
+            string campaign_id = "10001741014";
+            string bulk_delete_ads_by_inventory = "bulk_delete_ads_by_inventory_reference";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkDeleteAdsByInventoryReference(bulkCreateAds, campaign_id, bulk_delete_ads_by_inventory).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void bulkDeleteAdsByListingId()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest bulkDeleteAd = new bulkCreateAdsByInventoryReferenceRequest();
+            bulkDeleteAd.inventoryReferenceId = "66352443";
+            bulkDeleteAd.inventoryReferenceType = "INVENTORY_ITEM";
+            string campaign_id = "10001741014";
+            string bulkDeleteAdsByListingId = "bulk_delete_ads_by_listing_id";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkDeleteAdsByListingId(bulkDeleteAd, campaign_id, bulkDeleteAdsByListingId).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void bulkUpdateAdsBidByInventoryReference()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest bulkUpdateAds = new bulkCreateAdsByInventoryReferenceRequest();
+            bulkUpdateAds.inventoryReferenceId = "2343212";
+            bulkUpdateAds.inventoryReferenceType = "INVENTORY_ITEM";
+            string campaign_id = "10001741014";
+            string bulk_update_ads = "bulk_update_ads_bid_by_inventory_reference";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkUpdateAdsBidByInventoryReference(bulkUpdateAds, campaign_id, bulk_update_ads).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void bulkUpdateAdsBidByListingId()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest bulkUpdateAds = new bulkCreateAdsByInventoryReferenceRequest();
+            bulkUpdateAds.listingId = "190007022519";
+            string campaign_id = "10001741014";
+            string bulk_update_ads_by_listing = "bulk_update_ads_bid_by_listing_id";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkUpdateAdsBidByListingId(bulkUpdateAds, campaign_id, bulk_update_ads_by_listing).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void createAdByListingId()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest createAdByListing = new bulkCreateAdsByInventoryReferenceRequest();
+            createAdByListing.listingId = "190007022519";
+            createAdByListing.bidPercentage = "10";
+            string campaign_id = "10001741014";
+            string createAd = "ad";
+            var response = marketingAPIService .createAdByListingId(createAdByListing, campaign_id, createAd).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void createAdsByInventoryReference()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest createAdsByInventoryReference = new bulkCreateAdsByInventoryReferenceRequest();
+            createAdsByInventoryReference.bidPercentage = "10";
+            createAdsByInventoryReference.inventoryReferenceId = "87536492";
+            createAdsByInventoryReference.inventoryReferenceType = "INVENTORY_ITEM";
+            string campaign_id = "10001741014";
+            string create_ads_by_inventory = "create_ads_by_inventory_reference";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .createAdsByInventoryReference(createAdsByInventoryReference, campaign_id, create_ads_by_inventory).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void deleteAd()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest deleteAd = new bulkCreateAdsByInventoryReferenceRequest();
+            //deleteAd.bidPercentage = "10";
+            //deleteAd.inventoryReferenceId = "87536492";
+            //deleteAd.inventoryReferenceType = "INVENTORY_ITEM";
+            string campaign_id = "10001741014";
+            string deletead = "ad";
+            string addid = "12428546014";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .deleteAd(deleteAd, campaign_id, deletead, addid).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void deleteAdsByInventoryReference()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest deleteAdsByInventoryReference = new bulkCreateAdsByInventoryReferenceRequest();
+            deleteAdsByInventoryReference.inventoryReferenceId = "133232";
+            deleteAdsByInventoryReference.inventoryReferenceType = "INVENTORY_ITEM";
+            string campaign_id = "10001741014";
+            string delete_ads = "delete_ads_by_inventory_reference";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .deleteAdsByInventoryReference(deleteAdsByInventoryReference, campaign_id, delete_ads).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void getAd()
+            {
+
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest getAd = new bulkCreateAdsByInventoryReferenceRequest();
+            string campaign_id = "10001741014";
+            string ad = "ad";
+            string adId = "12427947014";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .getAd(getAd, campaign_id, ad, adId).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void getAds()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            //GetAdsResponse getAds = new GetAdsResponse();
+            //getAds.ads = new EbaySdkLib.Models.Ad[] { new EbaySdkLib.Models.Ad() {listingId= "190007022518" } };
+            //getAds.limit = "10";
+            //getAds.offset = "0";
+            string campaign_id = "10001741014";
+            string ad = "ad";
+            GetAdsResponse response = marketingAPIService .getAds(campaign_id, ad).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void getAdsByInventoryReference()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest getAdsByInventoryReference = new bulkCreateAdsByInventoryReferenceRequest();
+            getAdsByInventoryReference.inventoryReferenceType = "INVENTORY_ITEM";
+            getAdsByInventoryReference.inventoryReferenceId = "133232";
+            string campaign_id = "10001741014";
+            string getads = "get_ads_by_inventory_reference?";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .getAdsByInventoryReference(getAdsByInventoryReference, campaign_id, getads).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void updateBid()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            bulkCreateAdsByInventoryReferenceRequest updateBid = new bulkCreateAdsByInventoryReferenceRequest();
+            updateBid.bidPercentage = "11";
+            string campaign_id = "10001741014";
+            string updatead = "ad";
+            string adId = "12427947014";
+            string update_bid = "update_bid";
+            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .updateBid(updateBid, campaign_id, updatead, adId, update_bid).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void getReport()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            string reportiId = "10000049014";
+            var response = marketingAPIService .getReport(reportiId).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void getReportMetadata()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            GetReportMetadataResponse response = marketingAPIService .getReportMetadata().Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void getReportMetadataForReportType()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            GetReportMetadataResponse GetReportMetadata = new GetReportMetadataResponse();
+            GetReportMetadata.reportType = "ACCOUNT_PERFORMANCE_REPORT";
+            GetReportMetadataResponse response = marketingAPIService .getReportMetadataForReportType(GetReportMetadata).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void createReportTask()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            CreateReportTaskRequest createReportTask = new CreateReportTaskRequest();
+            string[] metricKeys = new string[] { "CLICKS" };
+            string[] annotationKeys = new string[] { "campaign_name", "campaign_start_date", "campaign_end_date" };
+
+            createReportTask.reportType = EbaySdkLib.Enums.ReportTypeEnum.CAMPAIGN_PERFORMANCE_REPORT;
+            createReportTask.dateTo = "yyyy-MM-ddThh:mm.ss.sssZ";
+            //createReportTask.metricKeys = metricKeys;
+            //createReportTask.dimensions = new Dimension(new string[]{ "Darth", "Vader" }).dimensionKey("Luke"); 
+            CreateReportTaskRequest response = marketingAPIService .createReportTask(createReportTask).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void deleteReportTask()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            string reportTaskId = "10000056014";
+            CreateReportTaskRequest response = marketingAPIService .deleteReportTask(reportTaskId).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void getReportTask()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            string reportTaskId = "10000049014";
+            CreateReportTaskRequest response = marketingAPIService .getReportTask(reportTaskId).Result;
+            Assert.IsNotNull(response);
+            }
+        [TestMethod]
+        public void getReportTasks()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            CreateReportTaskRequest reporttask = new CreateReportTaskRequest();
+
+            string reportTaskstatus = "PENDING,SUCCESS";
+            string limit = "10";
+            CreateReportTaskRequest response = marketingAPIService .getReportTasks(reportTaskstatus, limit).Result;
+            Assert.IsNotNull(response);
+            }
         #endregion
         }
     }
