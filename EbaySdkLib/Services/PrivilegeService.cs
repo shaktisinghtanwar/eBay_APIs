@@ -1,24 +1,24 @@
-﻿using EbaySdkLib.Messages;
+﻿using EbaySdkLib.Constants;
+using EbaySdkLib.Messages;
 using Newtonsoft.Json;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 namespace EbaySdkLib
 {
    public  class PrivilegeService
     {
-       string _UrlPrivilage;
-     public   PrivilegeService()
-       {
-           _UrlPrivilage = string.Format("sell/account/v1/privilege");
-       }
-     public async Task<GetPrivilegesResponse> GetPrivilage(GetPrivilegesRequest getPrivilegesRequest)
+      
+     public async Task<Tuple<GetPrivilegesResponse,HttpStatusCode>>  GetPrivilage(GetPrivilegesRequest getPrivilegesRequest)
      {
 
 
-         RestHelper helper = new RestHelper(_UrlPrivilage+"/");
+     RestHelper helper = new RestHelper(ApplicationConstants.PRIVILAGE_URL + "/");
          var response = await helper.Get();
 
-         GetPrivilegesResponse getPrivilegesResponse = JsonConvert.DeserializeObject<GetPrivilegesResponse>(response);
-         return getPrivilegesResponse;
+         GetPrivilegesResponse getPrivilegesResponse = JsonConvert.DeserializeObject<GetPrivilegesResponse>(response.Item1);
+         return new Tuple<GetPrivilegesResponse, HttpStatusCode>(getPrivilegesResponse, response.Item2);
+
      }
 
     }

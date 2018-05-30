@@ -10,6 +10,6 @@ namespace EbaySdkLib.Messages
  public   class GetAutomotivePartsCompatibilityPolicies
         {
         public AutomotivePartsCompatibilityPolicy[] automotivePartsCompatibilityPolicies { get; set; }
-        public Warning[] warnings { get; set; }
+        public Warnings[] warnings { get; set; }
         }
     }

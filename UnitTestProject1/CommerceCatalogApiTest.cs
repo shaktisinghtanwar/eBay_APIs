@@ -13,13 +13,20 @@ namespace UnitTestProject1
     class CommerceCatalogApiTest
         {
         [TestMethod]
-        public void getProductResponse()
+        public void getProductResponseTest()
             {
             CatalogService catalogceservice = new CatalogService();
 
             string epid = "232669172";
-            GetProductResponse response = catalogceservice.getProductResponse(epid).Result;
-            Assert.IsNotNull(response);
+            var response = catalogceservice.getProductResponse(epid).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -28,8 +35,16 @@ namespace UnitTestProject1
             CatalogService catalogceservice = new CatalogService();
 
             string q = "232669172";
-            ProductSummarySearchResponse response = catalogceservice.productSummarySearchResponse(q).Result;
-            Assert.IsNotNull(response);
+            //GetProductResponse response = catalogceservice.productSummarySearchResponse(q).Result;
+            var response = catalogceservice.productSummarySearchResponse(q).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -38,8 +53,15 @@ namespace UnitTestProject1
             CatalogService catalogceservice = new CatalogService();
 
             string epid = "242755377";
-            ProductSummarySearchResponse response = catalogceservice.productSummarySearchResponse(epid).Result;
-            Assert.IsNotNull(response);
+            var response = catalogceservice.productSummarySearchResponse(epid).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -48,8 +70,15 @@ namespace UnitTestProject1
             CatalogService catalogceservice = new CatalogService();
 
             string primary_category_id = "500";
-            GetProductMetadataForCategoriesResponse response = catalogceservice.getProductMetadataForCategoriesResponse(primary_category_id).Result;
-            Assert.IsNotNull(response);
+            var response = catalogceservice.getProductMetadataForCategoriesResponse(primary_category_id).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -58,8 +87,15 @@ namespace UnitTestProject1
             CatalogService catalogceservice = new CatalogService();
 
             string change_request_id = "5ac3cf22ca4c591b0c324749";
-            GetChangeRequestResponse response = catalogceservice.getChangeRequestResponse(change_request_id).Result;
-            Assert.IsNotNull(response);
+            var response = catalogceservice.getChangeRequestResponse(change_request_id).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
 
@@ -68,8 +104,15 @@ namespace UnitTestProject1
             {
             CatalogService catalogceservice = new CatalogService();
 
-            GetChangeRequestsResponse response = catalogceservice.getChangeRequestsResponse().Result;
-            Assert.IsNotNull(response);
+            var response = catalogceservice.getChangeRequestsResponse().Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -83,7 +126,14 @@ namespace UnitTestProject1
                 primaryCategoryId = "9355"
             };
             var response = catalogceservice.createChangeRequestService(changerequest).Result;
-            Assert.IsNotNull(response);
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         }

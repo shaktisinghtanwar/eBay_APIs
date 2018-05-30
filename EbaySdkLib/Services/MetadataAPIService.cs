@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,56 +12,56 @@ namespace EbaySdkLib.Services
     {
   public  class MetadataAPIService
         {
-      public async Task<GetSalesTaxJurisdictions> getSalesTaxJurisdictionsService( string countrycode)
+      public async Task<Tuple<GetSalesTaxJurisdictions,HttpStatusCode>> getSalesTaxJurisdictionsService( string countrycode)
       {
       RestHelper helper = new RestHelper(ApplicationConstants.JURISDICTION_URL +countrycode+"/sales_tax_jurisdiction");
       var response = await helper.Get();
-      GetSalesTaxJurisdictions getSalesTaxJurisdictions = JsonConvert.DeserializeObject<GetSalesTaxJurisdictions>(response);
-      return getSalesTaxJurisdictions;
+      GetSalesTaxJurisdictions getSalesTaxJurisdictions = JsonConvert.DeserializeObject<GetSalesTaxJurisdictions>(response.Item1);
+      return new Tuple<GetSalesTaxJurisdictions, HttpStatusCode>(getSalesTaxJurisdictions, response.Item2);
       }
-      public async Task<GetAutomotivePartsCompatibilityPolicies> getAutomotivePartsCompatibilityService(string marketPlaceId, string filter)
+      public async Task<Tuple<GetAutomotivePartsCompatibilityPolicies,HttpStatusCode>> getAutomotivePartsCompatibilityService(string marketPlaceId, string filter)
           {
           RestHelper helper = new RestHelper(ApplicationConstants.JURISDICTION_URL + marketPlaceId + "/get_automotive_parts_compatibility_policies?filter=categoryIds:" + filter);
           var response = await helper.Get();
-          GetAutomotivePartsCompatibilityPolicies getAutomotivePartsCompatibilityPolicies = JsonConvert.DeserializeObject<GetAutomotivePartsCompatibilityPolicies>(response);
-          return getAutomotivePartsCompatibilityPolicies;
+          GetAutomotivePartsCompatibilityPolicies getAutomotivePartsCompatibilityPolicies = JsonConvert.DeserializeObject<GetAutomotivePartsCompatibilityPolicies>(response.Item1);
+          return new Tuple<GetAutomotivePartsCompatibilityPolicies, HttpStatusCode>(getAutomotivePartsCompatibilityPolicies, response.Item2);
           }
-      public async Task<GetItemConditionPoliciesResponse> getItemConditionPoliciesService(string marketPlaceId, string filter)
+      public async Task<Tuple<GetItemConditionPoliciesResponse,HttpStatusCode>> getItemConditionPoliciesService(string marketPlaceId, string filter)
           {
           RestHelper helper = new RestHelper(ApplicationConstants.JURISDICTION_URL + marketPlaceId + "/get_automotive_parts_compatibility_policies?filter=categoryIds:" + filter);
           var response = await helper.Get();
-          GetItemConditionPoliciesResponse getItemConditionPoliciesResponse = JsonConvert.DeserializeObject<GetItemConditionPoliciesResponse>(response);
-          return getItemConditionPoliciesResponse;
+          GetItemConditionPoliciesResponse getItemConditionPoliciesResponse = JsonConvert.DeserializeObject<GetItemConditionPoliciesResponse>(response.Item1);
+          return new Tuple<GetItemConditionPoliciesResponse, HttpStatusCode>(getItemConditionPoliciesResponse, response.Item2); 
           }
-      public async Task<GetListingStructurePoliciesResponse> GetListingStructurePoliciesService(string marketPlaceId, string filter)
+      public async Task<Tuple<GetListingStructurePoliciesResponse,HttpStatusCode>> GetListingStructurePoliciesService(string marketPlaceId, string filter)
           {
           RestHelper helper = new RestHelper(ApplicationConstants.MARKETPLACE_URL + marketPlaceId + "/get_listing_structure_policies?filter=categoryIds" + filter);
           var response = await helper.Get();
-          GetListingStructurePoliciesResponse getListingStructurePoliciesResponse = JsonConvert.DeserializeObject<GetListingStructurePoliciesResponse>(response);
-          return getListingStructurePoliciesResponse;
+          GetListingStructurePoliciesResponse getListingStructurePoliciesResponse = JsonConvert.DeserializeObject<GetListingStructurePoliciesResponse>(response.Item1);
+          return new Tuple<GetListingStructurePoliciesResponse, HttpStatusCode>(getListingStructurePoliciesResponse, response.Item2); 
           }
 
-      public async Task<GetNegotiatedPricePoliciesResponse> getNegotiatedPricePoliciesService(string marketPlaceId, string filter)
+      public async Task<Tuple<GetNegotiatedPricePoliciesResponse,HttpStatusCode>> getNegotiatedPricePoliciesService(string marketPlaceId, string filter)
           {
           RestHelper helper = new RestHelper(ApplicationConstants.MARKETPLACE_URL + marketPlaceId + "/get_negotiated_price_policies?filter=" + filter);
           var response = await helper.Get();
-          GetNegotiatedPricePoliciesResponse getNegotiatedPricePoliciesResponse = JsonConvert.DeserializeObject<GetNegotiatedPricePoliciesResponse>(response);
-          return getNegotiatedPricePoliciesResponse;
+          GetNegotiatedPricePoliciesResponse getNegotiatedPricePoliciesResponse = JsonConvert.DeserializeObject<GetNegotiatedPricePoliciesResponse>(response.Item1);
+          return new Tuple<GetNegotiatedPricePoliciesResponse, HttpStatusCode>(getNegotiatedPricePoliciesResponse, response.Item2); 
           }
-      public async Task<GetProductAdoptionPolicies> getProductAdoptionPoliciesService(string marketPlaceId, string filter)
+      public async Task<Tuple<GetProductAdoptionPolicies,HttpStatusCode>> getProductAdoptionPoliciesService(string marketPlaceId, string filter)
           {
           RestHelper helper = new RestHelper(ApplicationConstants.MARKETPLACE_URL + marketPlaceId + "get_product_adoption_policies?filter=categoryIds" + filter);
           var response = await helper.Get();
-          GetProductAdoptionPolicies getProductAdoptionPolicies = JsonConvert.DeserializeObject<GetProductAdoptionPolicies>(response);
-          return getProductAdoptionPolicies;
+          GetProductAdoptionPolicies getProductAdoptionPolicies = JsonConvert.DeserializeObject<GetProductAdoptionPolicies>(response.Item1);
+          return new Tuple<GetProductAdoptionPolicies, HttpStatusCode>(getProductAdoptionPolicies, response.Item2); 
           }
       
-      public async Task<MetadataGetreturnPolicyresponse> metadataGetreturnPolicyService(string marketPlaceId, string filter)
+      public async Task<Tuple<MetadataGetreturnPolicyresponse,HttpStatusCode>> metadataGetreturnPolicyService(string marketPlaceId, string filter)
           {
           RestHelper helper = new RestHelper(ApplicationConstants.MARKETPLACE_URL + marketPlaceId + "get_return_policies?filter=categoryIds" + filter);
           var response = await helper.Get();
-          MetadataGetreturnPolicyresponse metadataGetreturnPolicyresponse = JsonConvert.DeserializeObject<MetadataGetreturnPolicyresponse>(response);
-          return metadataGetreturnPolicyresponse;
+          MetadataGetreturnPolicyresponse metadataGetreturnPolicyresponse = JsonConvert.DeserializeObject<MetadataGetreturnPolicyresponse>(response.Item1);
+          return new Tuple<MetadataGetreturnPolicyresponse, HttpStatusCode>(metadataGetreturnPolicyresponse, response.Item2); 
           }
 
      

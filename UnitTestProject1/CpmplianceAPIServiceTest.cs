@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace UnitTestProject1
     {
-      [TestClass]
+    [TestClass]
     class CpmplianceAPIServiceTest
         {
 
@@ -19,8 +19,16 @@ namespace UnitTestProject1
             ComplianceService complainceservice = new ComplianceService();
 
             string compliance_type = "PRODUCT_ADOPTION";
-            GetListingViolationsSummaryResponse response = complainceservice.getListingViolationsSummary(compliance_type).Result;
-            Assert.IsNotNull(response);
+            // GetListingViolationsSummaryResponse response = complainceservice.getListingViolationsSummary(compliance_type).Result;
+            var response = complainceservice.getListingViolationsSummary(compliance_type).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -33,8 +41,16 @@ namespace UnitTestProject1
             int offset = 0;
             string listing_id = "200008552419";
             int limit = 100;
-            GetListingViolationsResponse response = complainceservice.getListingViolations(compliance_type, offset, listing_id, limit).Result;
-            Assert.IsNotNull(response);
+            //GetListingViolationsResponse response = complainceservice.getListingViolations(compliance_type, offset, listing_id, limit).Result;
+            var response = complainceservice.getListingViolations(compliance_type, offset, listing_id, limit).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         }

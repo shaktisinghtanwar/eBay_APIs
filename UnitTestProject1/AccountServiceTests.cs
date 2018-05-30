@@ -14,19 +14,20 @@ namespace UnitTestProject1
         {
         #region FulffillmentPolicy
         [TestMethod]
-        [Priority(1)]
         public void DeleteFulfillmentPolicyTest()
             {
             AccountService accountService = new AccountService();
             EbaySdkLib.Messages.DeleteFulfillmentPolicyRequest deleteFulfillmentPolicyRequest = new EbaySdkLib.Messages.DeleteFulfillmentPolicyRequest();
             deleteFulfillmentPolicyRequest.fulfillmentPolicyId = "5446309000";
             string fulfillmentPolicyId = deleteFulfillmentPolicyRequest.fulfillmentPolicyId;
-            var response = accountService.FulfilmentPolicyService.DeleteFulfillmentPolicy(fulfillmentPolicyId).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.FulfilmentPolicyService.DeleteFulfillmentPolicy(fulfillmentPolicyId).Result;               if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+             if(response.Item2.ToString()=="OK")
+                 { Assert.IsNotNull(response.Item1);}
+             else{Assert.Fail(response.Item2.ToString());
+                 }
             }
 
         [TestMethod]
-        [Priority(2)]
         public void CreateFulfillmentPolicyTest()
             {
             AccountService accountService = new AccountService();
@@ -56,7 +57,8 @@ namespace UnitTestProject1
                 }
             };
 
-            var response = accountService.FulfilmentPolicyService.CreateFulfillmentPolicy(createFulfillmentRequest).Result;
+            var response = accountService.FulfilmentPolicyService.CreateFulfillmentPolicy(createFulfillmentRequest).Result;       
+             if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             Assert.IsNotNull(response);
             // Assert.AreEqual(response.marketplaceId);
@@ -70,8 +72,9 @@ namespace UnitTestProject1
             EbaySdkLib.Messages.GetFulfilmentPoliciesRequest createFulfillmentRequest = new EbaySdkLib.Messages.GetFulfilmentPoliciesRequest();
             createFulfillmentRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
             string Id = createFulfillmentRequest.marketplaceId.ToString();
-            GetFulfilmentPoliciesResponse response = accountService.FulfilmentPolicyService.GetFulfilmentPolicies(Id).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.FulfilmentPolicyService.GetFulfilmentPolicies(Id).Result; 
+             if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
 
 
@@ -84,8 +87,9 @@ namespace UnitTestProject1
             string Id = getFulfillmentPolicyByNameRequest.marketplaceId.ToString();
 
             string Name = getFulfillmentPolicyByNameRequest.name = "Domestic free shipping";
-            GetFulfillmentpolicyByNameResponse response = accountService.FulfilmentPolicyService.GetFulfillmentPolicyByName(Name, Id).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.FulfilmentPolicyService.GetFulfillmentPolicyByName(Name, Id).Result;      
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+        
             }
 
 
@@ -97,31 +101,32 @@ namespace UnitTestProject1
 
             EbaySdkLib.Messages.UpdateFulfillmentPolicyRequest updateFulfillmentPolicyRequest = new EbaySdkLib.Messages.UpdateFulfillmentPolicyRequest();
             string fulfillmentpolicyid = "5733606000";
-            //updateFulfillmentPolicyRequest.categoryTypes = new EbaySdkLib.Models.CategoryType[] { new EbaySdkLib.Models.CategoryType() { name = CategoryTypeEnum.ALL_EXCLUDING_MOTORS_VEHICLES } };
-            //updateFulfillmentPolicyRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
-            //updateFulfillmentPolicyRequest.name = "Domestic free shipping";
-            //updateFulfillmentPolicyRequest.handlingTime = new EbaySdkLib.Models.TimeDuration()
-            //{
-            //    value = "1",
-            //    unit = EbaySdkLib.Models.TimeDurationUnitEnum.DAY
-            //};
-            //updateFulfillmentPolicyRequest.shippingOptions = new EbaySdkLib.Models.ShippingOption[]{
-            //    new EbaySdkLib.Models.ShippingOption()
-            //    {
-            //        costType= EbaySdkLib.Models.ShippingCostTypeEnum.FLAT_RATE,
-            //optionType=EbaySdkLib.Models.ShippingOptionTypeEnum.DOMESTIC,
-            //shippingServices = new EbaySdkLib.Models.ShippingService[]{ new EbaySdkLib.Models.ShippingService()
-            //    {
-            //        buyerResponsibleForShipping= "false",
-            //        freeShipping= "true",
-            //        shippingCarrierCode="USPS",
-            //        shippingServiceCode="USPSPriorityFlatRateBox"
-            //    } }
-            //    }
-            //};
+            updateFulfillmentPolicyRequest.categoryTypes = new EbaySdkLib.Models.CategoryType[] { new EbaySdkLib.Models.CategoryType() { name = CategoryTypeEnum.ALL_EXCLUDING_MOTORS_VEHICLES } };
+            updateFulfillmentPolicyRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
+            updateFulfillmentPolicyRequest.name = "Domestic free shipping";
+            updateFulfillmentPolicyRequest.handlingTime = new EbaySdkLib.Models.TimeDuration()
+            {
+                value = "1",
+                unit = EbaySdkLib.Models.TimeDurationUnitEnum.DAY
+            };
+            updateFulfillmentPolicyRequest.shippingOptions = new EbaySdkLib.Models.ShippingOption[]{
+                new EbaySdkLib.Models.ShippingOption()
+                {
+                    costType= EbaySdkLib.Models.ShippingCostTypeEnum.FLAT_RATE,
+            optionType=EbaySdkLib.Models.ShippingOptionTypeEnum.DOMESTIC,
+            shippingServices = new EbaySdkLib.Models.ShippingService[]{ new EbaySdkLib.Models.ShippingService()
+                {
+                    buyerResponsibleForShipping= "false",
+                    freeShipping= "true",
+                    shippingCarrierCode="USPS",
+                    shippingServiceCode="USPSPriorityFlatRateBox"
+                } }
+                }
+            };
 
-            UpdateFulfillmentPolicyResponse response = accountService.FulfilmentPolicyService.UpdateFulfillmentPolicy(fulfillmentpolicyid).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.FulfilmentPolicyService.UpdateFulfillmentPolicy(fulfillmentpolicyid).Result; 
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+          
             //  Assert.AreEqual(response.,);
             }
         [TestMethod]
@@ -156,9 +161,9 @@ namespace UnitTestProject1
                 }
             };
 
-            GetFulfillmentPolicyResponse response = accountService.FulfilmentPolicyService.GetFulfillmentPolicy(fulfillmentpolicyid).Result;
-            Assert.IsNotNull(response);
-            //  Assert.AreEqual(response.,);
+            var response = accountService.FulfilmentPolicyService.GetFulfillmentPolicy(fulfillmentpolicyid).Result;               if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+     
+           
             }
 
 
@@ -172,8 +177,9 @@ namespace UnitTestProject1
             //GetOptedInProgramsRequest getOptedInProgramsRequest = new GetOptedInProgramsRequest();
             EbaySdkLib.Messages.GetOptedInProgramsRequest getOptedInProgramsRequest = new EbaySdkLib.Messages.GetOptedInProgramsRequest();
             getOptedInProgramsRequest.programs = new EbaySdkLib.Models.Program[] { new EbaySdkLib.Models.Program() { programType = ProgramTypeEnum.SELLING_POLICY_MANAGEMENT } };
-            var response = accountService.ProgramService.GetOptedprogram(getOptedInProgramsRequest).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.ProgramService.GetOptedprogram(getOptedInProgramsRequest).Result;           
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
 
 
@@ -185,8 +191,9 @@ namespace UnitTestProject1
             //EbaySdkLib.Messages. getOptedInProgramsRequest = new EbaySdkLib.Messages.GetOptedInProgramsRequest();
             EbaySdkLib.Messages.OptInToProgramRequest opInProgramsRequest = new EbaySdkLib.Messages.OptInToProgramRequest();
             opInProgramsRequest.programs = new EbaySdkLib.Models.Program[] { new EbaySdkLib.Models.Program() { programType = ProgramTypeEnum.OUT_OF_STOCK_CONTROL } };
-            var response = accountService.ProgramService.OplnToprogram(opInProgramsRequest).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.ProgramService.OplnToprogram(opInProgramsRequest).Result;     
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
 
         [TestMethod]
@@ -198,8 +205,9 @@ namespace UnitTestProject1
             EbaySdkLib.Messages.OptOutOfProgramRequest optOutOfProgramRequest = new EbaySdkLib.Messages.OptOutOfProgramRequest();
             optOutOfProgramRequest.programs = new EbaySdkLib.Models.Program[] { new EbaySdkLib.Models.Program() { programType = ProgramTypeEnum.SELLING_POLICY_MANAGEMENT } };
 
-            var response = accountService.ProgramService.OutPutOfProgram(optOutOfProgramRequest).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.ProgramService.OutPutOfProgram(optOutOfProgramRequest).Result; 
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+          
             }
 
         #endregion
@@ -214,9 +222,10 @@ namespace UnitTestProject1
             EbaySdkLib.Messages.GetPrivilegesRequest getPrivilegesRequest = new EbaySdkLib.Messages.GetPrivilegesRequest();
 
 
-            var response = accountService.PrivilegeService.GetPrivilage(getPrivilegesRequest).Result;
+            var response = accountService.PrivilegeService.GetPrivilage(getPrivilegesRequest).Result;  
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
-            Assert.IsNotNull(response);
+          
             }
         #endregion
 
@@ -230,8 +239,9 @@ namespace UnitTestProject1
             createOrReplaceSalesTaxRequest.shippingAndHandlingTaxed = true;
             string countyCode = CountryCodeEnum.US.ToString();
             string jurisdictionId = "NY";
-            var response = accountService.SalesTaxService.CreateorReplaceSalesTax(createOrReplaceSalesTaxRequest, countyCode, jurisdictionId).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.SalesTaxService.CreateorReplaceSalesTax(createOrReplaceSalesTaxRequest, countyCode, jurisdictionId).Result;     
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
 
             }
         [TestMethod]
@@ -242,7 +252,8 @@ namespace UnitTestProject1
             string countyCode = CountryCodeEnum.US.ToString();
             string jurisdictionId = "IL";
             var response = accountService.SalesTaxService.DeleteSalesTax(countyCode, jurisdictionId).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
         [TestMethod]
         public void GetSalesTaxTest()
@@ -251,8 +262,9 @@ namespace UnitTestProject1
             EbaySdkLib.Messages.GetSalesTaxRequest getSalesTaxRequest = new EbaySdkLib.Messages.GetSalesTaxRequest();
             string countyCode = CountryCodeEnum.US.ToString();
             string jurisdictionId = "NY";
-            var response = accountService.SalesTaxService.GetSalesTax(countyCode, jurisdictionId).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.SalesTaxService.GetSalesTax(countyCode, jurisdictionId).Result;  
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
 
             }
         [TestMethod]
@@ -262,8 +274,9 @@ namespace UnitTestProject1
             EbaySdkLib.Messages.GetSalesTaxesRequest getSalesTaxesRequest = new EbaySdkLib.Messages.GetSalesTaxesRequest();
             string countryCode = CountryCodeEnum.US.ToString();
 
-            var response = accountService.SalesTaxService.GetSalesTaxes(countryCode).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.SalesTaxService.GetSalesTaxes(countryCode).Result;  
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
 
             }
         #endregion
@@ -275,8 +288,9 @@ namespace UnitTestProject1
             FulFillmentApiService fulfillmentApiService = new FulFillmentApiService();
             EbaySdkLib.Messages.GetOrderRequest getOrderRequest = new EbaySdkLib.Messages.GetOrderRequest();
             string orderId = "6498414015!260000000562911";
-            var response = fulfillmentApiService.OrderService.GetOrder(orderId).Result;
-            Assert.IsNotNull(response);
+            var response = fulfillmentApiService.OrderService.GetOrder(orderId).Result; 
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
         [TestMethod]
         public void GetOrdersTest()
@@ -287,8 +301,9 @@ namespace UnitTestProject1
             string limit = "50";
             string offset = "0";
             string orderIds = "6498414015!260000000562911";
-            var response = fulfillmentApiService.OrderService.GetOrders(filter, limit, offset, orderIds).Result;
-            Assert.IsNotNull(response);
+            var response = fulfillmentApiService.OrderService.GetOrders(filter, limit, offset, orderIds).Result;    
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
 
             }
 
@@ -308,8 +323,9 @@ namespace UnitTestProject1
             EbaySdkLib.Messages.GetPaymentpolicyRequest getPaymentpolicy = new EbaySdkLib.Messages.GetPaymentpolicyRequest();
             getPaymentpolicy.payment_policy_id = "5486492000";
             string Id = getPaymentpolicy.payment_policy_id.ToString();
-            GetPaymentpolicyresponse response = accountService.PaymentpolicyService.getPaymentpolicyService(Id).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.PaymentpolicyService.getPaymentpolicyService(Id).Result;    
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
 
         [TestMethod]
@@ -319,8 +335,9 @@ namespace UnitTestProject1
             EbaySdkLib.Messages.GetpaymentpoliciesRequest getpaymentpoliciesRequest = new EbaySdkLib.Messages.GetpaymentpoliciesRequest();
             getpaymentpoliciesRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
             string Id = getpaymentpoliciesRequest.marketplaceId.ToString();
-            GetPaymentpoliciesResponse response = accountService.PaymentpolicyService.getPaymentpoliciesService(Id).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.PaymentpolicyService.getPaymentpoliciesService(Id).Result;   
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
             }
 
 
@@ -333,8 +350,9 @@ namespace UnitTestProject1
             getPaymentPolicyByNameRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
             string marketplaceId = getPaymentPolicyByNameRequest.marketplaceId.ToString();
             string name = getPaymentPolicyByNameRequest.name;
-            GetPaymentpolicyByNameresponse response = accountService.PaymentpolicyService.getPaymentPolicyByNameService(name, marketplaceId).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.PaymentpolicyService.getPaymentPolicyByNameService(name, marketplaceId).Result;  
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
 
         [TestMethod]
@@ -347,8 +365,9 @@ namespace UnitTestProject1
             createPaymerntPolicyRequest.paymentMethods = new EbaySdkLib.Models.PaymentMethod[] { new EbaySdkLib.Models.PaymentMethod() { paymentMethodType = PaymentMethodTypeEnum.PERSONAL_CHECK } };
 
 
-            Createpaymentpolicyresponse response = accountService.PaymentpolicyService.createPaymentPolicyService(createPaymerntPolicyRequest).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.PaymentpolicyService.createPaymentPolicyService(createPaymerntPolicyRequest).Result;           
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
 
         [TestMethod]
@@ -361,8 +380,9 @@ namespace UnitTestProject1
             updatePaymentPolicyrequest.name = "default payment policy";
             updatePaymentPolicyrequest.paymentMethods = new EbaySdkLib.Models.PaymentMethod[] { new EbaySdkLib.Models.PaymentMethod() { paymentMethodType = PaymentMethodTypeEnum.PERSONAL_CHECK } };
             string policyId = "5458323000";
-            updatePaymentPolicyResponse response = accountService.PaymentpolicyService.updatePaymentPolicyService(updatePaymentPolicyrequest, policyId).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.PaymentpolicyService.updatePaymentPolicyService(updatePaymentPolicyrequest, policyId).Result;      
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
             }
 
 
@@ -371,7 +391,8 @@ namespace UnitTestProject1
             {
             AccountService accountService = new AccountService();
             string payment_policy_id = "5446270000";
-            var response = accountService.PaymentpolicyService.deleteReturnPolicyService(payment_policy_id).Result;
+            var response = accountService.ReturnPolicyService.deleteReturnPolicyService(payment_policy_id).Result;             
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
 
@@ -388,7 +409,8 @@ namespace UnitTestProject1
             {
                 countryCode = EbaySdkLib.Enums.CountryCodeEnum.US 
             };
-            GetRateTablesResponse response = accountService.PaymentpolicyService.getratePolicyService(ratetables).Result;
+            var response = accountService.PaymentpolicyService.getratePolicyService(ratetables).Result;  
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
         #endregion
@@ -401,8 +423,9 @@ namespace UnitTestProject1
             {
             AccountService accountService = new AccountService();
             string return_policy_id = "5458323000";
-            GetReturnPolicyResponse response = accountService.ReturnPolicyService.getReturnPolicy(return_policy_id).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.ReturnPolicyService.getReturnPolicy(return_policy_id).Result;      
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
 
         [TestMethod]
@@ -412,8 +435,9 @@ namespace UnitTestProject1
             GetReturnPoliciesRequest getReturnPoliciesRequest = new GetReturnPoliciesRequest();
             getReturnPoliciesRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
             string marketplaceId = getReturnPoliciesRequest.marketplaceId.ToString();
-            GetReturnPoliciesResponse response = accountService.ReturnPolicyService.getReturnPolicies(marketplaceId).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.ReturnPolicyService.getReturnPolicies(marketplaceId).Result;         
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
 
         [TestMethod]
@@ -425,8 +449,9 @@ namespace UnitTestProject1
             getReturnPolicyByNameRequest.name = "minimal return policy, US marketplace";
             string marketplaceId = getReturnPolicyByNameRequest.marketplaceId.ToString();
             string name = getReturnPolicyByNameRequest.name.ToString();
-            GetReturnPolicyByNameResponse response = accountService.ReturnPolicyService.getReturnPoliciesByName(marketplaceId, name).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.ReturnPolicyService.getReturnPoliciesByName(marketplaceId, name).Result;  
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
         /// <summary>
         /// Invalid return error
@@ -439,8 +464,9 @@ namespace UnitTestProject1
             createReturnPolicyrequest.categoryTypes = new EbaySdkLib.Models.CategoryType[] { new EbaySdkLib.Models.CategoryType() { name = CategoryTypeEnum.ALL_EXCLUDING_MOTORS_VEHICLES } };
             createReturnPolicyrequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
             createReturnPolicyrequest.name = "minimal return policy, US marketplace";
-            CreateReturnPolicyResponse response = accountService.ReturnPolicyService.createReturnPolicyService(createReturnPolicyrequest).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.ReturnPolicyService.createReturnPolicyService(createReturnPolicyrequest).Result;      
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
             }
         [TestMethod]
         public void UpdateReturnPolicy()
@@ -452,16 +478,18 @@ namespace UnitTestProject1
             updateReturnPolicyRequest.returnsAccepted = false;
             updateReturnPolicyRequest.name = "minimal return policy, US marketplace";
             string Id = "5487698000";
-            UpdatereturnPolicyresponse response = accountService.ReturnPolicyService.updateReturnPolicyService(updateReturnPolicyRequest, Id).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.ReturnPolicyService.updateReturnPolicyService(updateReturnPolicyRequest, Id).Result;        
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
         [TestMethod]
         public void deleteReturnPolicy()
             {
             AccountService accountService = new AccountService();
             string return_policy_id = "5456159000";
-            var response = accountService.ReturnPolicyService.deleteReturnPolicyService(return_policy_id).Result;
-            Assert.IsNotNull(response);
+            var response = accountService.ReturnPolicyService.deleteReturnPolicyService(return_policy_id).Result;             
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
             }
         #endregion
         
@@ -491,9 +519,11 @@ namespace UnitTestProject1
 
                }
            };
-            CreateOffersResponse response = inventoryApiService.createOffersService(createOffersRequest).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.createOffersService(createOffersRequest).Result;           
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
+
+            
             }
         [TestMethod]
         public void UpdateOffers()
@@ -519,9 +549,10 @@ namespace UnitTestProject1
                 
             };
 
-            UpdateInventoryOffersResponse response = inventoryApiService.updateOffersService(updateInventoryOfferRequest, OfferId).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.updateOffersService(updateInventoryOfferRequest, OfferId).Result;          
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
+           
             }
 
         [TestMethod]
@@ -529,9 +560,9 @@ namespace UnitTestProject1
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string sku = "3455632452345";
-            GetOffersResponse response = inventoryApiService.getOffersService(sku).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.getOffersService(sku).Result;           
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+            
             }
 
         [TestMethod]
@@ -539,45 +570,49 @@ namespace UnitTestProject1
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string offerId = "36445435465";
-            GetofferResponse response = inventoryApiService.getOfferService(offerId).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.getOfferService(offerId).Result;            
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
+            
             }
         [TestMethod]
         public void deleteOffer()
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string offerId = "3455632452345";
-            var response = inventoryApiService.deleteOffersService(offerId).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.deleteOffersService(offerId).Result;         
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+         
             }
         [TestMethod]
         public void publishOffer()
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string offerId = "36445435465";
-            var response = inventoryApiService.publishOfferService(offerId).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.publishOfferService(offerId).Result;        
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
+            
             }
         [TestMethod]
         public void getListingFees()
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string get_listing_fees = "get_listing_fees";
-            var response = inventoryApiService.getListingFeesService(get_listing_fees).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.getListingFeesService(get_listing_fees).Result;          
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
+            
             }
         [TestMethod]
         public void publishOfferByInventoryItemGroup()
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string get_listing_fees = "get_listing_fees";
-            var response = inventoryApiService.publishOfferByInventoryItemGroupService(get_listing_fees).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.publishOfferByInventoryItemGroupService(get_listing_fees).Result;        
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
+           
             }
 
             
@@ -586,16 +621,17 @@ namespace UnitTestProject1
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string Listing_Id = "3455632452346";
-            var response = inventoryApiService.WithdrawOfferService(Listing_Id).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.WithdrawOfferService(Listing_Id).Result;         
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+           
+           
             }
        
         #endregion
         
 
         
-
+        
 
 
         }

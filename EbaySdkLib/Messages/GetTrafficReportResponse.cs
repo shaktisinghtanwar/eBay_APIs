@@ -15,6 +15,6 @@ namespace EbaySdkLib.Messages
         public string lastUpdatedDate { get; set; }
         public Record[] records { get; set; }
         public string startDate { get; set; }
-        public Warning[] warnings { get; set; }
+        public Warnings[] warnings { get; set; }
     }
 }

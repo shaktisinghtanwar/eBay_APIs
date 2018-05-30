@@ -22,6 +22,6 @@ namespace EbaySdkLib.Messages
     public string paymentInstructions { get; set; }
     public PaymentMethod[] paymentMethods { get; set; }
     public string paymentPolicyId { get; set; }
-    public List<Warning> warnings { get; set; }
+    public List<Warnings> warnings { get; set; }
     }
 }

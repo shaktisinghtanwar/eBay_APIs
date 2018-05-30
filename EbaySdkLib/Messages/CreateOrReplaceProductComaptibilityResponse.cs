@@ -9,6 +9,6 @@ namespace EbaySdkLib.Messages
     {
  public   class CreateOrReplaceProductComaptibilityResponse
         {
-        public Warning[] warnings { get; set; }
+        public Warnings[] warnings { get; set; }
         }
     }

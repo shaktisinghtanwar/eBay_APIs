@@ -9,7 +9,7 @@ namespace EbaySdkLib.Messages
 {
    public class CreateorReplaceItemResponse
     {
-        public Warning[] warnings { get; set; }
+        public Warnings[] warnings { get; set; }
 
     }
 }

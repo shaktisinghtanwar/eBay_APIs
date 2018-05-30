@@ -32,7 +32,7 @@ namespace UnitTestProject1
             };
             cloneCampaignRequest.startDate = "2016-09-24T20:57:00.000Z";
             var response = marketingAPIService.CloneMarketing(cloneCampaignRequest, campaign_id).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace UnitTestProject1
             createCampaignRequest.marketplaceId = EbaySdkLib.Models.MarketplaceIdEnum.EBAY_US;
             createCampaignRequest.startDate = "2016-09-24T20:57:00.000Z";
             var response = marketingAPIService.CreateMarketing(createCampaignRequest).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void DeleteMarketingTest()
@@ -58,7 +58,7 @@ namespace UnitTestProject1
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string campaign_id = "10001741014";
             var response = marketingAPIService.DeleteMarketing(campaign_id).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
         [TestMethod]
@@ -67,7 +67,7 @@ namespace UnitTestProject1
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string campaign_id = "10001741014";
             var response = marketingAPIService.EndCampaign(campaign_id).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
         [TestMethod]
@@ -76,7 +76,7 @@ namespace UnitTestProject1
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string campaign_id = "10000176012";
             var response = marketingAPIService.GetCampaign(campaign_id).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
         [TestMethod]
@@ -85,7 +85,7 @@ namespace UnitTestProject1
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string campaignName = "Summer Sale";
             var response = marketingAPIService.GetCampaignByNameRequest(campaignName).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
         [TestMethod]
@@ -100,7 +100,7 @@ namespace UnitTestProject1
             string offset = "0";
 
             var response = marketingAPIService.GetCampaigns(campaignName, campaignStatus, startDate, endDate, limit, offset).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
         [TestMethod]
@@ -109,7 +109,7 @@ namespace UnitTestProject1
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string campaign_id = "10005213014";
             var response = marketingAPIService.PauseCampaign(campaign_id).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
         [TestMethod]
@@ -118,7 +118,7 @@ namespace UnitTestProject1
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string campaign_id = "10005213014";
             var response = marketingAPIService.ResumeCampaign(campaign_id).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
         [TestMethod]
@@ -131,7 +131,7 @@ namespace UnitTestProject1
             updateCampaignIdentificationRequest.endDate = "2016-09-07T21:43:00.000Z";
             updateCampaignIdentificationRequest.startDate = null;
             var response = marketingAPIService.UpdateCampaignIdentification(updateCampaignIdentificationRequest, campaign_id).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
 
@@ -140,22 +140,15 @@ namespace UnitTestProject1
         #region marketingApi/Item_Promotion
         [TestMethod]
         public void CreateItemPromotionTest()
-            {
+        {
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             EbaySdkLib.Messages.CreateItemPromotionRequest createItemPromotionRequest = new EbaySdkLib.Messages.CreateItemPromotionRequest();
             createItemPromotionRequest.description = "Buy 1 and get 2nd one 25% off -part 6";
-            createItemPromotionRequest.discountRules = new EbaySdkLib.Models.DiscountRule[]{
-                new EbaySdkLib.Models.DiscountRule()
-                    {
-                   
-                discountSpecification = new EbaySdkLib.Models.DiscountSpecification()
-                        {
-       
-                         numberOfDiscountedItems =1,
+            createItemPromotionRequest.discountRules = new EbaySdkLib.Models.DiscountRule[]{new EbaySdkLib.Models.DiscountRule(){ discountSpecification = new EbaySdkLib.Models.DiscountSpecification()
+                        { numberOfDiscountedItems =1,
                          forEachQuantity=1
                                          
-                          },
-                          ruleOrder=0,
+                          }, ruleOrder=0,
 
                     discountBenefit=new EbaySdkLib.Models.DiscountBenefit()
                     {
@@ -171,7 +164,7 @@ namespace UnitTestProject1
             createItemPromotionRequest.marketplaceId = "EBAY-US";
 
             var response = marketingAPIService.CreateItemPromotion(createItemPromotionRequest).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
 
             }
         [TestMethod]
@@ -180,12 +173,8 @@ namespace UnitTestProject1
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string promotion_id = "115001954505@EBAY-US";
             var response = marketingAPIService.DeleteItemPromotion(promotion_id).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
-
-
-
-
 
 
 
@@ -201,10 +190,11 @@ namespace UnitTestProject1
             bulkCreateAds.inventoryReferenceType = "INVENTORY_ITEM";
             string campaign_id = "10001741014";
             string bulk_create_ads = "bulk_create_ads_by_inventory_reference";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkCreateAdsByInventory(bulkCreateAds, campaign_id, bulk_create_ads).Result;
+            var response = marketingAPIService.bulkCreateAdsByInventory(bulkCreateAds, campaign_id, bulk_create_ads).Result;
 
-            Assert.IsNotNull(response.statusCode);
+            if (response.Item2.ToString() == "OK") { Assert.IsNotNull(response.Item1); } else { Assert.Fail(response.Item2.ToString()); }
             }
+
         [TestMethod]
         public void bulkCreateAdsByListingId()
             {
@@ -214,8 +204,8 @@ namespace UnitTestProject1
             bulkCreateAds.inventoryReferenceType = "INVENTORY_ITEM";
             string campaign_id = "10001741014";
             string bulk_create_ads_by_listing = "bulk_create_ads_by_listing_id";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkCreateAdsByListingId(bulkCreateAds, campaign_id, bulk_create_ads_by_listing).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .bulkCreateAdsByListingId(bulkCreateAds, campaign_id, bulk_create_ads_by_listing).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void bulkDeleteAdsByInventoryReference()
@@ -226,8 +216,8 @@ namespace UnitTestProject1
             bulkCreateAds.inventoryReferenceType = "INVENTORY_ITEM";
             string campaign_id = "10001741014";
             string bulk_delete_ads_by_inventory = "bulk_delete_ads_by_inventory_reference";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkDeleteAdsByInventoryReference(bulkCreateAds, campaign_id, bulk_delete_ads_by_inventory).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .bulkDeleteAdsByInventoryReference(bulkCreateAds, campaign_id, bulk_delete_ads_by_inventory).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void bulkDeleteAdsByListingId()
@@ -238,8 +228,8 @@ namespace UnitTestProject1
             bulkDeleteAd.inventoryReferenceType = "INVENTORY_ITEM";
             string campaign_id = "10001741014";
             string bulkDeleteAdsByListingId = "bulk_delete_ads_by_listing_id";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkDeleteAdsByListingId(bulkDeleteAd, campaign_id, bulkDeleteAdsByListingId).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .bulkDeleteAdsByListingId(bulkDeleteAd, campaign_id, bulkDeleteAdsByListingId).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void bulkUpdateAdsBidByInventoryReference()
@@ -250,8 +240,8 @@ namespace UnitTestProject1
             bulkUpdateAds.inventoryReferenceType = "INVENTORY_ITEM";
             string campaign_id = "10001741014";
             string bulk_update_ads = "bulk_update_ads_bid_by_inventory_reference";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkUpdateAdsBidByInventoryReference(bulkUpdateAds, campaign_id, bulk_update_ads).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .bulkUpdateAdsBidByInventoryReference(bulkUpdateAds, campaign_id, bulk_update_ads).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void bulkUpdateAdsBidByListingId()
@@ -261,8 +251,8 @@ namespace UnitTestProject1
             bulkUpdateAds.listingId = "190007022519";
             string campaign_id = "10001741014";
             string bulk_update_ads_by_listing = "bulk_update_ads_bid_by_listing_id";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .bulkUpdateAdsBidByListingId(bulkUpdateAds, campaign_id, bulk_update_ads_by_listing).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .bulkUpdateAdsBidByListingId(bulkUpdateAds, campaign_id, bulk_update_ads_by_listing).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void createAdByListingId()
@@ -274,7 +264,7 @@ namespace UnitTestProject1
             string campaign_id = "10001741014";
             string createAd = "ad";
             var response = marketingAPIService .createAdByListingId(createAdByListing, campaign_id, createAd).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void createAdsByInventoryReference()
@@ -286,8 +276,8 @@ namespace UnitTestProject1
             createAdsByInventoryReference.inventoryReferenceType = "INVENTORY_ITEM";
             string campaign_id = "10001741014";
             string create_ads_by_inventory = "create_ads_by_inventory_reference";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .createAdsByInventoryReference(createAdsByInventoryReference, campaign_id, create_ads_by_inventory).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .createAdsByInventoryReference(createAdsByInventoryReference, campaign_id, create_ads_by_inventory).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void deleteAd()
@@ -300,8 +290,8 @@ namespace UnitTestProject1
             string campaign_id = "10001741014";
             string deletead = "ad";
             string addid = "12428546014";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .deleteAd(deleteAd, campaign_id, deletead, addid).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .deleteAd(deleteAd, campaign_id, deletead, addid).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void deleteAdsByInventoryReference()
@@ -312,8 +302,8 @@ namespace UnitTestProject1
             deleteAdsByInventoryReference.inventoryReferenceType = "INVENTORY_ITEM";
             string campaign_id = "10001741014";
             string delete_ads = "delete_ads_by_inventory_reference";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .deleteAdsByInventoryReference(deleteAdsByInventoryReference, campaign_id, delete_ads).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .deleteAdsByInventoryReference(deleteAdsByInventoryReference, campaign_id, delete_ads).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void getAd()
@@ -324,8 +314,8 @@ namespace UnitTestProject1
             string campaign_id = "10001741014";
             string ad = "ad";
             string adId = "12427947014";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .getAd(getAd, campaign_id, ad, adId).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .getAd(getAd, campaign_id, ad, adId).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void getAds()
@@ -337,8 +327,8 @@ namespace UnitTestProject1
             //getAds.offset = "0";
             string campaign_id = "10001741014";
             string ad = "ad";
-            GetAdsResponse response = marketingAPIService .getAds(campaign_id, ad).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .getAds(campaign_id, ad).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void getAdsByInventoryReference()
@@ -349,8 +339,8 @@ namespace UnitTestProject1
             getAdsByInventoryReference.inventoryReferenceId = "133232";
             string campaign_id = "10001741014";
             string getads = "get_ads_by_inventory_reference?";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .getAdsByInventoryReference(getAdsByInventoryReference, campaign_id, getads).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .getAdsByInventoryReference(getAdsByInventoryReference, campaign_id, getads).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void updateBid()
@@ -362,8 +352,8 @@ namespace UnitTestProject1
             string updatead = "ad";
             string adId = "12427947014";
             string update_bid = "update_bid";
-            bulkCreateAdsByInventoryReferenceRequest response = marketingAPIService .updateBid(updateBid, campaign_id, updatead, adId, update_bid).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .updateBid(updateBid, campaign_id, updatead, adId, update_bid).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void getReport()
@@ -371,14 +361,14 @@ namespace UnitTestProject1
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string reportiId = "10000049014";
             var response = marketingAPIService .getReport(reportiId).Result;
-            Assert.IsNotNull(response);
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void getReportMetadata()
             {
             MarketingAPIService marketingAPIService = new MarketingAPIService();
-            GetReportMetadataResponse response = marketingAPIService .getReportMetadata().Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .getReportMetadata().Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void getReportMetadataForReportType()
@@ -386,8 +376,8 @@ namespace UnitTestProject1
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             GetReportMetadataResponse GetReportMetadata = new GetReportMetadataResponse();
             GetReportMetadata.reportType = "ACCOUNT_PERFORMANCE_REPORT";
-            GetReportMetadataResponse response = marketingAPIService .getReportMetadataForReportType(GetReportMetadata).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .getReportMetadataForReportType(GetReportMetadata).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void createReportTask()
@@ -401,24 +391,24 @@ namespace UnitTestProject1
             createReportTask.dateTo = "yyyy-MM-ddThh:mm.ss.sssZ";
             //createReportTask.metricKeys = metricKeys;
             //createReportTask.dimensions = new Dimension(new string[]{ "Darth", "Vader" }).dimensionKey("Luke"); 
-            CreateReportTaskRequest response = marketingAPIService .createReportTask(createReportTask).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .createReportTask(createReportTask).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void deleteReportTask()
             {
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string reportTaskId = "10000056014";
-            CreateReportTaskRequest response = marketingAPIService .deleteReportTask(reportTaskId).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .deleteReportTask(reportTaskId).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void getReportTask()
             {
             MarketingAPIService marketingAPIService = new MarketingAPIService();
             string reportTaskId = "10000049014";
-            CreateReportTaskRequest response = marketingAPIService .getReportTask(reportTaskId).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .getReportTask(reportTaskId).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         [TestMethod]
         public void getReportTasks()
@@ -428,9 +418,87 @@ namespace UnitTestProject1
 
             string reportTaskstatus = "PENDING,SUCCESS";
             string limit = "10";
-            CreateReportTaskRequest response = marketingAPIService .getReportTasks(reportTaskstatus, limit).Result;
-            Assert.IsNotNull(response);
+            var response = marketingAPIService .getReportTasks(reportTaskstatus, limit).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
             }
         #endregion
+
+        #region MarketingApi/Promotion
+        [TestMethod]
+        public void GetListingSetTest()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            //EbaySdkLib.Messages.GetListingSetRequest getShippingFulfillmentsRequest = new EbaySdkLib.Messages.GetListingSetRequest();
+            string promotion_id = "115002723203@EBAY-US";
+            string status = "SKIPPED";
+            string sort = "AVAILABLE";
+            int offset = 0;
+            int limit = 10;
+
+
+            var response = marketingAPIService.GetListingSet(promotion_id, status, sort, offset, limit).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+
+
+            }
+        [TestMethod]
+        public void GetpromotionTest()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            int limit = 5;
+            int offset = 0;
+            string promotion_status = "DRAFT";
+            string sort = "START_DATE";
+            string marketplace_id = "EBAY_US";
+            var response = marketingAPIService.Getpromotion(limit, offset, promotion_status, sort, marketplace_id).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+
+            }
+        [TestMethod]
+        public void PausePromotionTest()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+
+            string promotion_id = "115001954505@EBAY-US";
+            var response = marketingAPIService.PausePromotion(promotion_id).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+
+            }
+        [TestMethod]
+        public void ResumePromotionTest()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+
+            string promotion_id = "115001954505@EBAY-US";
+            var response = marketingAPIService.ResumePromotion(promotion_id).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+
+            }
+        #endregion
+        #region Promotion_Report
+        [TestMethod]
+        public void getPromotionReportsTest()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            string promotion_status = "ENDED";
+            string marketplace_id = "EBAY_US";
+            var response = marketingAPIService.getPromotionReports(promotion_status, marketplace_id).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+
+            }
+
+        #endregion
+        #region Pramotion_Summary_Report
+        [TestMethod]
+        public void GetPromotionSummaryReportTest()
+            {
+            MarketingAPIService marketingAPIService = new MarketingAPIService();
+            string marketplace_id = "EBAY_US";
+            var response = marketingAPIService.GetPromotionSummaryReport(marketplace_id).Result;
+            if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+
+            }
+        #endregion
+
         }
     }

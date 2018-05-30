@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,62 +18,62 @@ namespace EbaySdkLib.Services
 
             }
 
-        public async Task<GetPaymentpolicyresponse> getPaymentpolicyService(string policyId)
+        public async Task<Tuple<GetPaymentpolicyresponse,HttpStatusCode>> getPaymentpolicyService(string policyId)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url + policyId);
             var response = await helper.Get();
-            GetPaymentpolicyresponse getPaymentpolicyResponse = JsonConvert.DeserializeObject<GetPaymentpolicyresponse>(response);
-            return getPaymentpolicyResponse;
+            GetPaymentpolicyresponse getPaymentpolicyResponse = JsonConvert.DeserializeObject<GetPaymentpolicyresponse>(response.Item1);
+                        return new Tuple<GetPaymentpolicyresponse, HttpStatusCode>(getPaymentpolicyResponse, response.Item2); 
             }
 
-        public async Task<GetPaymentpoliciesResponse> getPaymentpoliciesService(string marketplaceId)
+        public async Task<Tuple<GetPaymentpoliciesResponse,HttpStatusCode>> getPaymentpoliciesService(string marketplaceId)
             {
-            RestHelper helper = new RestHelper("sell/account/v1/payment_policy?marketplace_id={" + marketplaceId + "}");
+            RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url+"?marketplace_id=" + marketplaceId );
             var response = await helper.Get();
-            GetPaymentpoliciesResponse getPaymentpoliciesResponse = JsonConvert.DeserializeObject<GetPaymentpoliciesResponse>(response);
-            return getPaymentpoliciesResponse;
+            GetPaymentpoliciesResponse getPaymentpoliciesResponse = JsonConvert.DeserializeObject<GetPaymentpoliciesResponse>(response.Item1);
+                        return new Tuple<GetPaymentpoliciesResponse, HttpStatusCode>(getPaymentpoliciesResponse, response.Item2); 
             }
 
-        public async Task<GetPaymentpolicyByNameresponse> getPaymentPolicyByNameService(string name, string marketplaceId)
+        public async Task<Tuple<GetPaymentpolicyByNameresponse,HttpStatusCode>> getPaymentPolicyByNameService(string name, string marketplaceId)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url + "get_by_policy_name?name=" + name + "&marketplace_id=" + marketplaceId);
             var response = await helper.Get();
-            GetPaymentpolicyByNameresponse getPaymentpolicyByNameresponse = JsonConvert.DeserializeObject<GetPaymentpolicyByNameresponse>(response);
-            return getPaymentpolicyByNameresponse;
+            GetPaymentpolicyByNameresponse getPaymentpolicyByNameresponse = JsonConvert.DeserializeObject<GetPaymentpolicyByNameresponse>(response.Item1);
+                        return new Tuple<GetPaymentpolicyByNameresponse, HttpStatusCode>(getPaymentpolicyByNameresponse, response.Item2);
             }
 
-        public async Task<Createpaymentpolicyresponse> createPaymentPolicyService(CreatePaymerntPolicyRequest createPaymerntPolicyRequest)
+        public async Task<Tuple<Createpaymentpolicyresponse,HttpStatusCode>> createPaymentPolicyService(CreatePaymerntPolicyRequest createPaymerntPolicyRequest)
             {
             var body = JsonConvert.SerializeObject(createPaymerntPolicyRequest);
             RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url);
             var response = await helper.Post(body);
-            Createpaymentpolicyresponse createpaymentpolicyresponse = JsonConvert.DeserializeObject<Createpaymentpolicyresponse>(response);
-            return createpaymentpolicyresponse;
+            Createpaymentpolicyresponse createpaymentpolicyresponse = JsonConvert.DeserializeObject<Createpaymentpolicyresponse>(response.Item1);
+                        return new Tuple<Createpaymentpolicyresponse, HttpStatusCode>(createpaymentpolicyresponse, response.Item2);
             }
 
 
-        public async Task<updatePaymentPolicyResponse> updatePaymentPolicyService(updatePaymentPolicyRequest updatePaymentPolicyrequest, string Id)
+        public async Task<Tuple<updatePaymentPolicyResponse,HttpStatusCode>> updatePaymentPolicyService(updatePaymentPolicyRequest updatePaymentPolicyrequest, string Id)
             {
             var body = JsonConvert.SerializeObject(updatePaymentPolicyrequest);
             RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url  + Id );
             var response = await helper.Put(body);
-            updatePaymentPolicyResponse updatePaymentPolicyresponse = JsonConvert.DeserializeObject<updatePaymentPolicyResponse>(response);
-            return updatePaymentPolicyresponse;
+            updatePaymentPolicyResponse updatePaymentPolicyresponse = JsonConvert.DeserializeObject<updatePaymentPolicyResponse>(response.Item1);
+                        return new Tuple<updatePaymentPolicyResponse, HttpStatusCode>(updatePaymentPolicyresponse, response.Item2); 
             }
 
 
-        public async Task<GetRateTablesResponse> getratePolicyService(RateTable ratetable)
+        public async Task<Tuple<GetRateTablesResponse,HttpStatusCode>> getratePolicyService(RateTable ratetable)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.RATETABLE_URL + ratetable.countryCode);
             var response = await helper.Get();
-            GetRateTablesResponse getRateTablesResponse = JsonConvert.DeserializeObject<GetRateTablesResponse>(response);
-            return getRateTablesResponse;
+            GetRateTablesResponse getRateTablesResponse = JsonConvert.DeserializeObject<GetRateTablesResponse>(response.Item1);
+                        return new Tuple<GetRateTablesResponse, HttpStatusCode>(getRateTablesResponse, response.Item2);
             }
-        public async Task<string> deleteReturnPolicyService(string Id)
+        public async Task<Tuple<string,HttpStatusCode>> deletePolicyService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.PaymentPolicy_Url + Id );
             var response = await helper.Delete(Id);
-            return response;
+            return new Tuple<string, HttpStatusCode>(response.Item1, response.Item2);
             }
         }
     }

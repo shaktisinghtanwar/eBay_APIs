@@ -10,6 +10,6 @@ namespace EbaySdkLib.Messages
    public class GetNegotiatedPricePoliciesResponse
         {
         public NegotiatedPricePolicy[] negotiatedPricePolicies { get; set; }
-        public Warning[] warnings { get; set; }
+        public Warnings[] warnings { get; set; }
         }
     }

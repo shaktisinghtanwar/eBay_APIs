@@ -10,6 +10,6 @@ namespace EbaySdkLib.Messages
    public class GetProductAdoptionPolicies
         {
         public ProductAdoptionPolicy[] productAdoptionPolicies { get; set; }
-        public Warning warnings { get; set; }
+        public Warnings warnings { get; set; }
         }
     }

@@ -2,7 +2,7 @@
 
 namespace EbaySdkLib.Models
 {
-    public class Warning
+    public class Warnings
     {
         public string category { get; set; }
         public string domain { get; set; }

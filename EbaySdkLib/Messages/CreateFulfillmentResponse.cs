@@ -20,6 +20,6 @@ namespace EbaySdkLib.Messages
         public string pickupDropOff { get; set; }
         public List<ShippingOption> shippingOptions { get; set; }
         public RegionSet shipToLocations { get; set; }
-        public List<Warning> warnings { get; set; }
+        public List<Warnings> warnings { get; set; }
     }
 }

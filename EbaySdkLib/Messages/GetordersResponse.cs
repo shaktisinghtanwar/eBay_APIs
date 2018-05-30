@@ -17,6 +17,6 @@ namespace EbaySdkLib.Messages
         public List<Order> orders { get; set; }
         public string prev { get; set; }
         public int  total { get; set; }
-        public List<Warning> warnings { get; set; }
+        public List<Warnings> warnings { get; set; }
     }
 }

@@ -2,60 +2,53 @@
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using EbaySdkLib.Models;
+using System.Net;
+using System;
+using EbaySdkLib.Constants;
 
 namespace EbaySdkLib 
 {
   public  class   ProgramService
     {
 
-      string _urlGetOptln;
-      string _urlOptln;
-      string _urlOutPut;
-      public ProgramService()
-        {
-            _urlGetOptln = string.Format("sell/account/v1/program");
-            _urlOptln = string.Format("sell/account/v1/program");
-            _urlOutPut = string.Format("sell/account/v1/program");
-      }
-
-      public async Task<GetOptedInProgramsResponse> GetOptedprogram(GetOptedInProgramsRequest getOptedInProgramsRequest)
+      public async Task<Tuple<GetOptedInProgramsResponse, HttpStatusCode>> GetOptedprogram(GetOptedInProgramsRequest getOptedInProgramsRequest)
       {
 
 
-          RestHelper helper = new RestHelper(_urlGetOptln + "/" + "get_opted_in_programs");
+      RestHelper helper = new RestHelper(ApplicationConstants.PROGRAM_URL+ "/" + "get_opted_in_programs");
           var response = await helper.Get();
 
-          GetOptedInProgramsResponse getOptedInProgramsResponse = JsonConvert.DeserializeObject<GetOptedInProgramsResponse>(response);
-          return getOptedInProgramsResponse;
+          GetOptedInProgramsResponse getOptedInProgramsResponse = JsonConvert.DeserializeObject<GetOptedInProgramsResponse>(response.Item1);
+          return new Tuple<GetOptedInProgramsResponse, HttpStatusCode>(getOptedInProgramsResponse, response.Item2);
       }
 
 
      // //Not match this response  with ebay response due to bad filed in taken from programtypeEnum
      // Error not match with ebay
-      public async Task<OptInToProgramResponse> OplnToprogram(OptInToProgramRequest optInToProgramRequest)
+      public async Task<Tuple<OptInToProgramResponse,HttpStatusCode>> OplnToprogram(OptInToProgramRequest optInToProgramRequest)
       {
           var body = JsonConvert.SerializeObject(optInToProgramRequest);
 
-          RestHelper helper = new RestHelper(_urlOptln + "/" + "opt_in");
+          RestHelper helper = new RestHelper(ApplicationConstants.PROGRAM_URL + "/" + "opt_in");
           var response = await helper.Post(body);
 
-          OptInToProgramResponse optInToProgramResponse = JsonConvert.DeserializeObject<OptInToProgramResponse>(response);
-          return optInToProgramResponse;
+          OptInToProgramResponse optInToProgramResponse = JsonConvert.DeserializeObject<OptInToProgramResponse>(response.Item1);
+          return new Tuple<OptInToProgramResponse, HttpStatusCode>(optInToProgramResponse, response.Item2);
       }
 
    
       
       ////Not match this response  with ebay response due to bad filed in taken from programtypeEnum
       //Not success 
-      public async Task<OptOutOfProgramResponse> OutPutOfProgram(OptOutOfProgramRequest optOutOfProgramRequest)
+      public async Task<Tuple<OptOutOfProgramResponse, HttpStatusCode>> OutPutOfProgram(OptOutOfProgramRequest optOutOfProgramRequest)
       {
           var body = JsonConvert.SerializeObject(optOutOfProgramRequest);
 
-          RestHelper helper = new RestHelper(_urlOutPut + "/" + "opt_out");
+          RestHelper helper = new RestHelper(ApplicationConstants.PROGRAM_URL + "/" + "opt_out");
           var response = await helper.Post(body);
 
-          OptOutOfProgramResponse optOutOfProgramResponse = JsonConvert.DeserializeObject<OptOutOfProgramResponse>(response);
-          return optOutOfProgramResponse;
+          OptOutOfProgramResponse optOutOfProgramResponse = JsonConvert.DeserializeObject<OptOutOfProgramResponse>(response.Item1);
+          return new Tuple<OptOutOfProgramResponse, HttpStatusCode>(optOutOfProgramResponse, response.Item2);
       }
 
 

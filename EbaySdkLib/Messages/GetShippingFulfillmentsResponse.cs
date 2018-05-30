@@ -12,6 +12,6 @@ namespace EbaySdkLib.Messages
 
        public List<ShippingFulfillment> fulfillments { get; set; }
         public int  total { get; set; }
-        public List<Warning> warnings { get; set; }
+        public List<Warnings> warnings { get; set; }
     }
 }

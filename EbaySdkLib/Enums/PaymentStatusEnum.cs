@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EbaySdkLib.Enums
-{
-    public enum PaymentStatusEnum
     {
+    public enum PaymentStatusEnum
+        {
         FAILED,
         PAID,
-     PENDING
+        PENDING
+        }
     }
-}

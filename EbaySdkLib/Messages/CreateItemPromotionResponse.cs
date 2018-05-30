@@ -9,6 +9,6 @@ namespace EbaySdkLib.Messages
 {
    public  class CreateItemPromotionResponse
     {
-        public List<Warning> warnings { get; set; }
+        public List<Warnings> warnings { get; set; }
     }
 }

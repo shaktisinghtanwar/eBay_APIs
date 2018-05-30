@@ -9,9 +9,9 @@ namespace EbaySdkLib.Constants
     static class ApplicationConstants
         {
         public const string CONTENT_TYPE = "application/json";
-        public const string BASE_URL = "https://api.sandbox.ebay.com";
+        public const string BASE_URL = "https://api.sandbox.ebay.com/";
         public const string CONTENT_LANGUAGE = "en-US";
-        public const string TOKEN = "v^1.1#i^1#f^0#I^3#r^0#p^3#t^H4sIAAAAAAAAAOVXW2wUVRju9gYVWzVBbkJcRiRKnd0zM7uzu0N3ddtCWYW2dJcGKJecmTnTDp2dWeacpd2QSGmxkduD0WAaiOmDgIaHJkZtwPCCAYwPKpqaEGJjvCRESEQxoAajZ3d72dYAvRDTxH3ZPef81+///n/PAR3FJSu613TfLnXMyu/tAB35Dgc3B5QUF5WXFeQvKsoDOQKO3o5lHYWdBVcrMIwbCakB4YRlYuRsjxsmljKbQSZpm5IFsY4lE8YRlogiRcPr1kq8C0gJ2yKWYhmMM1IdZDQgChongoAXcoIfKHTXHLYZs4JMACga5KDqUb2C6PGL9BzjJIqYmECTBBkecH4WeFlejHG8xAckzufifPxmxtmIbKxbJhVxASaUCVfK6No5sd47VIgxsgk1woQi4dXRunCkelVtrMKdYys0hEOUQJLEY1dVloqcjdBIonu7wRlpKZpUFIQx4w5lPYw1KoWHg5lC+BmoOVEQvX6eV9UAx2kAPRAoV1t2HJJ7x5He0VVWy4hKyCQ6Sd0PUYqGvAMpZGhVS01Eqp3pr/VJaOiajuwgs6oyvGlDdFUD44zW19vWLl1FaiZTwcN5eT8nMCGCMIUQ2dtNvQXaeisc8pU1OIT0OGdVlqnqadyws9YilYgGjsbDw+XAQ4XqzDo7rJF0ULlynmEYRSrnHi5kkrSY6dKiOMXCmVnevwjDrBjlwYPiBS96ednHQcD5oE8TwVhepHt9atwIpcsTrq93p2NBMkyxcWi3IpIwoIJYhcKbjCNbVyXBq/GCX0OsKgY01hPQNFb2qiLLaQgBhGRZCfj/ZxQhxNblJEEjNBl/kMkzyEQVK4HqLUNXUsx4kczkGSJFOw4yLYQkJLe7ra3N1Sa4LLvZzQPAuTeuWxtVWlAcMiOy+v2FWT1DD4VOESovkVSCRtNO2Uedm81MSLDVemiTVGUyRddRZBj0a5jBYyIMjd+9S6o4nerMSjKtj6kBmNBdaYK7FCvutiBt6PTW9kzEzokIueVkivpXke2yEVQt00hNXK85SQmc1Z6YEqbVcGV7kaaR4zHd65M3MAmnurmLctmyU5NMc6zyJHSgolhJk0zF3ZDqJDS0pKHphpFu16k4zFGfTJgmNFJEV/BUXOYMZAov1ptbyGTt0D06xam+Agk0rFE6TavZw4lERJ1ZzY5bYCu9uUBWob/sBFbZaOVGVhRFvxeo9C8LqX7gQ5pnWnlXo13/Ud6FnfkvTzh30RPwBQRVY71eGbEeD0SsrPI8S3vEI6saJyuaMK28qwyd0j6WmmkTfo2FCVKnlxq9a82spLK8zdLWqwmIFaCHZz2iorCy6POwASEw4Wq673pf+ddt1T32xRjKy3y4TsdZ0Ok4TR+dwAdYrhw8W1ywobDgYQbrBLkwNFXZanfpUHPR+WTSB5GNXK0olYC6nV/saHrip+fv5LxVe7eCBSOv1ZICbk7O0xUsHj0p4h6ZX8r5gZcXOZ4PcL7N4KnR00JuXuHcnvlPf1Fa5W/tubH5h4HF+4/02WUvgNIRIYejKK+w05F38pnj7tm/XX/Nc7mmv/TcG0d7r11Y3l8jX/nZv+n8+7Prvi5Y+EvTwYozO4u+mbvh7Du/rjlwfqD8xLmub8sbagKH+7Ztvbj60JnQYHeff33Zm4d3FGFyoevxR/vn8ttOMXmvvsd9sLLp4IrHru3Z+9Fn83q232ruOtXwd+yrOxVLUO/AnpWXrp96u+9q+cdx2N3+Y+ranzfrdP++0n24v2xpY8mTCxf0fBJfuvWyUfXc9dpXbg8Orlsm76659frem8qWpjns0dYVHy6JLXqr80rqu9NNAzcqdqvLj/2+sfuY9tfJAxe3fFl6vBi/+7mrO7Lz+7C++6X6E5eCXbftkrazf7w4C8eqj+wfbPxUfyhbxn8AIe9jMkUQAAA=";
+        public const string TOKEN = "v^1.1#i^1#r^0#f^0#I^3#p^3#t^H4sIAAAAAAAAAOVXa2wURRzvXR9YSyE0hIeUeFmBCGT3Znfv9nY33MG15XEIbeEKAobAPmbbtXu7l9052jVRmyqYCJqixA+CsdWY+EWIaWIgAioCJiQGMSCIRD8gQQ1EQQ2kPmevr2sJ9EVME+/LZmb+r99vfv+5GdBSVLxgx4odt0p9E/ztLaDF7/PRJaC4qHDhpHz/Q4V5IMfA194yp6WgNf+HRY6UMtLiWuikLdOBgeaUYTpidjJKZGxTtCRHd0RTSkFHRIqYjK9eJTIUENO2hSzFMohAoipKyIyqyhEZKDIrCKEIwLNmb8w6K0qosqpyPM9FZIbjNaDhdcfJwITpIMlEUYIBNE+CMMkIdUAQw2GRZSiWDm0iAuuh7eiWiU0oQMSy5YpZXzun1nuXKjkOtBEOQsQS8WXJmniiaml13aJgTqxYDw9JJKGMM3BUaakwsF4yMvDeaZystZjMKAp0HCIY684wMKgY7y1mFOVnqQ7TmsKGWFbgJU7DvN4XKpdZdkpC967Dm9FVUsuaitBEOnKHYhSzIT8JFdQzqsYhElUB77MmIxm6pkM7SiytiG9cl1y6lggka2tta5uuQtVDSrMhmguFIwIRQ9DBFEJ7i6k3SHZPou5oPTQPylRpmarukeYEqi1UAXHVcDA3oRxusFGNWWPHNeRVlGNH070cAm6Tt6ndu5hBDaa3rzCFiQhkh0PvQK8k+kVwv0QhA0ZiaVplFEYJ0Txzhyi8Xh+FMGLe3sRra4NeLVCWXDIl2Y0QpQ1JgaSC6c2koK2rIhvWGJbXIKlygkaGBE0j5bDKkbQGIYBQlhWB/z/pAyFblzMI9mlk8EIWZJRIKlYa1lqGrrjEYJPsmdOjiGYnSjQglBaDwaamJqqJpSy7PsgAQAc3rF6VVBpgSiL6bPWhjUk9qw0FYi9HF5GbxtU0Y+nh5GY9EWNttVaykVuRcfE4CQ0Df3rlO6DC2ODZu0B1PKjjC6Tn7+AAUlqnPHVTipUKWhLuZm9qS7biwHCMgnLGxflVaFM2lFTLNNzh+9VnsHq7vYfn5ODdoLobEcO4I6PX6yMJMIKkurkNa9my3RHCHOg8Ah9JUayMiUaTrsd1BB5axtB0w/DadTQJc9xHUqYpGS7SFWc0KXNOY0yvo9c3oJHGwXP4CMf+ioQkw+qX05iaPZ5OJ9Tx1ezZvwa9USIdyVRlq5lMVmwgBU6WVQ5mz3KN5xmJHhPsKrjtv4Vd0OpvGho6LwBZ1oQwCWiOI0NQ4UmeE0Ikq4AwAxVapSNwTLgrDR2rvs4dbwf8CstBUB0bNHzPGl+gPN32yjai0QLJgjBNhjiVIXmGi5BAhspwIQfvel2546YaHPhUjOVlf3Sr7who9R3Cr00QASS9EMwvyl9XkD+RcHQEqZ5eo3RJo/DxZOKXkA2pRuimJd32F/memPXT4j9zHqntm8GMvmdqcT5dkvNmBeX9K4X05OmlNI/lKwAhHGaZTeCR/tUCelrB1G+vHg3/svP4wa4pNZtrTjcXfXmxoROU9hn5fIV5Ba2+vI3vfnjp4e1tH7x2/cjJGzWtHcXF12e+6D++82DyBLm242KJUjJvdvVznyQ2vHei9PWP4OVrV47NXRKMpN3GF84yE2NX2p79u2LX/JdWPU6dn/M8uW/3nnn+hZ1vTOjcX166d0V77PfvouWPde3Su8hXzh2uXFdW45+xp/yz6Q/U11mLPj01of6vawW1K8/V3Z625xv36L6b3MmV68+fWa4o4fPb0amrNzq2XHhbdDsfXDDr8q1nDm0tL5sLv6fa5iZ/vr378Kvmma2xeY8u2Xrg/ZabXz91qWTNzbKvZjeWbbx9bPfxj6umpaoWnz5QNLWr5dd/Ju3ftfetN0+Wme+0/dbxxecNl1+eOWXyhR8TZ/94unsb/wUDYybXPhAAAA==";
         public const string PaymentPolicy_Url = "sell/account/v1/payment_policy/";
         public const string RATETABLE_URL = "sell/account/v1/rate_table/?country_code=";
         public const string INVENTORY_URL = "sell/inventory/v1/";
@@ -44,5 +44,15 @@ namespace EbaySdkLib.Constants
 
         public const string ADDREPORTTASK_URL = "sell/marketing/v1/ad_report_task";
 
+        public const string PROMOTIONLIST_URL = "sell/marketing/v1/promotion";
+        public const string ITEMPRICE_URL = "sell/marketing/v1/item_price_markdown";
+        public const string PROMOTIONREPORT_URL = "sell/marketing/v1/promotion_report";
+        public const string PROMOTIONSUMMARYREP_URL = "sell/marketing/v1/promotion_summary_report";
+        public const string ORDER_URL = "sell/fulfillment/v1/order/";
+        public const string ORDERS_URL = "sell/fulfillment/v1/order/";
+        public const string PROGRAM_URL  = "sell/account/v1/program";
+        public const string FULFILMENT_URL = "sell/account/v1/fulfillment_policy";
+        public const string PRIVILAGE_URL = "sell/account/v1/privilege";
+        public const string SALESTAX_URL = "sell/account/v1/sales_tax/";
         }
     }

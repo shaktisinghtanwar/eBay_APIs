@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EbaySdkLib.Enums
 {
-    public enum InventoryReferenceTypeEnum
+    public enum  InventoryReferenceTypeEnum
     {
         INVENTORY_ITEM,
         INVENTORY_ITEM_GROUP

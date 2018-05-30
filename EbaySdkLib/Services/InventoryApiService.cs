@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,60 +18,61 @@ namespace EbaySdkLib.Services
 
             }
         #region InventoryLocations
+    
 
-        public async Task<GetInventryLocationResponse> CreateInventoryLocationService(CreateInventoryLocationRequest createInventoryLocationRequest, string merchantLocationKey)
+        public async Task<Tuple<GetInventryLocationResponse, HttpStatusCode>> CreateInventoryLocationService(CreateInventoryLocationRequest createInventoryLocationRequest, string merchantLocationKey)
             {
             var body = JsonConvert.SerializeObject(createInventoryLocationRequest);
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYLOCATION_URL + merchantLocationKey);
             var response = await helper.Post(body);
-            GetInventryLocationResponse getInventryLocationResponse =  JsonConvert.DeserializeObject<GetInventryLocationResponse>(response);
-            return getInventryLocationResponse;
+            GetInventryLocationResponse getInventryLocationResponse =  JsonConvert.DeserializeObject<GetInventryLocationResponse>(response.Item1);
+            return new Tuple<GetInventryLocationResponse, HttpStatusCode>(getInventryLocationResponse, response.Item2);
             }
 
-        public async Task<string> UpdateInventoryLocationService(UpdateInventoryLocationRequest updateInventoryLocationRequest, string merchantLocationKey)
+        public async Task<Tuple<string, HttpStatusCode>> UpdateInventoryLocationService(UpdateInventoryLocationRequest updateInventoryLocationRequest, string merchantLocationKey)
             {
             var body = JsonConvert.SerializeObject(updateInventoryLocationRequest);
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYLOCATION_URL + merchantLocationKey);
             var response = await helper.Post(body);
-            return response;
+            return new Tuple<string, HttpStatusCode>(response.Item1, response.Item2);
             }
 
 
-        public async Task<GetInventryLocationResponse> getInventoryLocationService(string merchantLocationKey)
+        public async Task<Tuple<GetInventryLocationResponse,HttpStatusCode>>getInventoryLocationService(string merchantLocationKey)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYLOCATION_URL  + merchantLocationKey );
             var response = await helper.Get();
-            GetInventryLocationResponse getInventryLocationResponse = JsonConvert.DeserializeObject<GetInventryLocationResponse>(response);
-            return getInventryLocationResponse;
+            GetInventryLocationResponse getInventryLocationResponse = JsonConvert.DeserializeObject<GetInventryLocationResponse>(response.Item1);
+            return new Tuple<GetInventryLocationResponse, HttpStatusCode>(getInventryLocationResponse, response.Item2);
             }
 
-        public async Task<GetInventoryLocationsResponce> getInventoryLocationsService(int limit = 2, int offset = 2)
+        public async Task<Tuple<GetInventoryLocationsResponce,HttpStatusCode>> getInventoryLocationsService(int limit = 2, int offset = 2)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYLOCATION_URL + "?limit= {" + limit + "}&offset={" + offset + "}");
             var response = await helper.Get();
-            GetInventoryLocationsResponce getReturnPoliciesResponse = JsonConvert.DeserializeObject<GetInventoryLocationsResponce>(response);
-            return getReturnPoliciesResponse;
+            GetInventoryLocationsResponce getReturnPoliciesResponse = JsonConvert.DeserializeObject<GetInventoryLocationsResponce>(response.Item1);
+            return new Tuple<GetInventoryLocationsResponce, HttpStatusCode>(getReturnPoliciesResponse, response.Item2);
             }
         //request invalid for enable and disable
-        public async Task<string> enableInventoryLocationService(string Id)
+        public async Task<Tuple<string,HttpStatusCode>> enableInventoryLocationService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYLOCATION_URL +  Id + "/enable");
             var response = await helper.Get();
-            return response;
+            return new Tuple<string, HttpStatusCode>(response.Item1, response.Item2);
             }
 
-        public async Task<string> disableInventoryLocationService(string Id)
+        public async Task<Tuple<string,HttpStatusCode>> disableInventoryLocationService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYLOCATION_URL +  Id + "/disable");
             var response = await helper.Get();
-            return response;
+            return new Tuple<string, HttpStatusCode>(response.Item1, response.Item2);
             }
 
-        public async Task<string> deleteInventoryLocationService(string Id)
+        public async Task<Tuple<string,HttpStatusCode>> deleteInventoryLocationService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYLOCATION_URL + Id );
             var response = await helper.Delete(Id);
-            return response;
+            return new Tuple<string, HttpStatusCode>(response.Item1, response.Item2); ;
             }
 
         #endregion 
@@ -80,158 +82,160 @@ namespace EbaySdkLib.Services
         /// </summary>
         /// <param name="createOffersRequest"></param>
         /// <returns></returns>
-        public async Task<CreateOffersResponse> createOffersService(CreateOffersRequest createOffersRequest)
+        public async Task<Tuple<CreateOffersResponse,HttpStatusCode>> createOffersService(CreateOffersRequest createOffersRequest)
             {
             var body = JsonConvert.SerializeObject(createOffersRequest);
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYOFFER_URL);
             var response = await helper.Post(body);
-            CreateOffersResponse createOffersresponse = JsonConvert.DeserializeObject<CreateOffersResponse>(response);
-            return createOffersresponse;
+            CreateOffersResponse createOffersresponse = JsonConvert.DeserializeObject<CreateOffersResponse>(response.Item1);
+            return new Tuple<CreateOffersResponse, HttpStatusCode>(createOffersresponse, response.Item2);
             }
-        public async Task<UpdateInventoryOffersResponse> updateOffersService(UpdateInventoryOfferRequest updateInventoryOfferRequest,string Id)
+
+        public async Task<Tuple<UpdateInventoryOffersResponse,HttpStatusCode>> updateOffersService(UpdateInventoryOfferRequest updateInventoryOfferRequest,string Id)
             {
             var body = JsonConvert.SerializeObject(updateInventoryOfferRequest);
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYOFFER_URL+Id);
             var response = await helper.Post(body);
-            UpdateInventoryOffersResponse updateinventoryOffersResponse = JsonConvert.DeserializeObject<UpdateInventoryOffersResponse>(response);
-            return updateinventoryOffersResponse;
+            UpdateInventoryOffersResponse updateinventoryOffersResponse = JsonConvert.DeserializeObject<UpdateInventoryOffersResponse>(response.Item1);
+            return new Tuple<UpdateInventoryOffersResponse, HttpStatusCode>(updateinventoryOffersResponse, response.Item2);
             }
 
-        public async Task<GetOffersResponse> getOffersService(string Id)
+        public async Task<Tuple<GetOffersResponse,HttpStatusCode>> getOffersService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYOFFER_URL+"?sku=" + Id);
             var response = await helper.Get();
-            GetOffersResponse getOffersResponse = JsonConvert.DeserializeObject<GetOffersResponse>(response);
-            return getOffersResponse;
+            GetOffersResponse getOffersResponse = JsonConvert.DeserializeObject<GetOffersResponse>(response.Item1);
+            return new Tuple<GetOffersResponse, HttpStatusCode>(getOffersResponse, response.Item2);
             }
 
-        public async Task<GetofferResponse> getOfferService(string Id)
+        public async Task<Tuple<GetofferResponse,HttpStatusCode>> getOfferService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYOFFER_URL + Id);
             var response = await helper.Get();
-            GetofferResponse getofferResponse = JsonConvert.DeserializeObject<GetofferResponse>(response);
-            return getofferResponse;
+            GetofferResponse getofferResponse = JsonConvert.DeserializeObject<GetofferResponse>(response.Item1);
+            return new Tuple<GetofferResponse, HttpStatusCode>(getofferResponse, response.Item2);
             }
-        public async Task<string> deleteOffersService(string Id)
+        public async Task<Tuple<string,HttpStatusCode>> deleteOffersService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYOFFER_URL + Id);
             var response = await helper.Get();
-            return response;
+            return new Tuple<string ,HttpStatusCode>(response.Item1,response.Item2);
             }
-        public async Task<PublichoffersResponse> publishOfferService(string Id)
+        public async Task<Tuple<PublichoffersResponse,HttpStatusCode>> publishOfferService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYOFFER_URL + Id+"/publish");
             var response = await helper.Get();
-            PublichoffersResponse publichoffersResponse = JsonConvert.DeserializeObject<PublichoffersResponse>(response);
-            return publichoffersResponse;
+            PublichoffersResponse publichoffersResponse = JsonConvert.DeserializeObject<PublichoffersResponse>(response.Item1);
+            return new Tuple<PublichoffersResponse, HttpStatusCode>(publichoffersResponse, response.Item2);
           
             }
       
-        public async Task<GetListingFeesResponse> getListingFeesService(string Id)
+        public async Task<Tuple<GetListingFeesResponse,HttpStatusCode>> getListingFeesService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYOFFER_URL +Id);
             var response = await helper.Get();
-            GetListingFeesResponse getListingFeesResponse = JsonConvert.DeserializeObject<GetListingFeesResponse>(response);
-            return getListingFeesResponse;
-
+            GetListingFeesResponse getListingFeesResponse = JsonConvert.DeserializeObject<GetListingFeesResponse>(response.Item1);
+            return new Tuple<GetListingFeesResponse, HttpStatusCode>(getListingFeesResponse, response.Item2);
+          
             }
-        public async Task<GetListingFeesResponse> publishOfferByInventoryItemGroupService(string Id)
+        public async Task<Tuple<GetListingFeesResponse,HttpStatusCode>> publishOfferByInventoryItemGroupService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYOFFER_URL + Id);
             var response = await helper.Get();
-            GetListingFeesResponse publishOffer = JsonConvert.DeserializeObject<GetListingFeesResponse>(response);
-            return publishOffer;
+            GetListingFeesResponse publishOffer = JsonConvert.DeserializeObject<GetListingFeesResponse>(response.Item1);
+            return new Tuple<GetListingFeesResponse, HttpStatusCode>(publishOffer, response.Item2);
 
             }
-        public async Task<WithdrawOfferResponse> WithdrawOfferService(string Id)
+        public async Task<Tuple<WithdrawOfferResponse,HttpStatusCode>> WithdrawOfferService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORYOFFER_URL + Id+"/withdraw");
             var response = await helper.Get();
-            WithdrawOfferResponse WithdrawOffer = JsonConvert.DeserializeObject<WithdrawOfferResponse>(response);
-            return WithdrawOffer;
+            WithdrawOfferResponse WithdrawOffer = JsonConvert.DeserializeObject<WithdrawOfferResponse>(response.Item1);
+            return new Tuple<WithdrawOfferResponse, HttpStatusCode>(WithdrawOffer, response.Item2);
+
 
             }
         #endregion
         #region InventoryItems
-        public async Task<GetInventoryitemResponse> getInventoryItemService(string Id)
+        public async Task<Tuple<GetInventoryitemResponse,HttpStatusCode>> getInventoryItemService(string Id)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORY_URL + Id);
             var response = await helper.Get();
-            GetInventoryitemResponse getInventoryItems = JsonConvert.DeserializeObject<GetInventoryitemResponse>(response);
-            return getInventoryItems;
+            GetInventoryitemResponse getInventoryItems = JsonConvert.DeserializeObject<GetInventoryitemResponse>(response.Item1);
+            return new Tuple<GetInventoryitemResponse, HttpStatusCode>(getInventoryItems, response.Item2);
             }
-        public async Task<GetInventoryItemsResponse> getInventoryItemsService()
+        public async Task<Tuple<GetInventoryItemsResponse,HttpStatusCode>> getInventoryItemsService()
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORY_URL + "inventory_item?limit=2&offset=0");
             var response = await helper.Get();
-            GetInventoryItemsResponse getInventoryItemsResponse = JsonConvert.DeserializeObject<GetInventoryItemsResponse>(response);
-            return getInventoryItemsResponse;
+            GetInventoryItemsResponse getInventoryItemsResponse = JsonConvert.DeserializeObject<GetInventoryItemsResponse>(response.Item1);
+            return new Tuple<GetInventoryItemsResponse, HttpStatusCode>(getInventoryItemsResponse, response.Item2);
             }
-        public async Task<string> deleteInventoryItemService(string sku)
+        public async Task<Tuple<string,HttpStatusCode>> deleteInventoryItemService(string sku)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORY_URL  + sku);
             var response = await helper.Get();
-            return response;
+            return new Tuple<string ,HttpStatusCode>(response.Item1,response.Item2);
             }
-        public async Task<BulkUpdatePriceQualityResponse> bulkUpdatePriceQualityService(BulkUpdatePriceQualityRequest bulkUpdatePriceQualityRequest)
+        public async Task<Tuple<BulkUpdatePriceQualityResponse,HttpStatusCode>> bulkUpdatePriceQualityService(BulkUpdatePriceQualityRequest bulkUpdatePriceQualityRequest)
             {
             var body = JsonConvert.SerializeObject(bulkUpdatePriceQualityRequest);
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORY_URL+"bulk_update_price_quantity");
             var response = await helper.Post(body);
-            BulkUpdatePriceQualityResponse bnulkUpdatePriceQualityResponse = JsonConvert.DeserializeObject<BulkUpdatePriceQualityResponse>(response);
-            return bnulkUpdatePriceQualityResponse;
+            BulkUpdatePriceQualityResponse bnulkUpdatePriceQualityResponse = JsonConvert.DeserializeObject<BulkUpdatePriceQualityResponse>(response.Item1);
+            return new Tuple<BulkUpdatePriceQualityResponse, HttpStatusCode>(bnulkUpdatePriceQualityResponse, response.Item2);
             }
 
-        public async Task<CreateorReplaceItemResponse> CreateorReplaceItemService(CreateorReplaceInventoryItemrequest createorReplaceInventoryItemrequest, string sku)
+        public async Task<Tuple<CreateorReplaceItemResponse,HttpStatusCode>> CreateorReplaceItemService(CreateorReplaceInventoryItemrequest createorReplaceInventoryItemrequest, string sku)
             {
             var body = JsonConvert.SerializeObject(createorReplaceInventoryItemrequest);
             RestHelper helper = new RestHelper(ApplicationConstants.PRODCOMPATIBILITY_URL + sku);
             var response = await helper.Post(body);
-            CreateorReplaceItemResponse createorReplaceItemResponse = JsonConvert.DeserializeObject<CreateorReplaceItemResponse>(response);
-            return createorReplaceItemResponse;
+            CreateorReplaceItemResponse createorReplaceItemResponse = JsonConvert.DeserializeObject<CreateorReplaceItemResponse>(response.Item1);
+            return new Tuple<CreateorReplaceItemResponse, HttpStatusCode>(createorReplaceItemResponse, response.Item2);
             }
 
         #endregion
         #region inventoryGrp
 
-        public async Task<GetinventoryItemGroupResponse> getInventoryItemGroupService(string val)
+        public async Task<Tuple<GetinventoryItemGroupResponse,HttpStatusCode>> getInventoryItemGroupService(string val)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTRYITEMGROUP_URL + val);
             var response = await helper.Get();
-            GetinventoryItemGroupResponse getinventoryItemGroupResponse = JsonConvert.DeserializeObject<GetinventoryItemGroupResponse>(response);
-            return getinventoryItemGroupResponse;
+            GetinventoryItemGroupResponse getinventoryItemGroupResponse = JsonConvert.DeserializeObject<GetinventoryItemGroupResponse>(response.Item1);
+            return new Tuple<GetinventoryItemGroupResponse, HttpStatusCode>(getinventoryItemGroupResponse, response.Item2);
             }
-        public async Task<string> deleteInventoryItemgrpService(string val)
+        public async Task<Tuple<string,HttpStatusCode>> deleteInventoryItemgrpService(string val)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTRYITEMGROUP_URL + val);
             var response = await helper.Get();
-            return response;
+            return new Tuple<string,HttpStatusCode>( response.Item1,response.Item2);
             }
 
-        public async Task<CreateorReplaceItemResponse> CreateorReplaceItemgrpProdService(CreateOrReplaceinventoryItemGrpRequest createorReplaceItemRequest, string val)
+        public async Task<Tuple<CreateorReplaceItemResponse,HttpStatusCode>> CreateorReplaceItemgrpProdService(CreateOrReplaceinventoryItemGrpRequest createorReplaceItemRequest, string val)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTRYITEMGROUP_URL + val);
             var body = JsonConvert.SerializeObject(createorReplaceItemRequest);
             var response = await helper.Post(body);
-            CreateorReplaceItemResponse createorReplaceItemResponse = JsonConvert.DeserializeObject<CreateorReplaceItemResponse>(response);
-            return createorReplaceItemResponse;
+            CreateorReplaceItemResponse createorReplaceItemResponse = JsonConvert.DeserializeObject<CreateorReplaceItemResponse>(response.Item1);
+            return new Tuple<CreateorReplaceItemResponse, HttpStatusCode>(createorReplaceItemResponse, response.Item2);
             }
 
         #endregion
         #region Listing
-        public async Task<BulkMigratelistingresponse> bulkMigrateListingService(BulkMigrateListingRequest bulkMigrateListingRequest)
+        public async Task<Tuple<BulkMigratelistingresponse,HttpStatusCode>> bulkMigrateListingService(BulkMigrateListingRequest bulkMigrateListingRequest)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTORY_URL + "bulk_migrate_listing");
             var body = JsonConvert.SerializeObject(bulkMigrateListingRequest);
             var response = await helper.Post(body);
-            BulkMigratelistingresponse bulkMigratelistingresponse = JsonConvert.DeserializeObject<BulkMigratelistingresponse>(response);
-            return bulkMigratelistingresponse;
+            BulkMigratelistingresponse bulkMigratelistingresponse = JsonConvert.DeserializeObject<BulkMigratelistingresponse>(response.Item1);
+            return new Tuple<BulkMigratelistingresponse, HttpStatusCode>(bulkMigratelistingresponse, response.Item2);
             }
 
         #endregion
 
         #region ProdCompatibility
-        public async Task<CreateOrReplaceProductComaptibilityResponse> CreateOrReplaceProductCompatibilityService(CreateOrReplaceProductCompatibilityRequest createOrReplaceProductCompatibilityRequest, string sku)
+        public async Task<Tuple<CreateOrReplaceProductComaptibilityResponse,HttpStatusCode>> CreateOrReplaceProductCompatibilityService(CreateOrReplaceProductCompatibilityRequest createOrReplaceProductCompatibilityRequest, string sku)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.PRODCOMPATIBILITY_URL + sku+"/product_compatibility");
           
@@ -239,22 +243,22 @@ namespace EbaySdkLib.Services
             var body = JsonConvert.SerializeObject(createOrReplaceProductCompatibilityRequest);
             var response = await helper.Post(body);
             
-            CreateOrReplaceProductComaptibilityResponse comaptibilityResponse = JsonConvert.DeserializeObject<CreateOrReplaceProductComaptibilityResponse>(response);
-            return comaptibilityResponse;
+            CreateOrReplaceProductComaptibilityResponse comaptibilityResponse = JsonConvert.DeserializeObject<CreateOrReplaceProductComaptibilityResponse>(response.Item1);
+            return new Tuple<CreateOrReplaceProductComaptibilityResponse, HttpStatusCode>(comaptibilityResponse, response.Item2);
             }
 
-        public async Task<GetProductCompatibilityResponse> getProductCompatibilityService(string val)
+        public async Task<Tuple<GetProductCompatibilityResponse,HttpStatusCode>> getProductCompatibilityService(string val)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTRYITEMGROUP_URL + val+"/product_compatibility");
             var response = await helper.Get();
-            GetProductCompatibilityResponse getProductCompatibilityResponse = JsonConvert.DeserializeObject<GetProductCompatibilityResponse>(response);
-            return getProductCompatibilityResponse;
+            GetProductCompatibilityResponse getProductCompatibilityResponse = JsonConvert.DeserializeObject<GetProductCompatibilityResponse>(response.Item1);
+            return new  Tuple<GetProductCompatibilityResponse, HttpStatusCode>(getProductCompatibilityResponse, response.Item2); 
             }
-        public async Task<string> deleteProductCompatibilityService(string val)
+        public async Task<Tuple<string,HttpStatusCode>> deleteProductCompatibilityService(string val)
             {
             RestHelper helper = new RestHelper(ApplicationConstants.INVENTRYITEMGROUP_URL + val);
             var response = await helper.Get();
-            return response;
+            return new Tuple<string, HttpStatusCode>(response.Item1, response.Item2); 
             }
 
        

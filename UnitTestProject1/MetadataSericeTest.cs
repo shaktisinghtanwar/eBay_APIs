@@ -19,7 +19,7 @@ namespace UnitTestProject1
             string countrycode = EbaySdkLib.Enums.CountryCodeEnum.CA.ToString();
             var response = metadataAPIService.getSalesTaxJurisdictionsService(countrycode).Result;
             Assert.IsNotNull(response);
-            Assert.Fail();
+            
             }
         [TestMethod]
         public void getAutomotivePartsCompatibilityPolicies()
@@ -30,7 +30,7 @@ namespace UnitTestProject1
             string filter = System.Net.WebUtility.UrlEncode("80740|33548");
             var response = metadataAPIService.getAutomotivePartsCompatibilityService(marketPlaceId, filter).Result;
             Assert.IsNotNull(response);
-            Assert.Fail();
+            
             }
         [TestMethod]
         public void getItemConditionPolicies()
@@ -41,7 +41,7 @@ namespace UnitTestProject1
             string filter = System.Net.WebUtility.UrlEncode("80740|33548");
             var response = metadataAPIService.getItemConditionPoliciesService(marketPlaceId, filter).Result;
             Assert.IsNotNull(response);
-            Assert.Fail();
+            
             }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace UnitTestProject1
             string filter = System.Net.WebUtility.UrlEncode("75592|90638");
             var response = metadataAPIService.GetListingStructurePoliciesService(marketPlaceId, filter).Result;
             Assert.IsNotNull(response);
-            Assert.Fail();
+           
             }
         [TestMethod]
         public void getNegotiatedPricePolicies()
@@ -64,7 +64,7 @@ namespace UnitTestProject1
             string filter = System.Net.WebUtility.UrlEncode("75592|90638");
             var response = metadataAPIService.getNegotiatedPricePoliciesService(marketPlaceId, filter).Result;
             Assert.IsNotNull(response);
-            Assert.Fail();
+           
             }
         [TestMethod]
         public void getProductAdoptionPolicies()
@@ -75,7 +75,7 @@ namespace UnitTestProject1
             string filter = System.Net.WebUtility.UrlEncode("75592|90638");
             var response = metadataAPIService.getProductAdoptionPoliciesService(marketPlaceId, filter).Result;
             Assert.IsNotNull(response);
-            Assert.Fail();
+           
             }
         [TestMethod]
         public void getReurnPoliciesMetadata()
@@ -86,7 +86,7 @@ namespace UnitTestProject1
             string filter = System.Net.WebUtility.UrlEncode("80740|33548");
             var response = metadataAPIService.metadataGetreturnPolicyService(marketPlaceId, filter).Result;
             Assert.IsNotNull(response);
-            Assert.Fail();
+            
             }
 
         #endregion

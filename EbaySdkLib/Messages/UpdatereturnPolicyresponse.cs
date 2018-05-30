@@ -29,6 +29,6 @@ namespace EbaySdkLib.Messages
         public string returnPolicyId { get; set; }
         public bool returnsAccepted { get; set; }
         public ReturnShippingCostPayerEnum returnShippingCostPayer { get; set; }
-        public Warning[] warnings { get; set; }
+        public Warnings[] warnings { get; set; }
         }
     }

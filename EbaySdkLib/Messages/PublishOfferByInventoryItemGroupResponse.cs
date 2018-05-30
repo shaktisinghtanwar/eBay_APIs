@@ -9,7 +9,7 @@ namespace EbaySdkLib.Messages
     {
  public   class PublishOfferByInventoryItemGroupResponse
         {
-        public Warning[] warnings { get; set; }
+        public Warnings[] warnings { get; set; }
         public string listingId { get; set; }
         }
     }

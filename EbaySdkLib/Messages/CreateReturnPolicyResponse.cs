@@ -30,6 +30,6 @@ namespace EbaySdkLib.Messages
         public bool returnsAccepted { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ReturnShippingCostPayerEnum returnShippingCostPayer { get; set; }
-        public Warning[] warnings { get; set; }
+        public Warnings[] warnings { get; set; }
         }
     }

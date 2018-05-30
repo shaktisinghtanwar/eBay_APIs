@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EbaySdkLib.Messages
+{
+   public  class UpdateItemPromotionResponse
     {
-public    class MetadataGetreturnPolicyresponse
-        {
-        public MetadataReturnPolicy[] returnPolicies { get; set; }
-        public Warning[] warnings { get; set; }
-        }
+       public List<Warnings> warnings { get; set; }
     }
+}

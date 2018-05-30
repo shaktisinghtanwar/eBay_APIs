@@ -11,7 +11,7 @@ namespace EbaySdkLib.Messages
     {
         public List<Ad> ads { get; set; }
         public string adId { get; set; }
-        public List<Error> errors { get; set; }
+        public List<Warnings> errors { get; set; }
         public string inventoryReferenceId { get; set; }
         public string inventoryReferenceType { get; set; }
         public string statusCode { get; set; }

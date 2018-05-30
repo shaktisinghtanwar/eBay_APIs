@@ -20,8 +20,16 @@ namespace UnitTestProject1
             string dimension = "LISTING";
             string metric = "LISTING_IMPRESSION_SEARCH_RESULTS_PAGE,LISTING_IMPRESSION_STORE,SALES_CONVERSION_RATE";
             string sort = "LISTING_IMPRESSION_STORE";
-            GetTrafficReportResponse response = analyticsService.getAnalyticsService(filter, dimension, metric, sort).Result;
-            Assert.IsNotNull(response);
+            // GetTrafficReportResponse response = analyticsService.getAnalyticsService(filter, dimension, metric, sort).Result;
+            var response = analyticsService.getAnalyticsService(filter, dimension, metric, sort).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
 
@@ -30,8 +38,15 @@ namespace UnitTestProject1
             {
             AnalyticsService analyticsService = new AnalyticsService();
             //Return status is 200, but there is issue in response
-            FindSellerStandardsProfilesResponse response = analyticsService.findSellerStandardsProfilesResponseAnalyticsService().Result;
-            Assert.IsNotNull(response);
+            var response = analyticsService.findSellerStandardsProfilesResponseAnalyticsService().Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -41,8 +56,15 @@ namespace UnitTestProject1
             getSellerStandardsProfileResponse getSellerStandards = new getSellerStandardsProfileResponse();
             getSellerStandards.program = EbaySdkLib.Enums.ProgramEnum.PROGRAM_DE;
             string cycle = "CURRENT";
-            getSellerStandardsProfileResponse response = analyticsService.getSellerStandards(getSellerStandards, cycle).Result;
-            Assert.IsNotNull(response);
+            var response = analyticsService.getSellerStandards(getSellerStandards, cycle).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         }

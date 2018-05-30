@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,64 +18,64 @@ namespace EbaySdkLib.Services
         {
 
         }
-        public async Task<GetProductResponse> getProductResponse(string epid)
+        public async Task<Tuple<GetProductResponse,HttpStatusCode>> getProductResponse(string epid)
         {
             RestHelper helper = new RestHelper(Constants.ApplicationConstants.CATALOG_URL + epid);
             var response = await helper.Get();
-            GetProductResponse getProductResponse = JsonConvert.DeserializeObject<GetProductResponse>(response);
-            return getProductResponse;
+            GetProductResponse getProductResponse = JsonConvert.DeserializeObject<GetProductResponse>(response.Item1);
+            return new Tuple<GetProductResponse, HttpStatusCode>(getProductResponse, response.Item2);
         }
 
-        public async Task<ProductSummarySearchResponse> productSummarySearchResponse(string q)
+        public async Task<Tuple<ProductSummarySearchResponse,HttpStatusCode>> productSummarySearchResponse(string q)
         {
             RestHelper helper = new RestHelper(Constants.ApplicationConstants.CATALOG_URL + q);
             var response = await helper.Get();
-            ProductSummarySearchResponse ProductSummarySearchResponse = JsonConvert.DeserializeObject<ProductSummarySearchResponse>(response);
-            return ProductSummarySearchResponse;
+            ProductSummarySearchResponse ProductSummarySearchResponse = JsonConvert.DeserializeObject<ProductSummarySearchResponse>(response.Item1);
+            return new Tuple<ProductSummarySearchResponse, HttpStatusCode>(ProductSummarySearchResponse, response.Item2);
         }
 
-        public async Task<GetProductMetadataResponse> getProductMetadataResponse(string epid)
+        public async Task<Tuple<GetProductMetadataResponse,HttpStatusCode>> getProductMetadataResponse(string epid)
         {
             RestHelper helper = new RestHelper(Constants.ApplicationConstants.PRODUCTMETADATA_URL + " ?epid = " + epid);
             var response = await helper.Get();
-            GetProductMetadataResponse getProductMetadataResponse = JsonConvert.DeserializeObject<GetProductMetadataResponse>(response);
-            return getProductMetadataResponse;
+            GetProductMetadataResponse getProductMetadataResponse = JsonConvert.DeserializeObject<GetProductMetadataResponse>(response.Item1);
+            return new Tuple<GetProductMetadataResponse, HttpStatusCode>(getProductMetadataResponse, response.Item2);
         }
 
-        public async Task<GetProductMetadataForCategoriesResponse> getProductMetadataForCategoriesResponse(string primary_category_id)
+        public async Task<Tuple<GetProductMetadataForCategoriesResponse,HttpStatusCode>> getProductMetadataForCategoriesResponse(string primary_category_id)
         {
             RestHelper helper = new RestHelper(Constants.ApplicationConstants.PRODUCTMETADATAFORCATEGORIES_URL + " ?primary_category_id = " + primary_category_id);
             var response = await helper.Get();
-            GetProductMetadataForCategoriesResponse getProductMetadataForCategoriesResponse = JsonConvert.DeserializeObject<GetProductMetadataForCategoriesResponse>(response);
-            return getProductMetadataForCategoriesResponse;
+            GetProductMetadataForCategoriesResponse getProductMetadataForCategoriesResponse = JsonConvert.DeserializeObject<GetProductMetadataForCategoriesResponse>(response.Item1);
+            return new Tuple<GetProductMetadataForCategoriesResponse, HttpStatusCode>(getProductMetadataForCategoriesResponse, response.Item2);
         }
 
-        public async Task<GetChangeRequestResponse> getChangeRequestResponse(string change_request_id)
+        public async Task<Tuple<GetChangeRequestResponse,HttpStatusCode>> getChangeRequestResponse(string change_request_id)
         {
             RestHelper helper = new RestHelper(Constants.ApplicationConstants.GETCHANGEREQUEST_URL + " ?change_request_id = " + change_request_id);
             var response = await helper.Get();
-            GetChangeRequestResponse getChangeRequestResponse = JsonConvert.DeserializeObject<GetChangeRequestResponse>(response);
-            return getChangeRequestResponse;
+            GetChangeRequestResponse getChangeRequestResponse = JsonConvert.DeserializeObject<GetChangeRequestResponse>(response.Item1);
+            return new Tuple<GetChangeRequestResponse, HttpStatusCode>(getChangeRequestResponse, response.Item2);
         }
 
 
-        public async Task<GetChangeRequestsResponse> getChangeRequestsResponse()
+        public async Task<Tuple<GetChangeRequestsResponse,HttpStatusCode>> getChangeRequestsResponse()
         {
             RestHelper helper = new RestHelper(Constants.ApplicationConstants.GETCHANGEREQUEST_URL);
             var response = await helper.Get();
-            GetChangeRequestsResponse getChangeRequestsResponse = JsonConvert.DeserializeObject<GetChangeRequestsResponse>(response);
-            return getChangeRequestsResponse;
+            GetChangeRequestsResponse getChangeRequestsResponse = JsonConvert.DeserializeObject<GetChangeRequestsResponse>(response.Item1);
+            return new Tuple<GetChangeRequestsResponse, HttpStatusCode>(getChangeRequestsResponse, response.Item2);
         }
 
 
-        public async Task<string> createChangeRequestService(CreateChangeRequest createChangeRequest)
+        public async Task<Tuple<string,HttpStatusCode>> createChangeRequestService(CreateChangeRequest createChangeRequest)
         {
             var body = JsonConvert.SerializeObject(createChangeRequest);
 
             RestHelper helper = new RestHelper(ApplicationConstants.GETCHANGEREQUEST_URL);
             var response = await helper.Post(body);
 
-            return response;
+            return new Tuple<string,HttpStatusCode>(response.Item1,response.Item2);
         }
     }
 }

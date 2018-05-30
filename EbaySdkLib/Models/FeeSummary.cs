@@ -8,7 +8,7 @@ namespace EbaySdkLib.Models
     {
     public class FeeSummary
         {
-        public Warning[] warnings { get; set; }
+        public Warnings[] warnings { get; set; }
         public MarketplaceIdEnum marketplaceId { get; set; }
         public Fee[] fees { get; set; }
         }

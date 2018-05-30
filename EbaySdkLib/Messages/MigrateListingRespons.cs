@@ -9,8 +9,8 @@ namespace EbaySdkLib.Messages
         public string inventoryItemGroupKey { get; set; }
         public MarketplaceIdEnum marketplaceId { get; set; }
         public InventoryItem[] inventoryItems { get; set; }
-        public Warning[] errors { get; set; }
-        public Warning[] warnings { get; set; }
+        public Warnings[] errors { get; set; }
+        public Warnings[] warnings { get; set; }
 
     }
 }

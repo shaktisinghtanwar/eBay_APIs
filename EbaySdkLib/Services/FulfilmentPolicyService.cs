@@ -1,6 +1,9 @@
-﻿using EbaySdkLib.Messages;
+﻿using EbaySdkLib.Constants;
+using EbaySdkLib.Messages;
 using EbaySdkLib.Models;
 using Newtonsoft.Json;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace EbaySdkLib
@@ -8,91 +11,82 @@ namespace EbaySdkLib
     public class FulfilmentPolicyService
     {
 
-        string _url ;
-        string _deletionurlbyId;
-        string _getUrlByname;
-        string _updateUrl;
 
-
-        public FulfilmentPolicyService()
-        {
-           // _url = string.Format("sell/account/v1/fulfillment_policy");
-        _url = string.Format("sell/account/v1/fulfillment_policy");
-        _deletionurlbyId = string.Format("sell/account/v1/fulfillment_policy");
-     
-        
-        }
-
-        public async Task<CreateFulfillmentResponse> CreateFulfillmentPolicy(CreateFulfillmentRequest createFulfillmentRequest)
+        public async Task<Tuple<CreateFulfillmentResponse,HttpStatusCode>> CreateFulfillmentPolicy(CreateFulfillmentRequest createFulfillmentRequest)
         {
             var body = JsonConvert.SerializeObject(createFulfillmentRequest);
 
-            RestHelper helper = new RestHelper(_url);
+            RestHelper helper = new RestHelper(ApplicationConstants.FULFILMENT_URL);
             var response = await helper.Post( body);
 
-            CreateFulfillmentResponse createFulfillmentResponse = JsonConvert.DeserializeObject<CreateFulfillmentResponse>(response);
-            return createFulfillmentResponse;
+            CreateFulfillmentResponse createFulfillmentResponse = JsonConvert.DeserializeObject<CreateFulfillmentResponse>(response.Item1);
+            return new Tuple<CreateFulfillmentResponse, HttpStatusCode>(createFulfillmentResponse, response.Item2);
         }
 
 
 
-        public async Task<DeleteFulfillmentPolicyResponse> DeleteFulfillmentPolicy(string fulfillmentPolicyId)
+        public async Task<Tuple<DeleteFulfillmentPolicyResponse, HttpStatusCode>> DeleteFulfillmentPolicy(string fulfillmentPolicyId)
         {
             //  var body = JsonConvert.SerializeObject(fulfillmentPolicyId);
 
-            RestHelper helper = new RestHelper(_deletionurlbyId + fulfillmentPolicyId);
+        RestHelper helper = new RestHelper(ApplicationConstants.FULFILMENT_URL + fulfillmentPolicyId);
             var response = await helper.Delete(fulfillmentPolicyId);
 
-            DeleteFulfillmentPolicyResponse deleteFulfillmentPolicyResponse = JsonConvert.DeserializeObject<DeleteFulfillmentPolicyResponse>(response);
-            return deleteFulfillmentPolicyResponse;
+            DeleteFulfillmentPolicyResponse deleteFulfillmentPolicyResponse = JsonConvert.DeserializeObject<DeleteFulfillmentPolicyResponse>(response.Item1);
+            return new Tuple<DeleteFulfillmentPolicyResponse, HttpStatusCode>(deleteFulfillmentPolicyResponse, response.Item2);
+
         }
 
 
 
-        public async Task<GetFulfilmentPoliciesResponse> GetFulfilmentPolicies(string marketplaceId)
+        public async Task<Tuple<GetFulfilmentPoliciesResponse, HttpStatusCode>> GetFulfilmentPolicies(string marketplaceId)
         {
             
 
-            RestHelper helper = new RestHelper("sell/account/v1/fulfillment_policy?marketplace_id=" + marketplaceId);
+            RestHelper helper = new RestHelper(ApplicationConstants.FULFILMENT_URL+"?marketplace_id=" + marketplaceId);
             var response = await helper.Get();
 
-            GetFulfilmentPoliciesResponse getFulfillmentResponse = JsonConvert.DeserializeObject<GetFulfilmentPoliciesResponse>(response);
-            return getFulfillmentResponse;
+            GetFulfilmentPoliciesResponse getFulfillmentResponse = JsonConvert.DeserializeObject<GetFulfilmentPoliciesResponse>(response.Item1);
+            return new Tuple<GetFulfilmentPoliciesResponse, HttpStatusCode>(getFulfillmentResponse, response.Item2);
+
         }
 
 
 
-        public async Task<GetFulfillmentpolicyByNameResponse> GetFulfillmentPolicyByName(string name, string marketplaceId)
+        public async Task<Tuple<GetFulfillmentpolicyByNameResponse, HttpStatusCode>> GetFulfillmentPolicyByName(string name, string marketplaceId)
         {
            // var body = JsonConvert.SerializeObject(name);
 
-            RestHelper helper = new RestHelper("sell/account/v1/fulfillment_policy/?name="+name  + "marketplace_id="+  marketplaceId);
+            RestHelper helper = new RestHelper(ApplicationConstants.FULFILMENT_URL+"/?name="+name  + "marketplace_id="+  marketplaceId);
             var response = await helper.Get();
 
-         GetFulfillmentpolicyByNameResponse getFulfillmentPolicyByNameResponse = JsonConvert.DeserializeObject<GetFulfillmentpolicyByNameResponse>(response);
-            return getFulfillmentPolicyByNameResponse;
+            GetFulfillmentpolicyByNameResponse getFulfillmentPolicyByNameResponse = JsonConvert.DeserializeObject<GetFulfillmentpolicyByNameResponse>(response.Item1);
+            return new Tuple<GetFulfillmentpolicyByNameResponse, HttpStatusCode>(getFulfillmentPolicyByNameResponse, response.Item2);
+
         }
 
-        public async Task<UpdateFulfillmentPolicyResponse> UpdateFulfillmentPolicy(string fulfillmentPolicyId)
+        public async Task<Tuple<UpdateFulfillmentPolicyResponse, HttpStatusCode>> UpdateFulfillmentPolicy(string fulfillmentPolicyId)
         {
             
            // var body = JsonConvert.SerializeObject(fulfillmentPolicyId);
 
-            RestHelper helper = new RestHelper("sell/account/v1/fulfillment_policy/Fulfillpolicyid=" + fulfillmentPolicyId);
+            RestHelper helper = new RestHelper(ApplicationConstants.FULFILMENT_URL+"/Fulfillpolicyid=" + fulfillmentPolicyId);
             var response = await helper.Put(fulfillmentPolicyId);
 
-            UpdateFulfillmentPolicyResponse updateFulfillmentPolicyResponse = JsonConvert.DeserializeObject<UpdateFulfillmentPolicyResponse>(response);
-            return updateFulfillmentPolicyResponse;
+            UpdateFulfillmentPolicyResponse updateFulfillmentPolicyResponse = JsonConvert.DeserializeObject<UpdateFulfillmentPolicyResponse>(response.Item1);
+            return new Tuple<UpdateFulfillmentPolicyResponse, HttpStatusCode>(updateFulfillmentPolicyResponse, response.Item2);
+
         }
 
-        public async Task<GetFulfillmentPolicyResponse> GetFulfillmentPolicy(string fulfillmentPolicyId)
+        public async Task<Tuple<GetFulfillmentPolicyResponse, HttpStatusCode>> GetFulfillmentPolicy(string fulfillmentPolicyId)
         {
 
-            RestHelper helper = new RestHelper("sell/account/v1/fulfillment_policy/Fulfillpolicyid=" + fulfillmentPolicyId);
+            RestHelper helper = new RestHelper(ApplicationConstants.FULFILMENT_URL+"/Fulfillpolicyid=" + fulfillmentPolicyId);
             var response = await helper.Get();
 
-            GetFulfillmentPolicyResponse getFulfillmentPolicyResponse = JsonConvert.DeserializeObject<GetFulfillmentPolicyResponse>(response);
-            return getFulfillmentPolicyResponse;
+            GetFulfillmentPolicyResponse getFulfillmentPolicyResponse = JsonConvert.DeserializeObject<GetFulfillmentPolicyResponse>(response.Item1);
+            return new Tuple<GetFulfillmentPolicyResponse, HttpStatusCode>(getFulfillmentPolicyResponse, response.Item2);
+
         }
 
     }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace UnitTestProject1
     {
     [TestClass]
-  public  class InventoryApiTest
+    public class InventoryApiTest
         {
 
         #region InventoryLocation
@@ -37,8 +37,16 @@ namespace UnitTestProject1
                 }
 
             };
-            GetInventryLocationResponse response = inventoryApiService.CreateInventoryLocationService(createInventoryLocationRequest, merchantLocationKey).Result;
-            Assert.IsNotNull(response);
+            var response = inventoryApiService.CreateInventoryLocationService(createInventoryLocationRequest, merchantLocationKey).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
+
             }
         [TestMethod]
         public void UpdateInventoryLocation()
@@ -60,7 +68,14 @@ namespace UnitTestProject1
            };
 
             var response = inventoryApiService.UpdateInventoryLocationService(updateInventoryLocationRequest, merchantLocationKey).Result;
-            Assert.IsNotNull(response);
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -68,8 +83,15 @@ namespace UnitTestProject1
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string merchantLocationKey = "Warehouse-1";
-            GetInventryLocationResponse response = inventoryApiService.getInventoryLocationService(merchantLocationKey).Result;
-            Assert.IsNotNull(response);
+            var response = inventoryApiService.getInventoryLocationService(merchantLocationKey).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -77,8 +99,16 @@ namespace UnitTestProject1
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             int limit = 2; int offset = 2;
-            GetInventoryLocationsResponce response = inventoryApiService.getInventoryLocationsService(limit, offset).Result;
-            Assert.IsNotNull(response);
+            //GetInventoryLocationsResponce response = inventoryApiService.getInventoryLocationsService(limit, offset).Result;
+            var response = inventoryApiService.getInventoryLocationsService(limit, offset).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
 
@@ -96,7 +126,14 @@ namespace UnitTestProject1
             InventoryApiService inventoryApiService = new InventoryApiService();
             string merchantLocationKey = "warehouse-1";
             var response = inventoryApiService.disableInventoryLocationService(merchantLocationKey).Result;
-            Assert.IsNotNull(response);
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
 
@@ -139,7 +176,14 @@ namespace UnitTestProject1
             InventoryApiService inventoryApiService = new InventoryApiService();
             string merchantLocationKey = "warehouse-1";
             var response = inventoryApiService.deleteInventoryLocationService(merchantLocationKey).Result;
-            Assert.IsNotNull(response);
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         #endregion
         #region Offers
@@ -169,9 +213,15 @@ namespace UnitTestProject1
 
                 }
             };
-            CreateOffersResponse response = inventoryApiService.createOffersService(createOffersRequest).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.createOffersService(createOffersRequest).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         [TestMethod]
         public void UpdateOffers()
@@ -197,9 +247,15 @@ namespace UnitTestProject1
 
             };
 
-            UpdateInventoryOffersResponse response = inventoryApiService.updateOffersService(updateInventoryOfferRequest, OfferId).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.updateOffersService(updateInventoryOfferRequest, OfferId).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                };
             }
 
         [TestMethod]
@@ -207,9 +263,15 @@ namespace UnitTestProject1
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string sku = "3455632452345";
-            GetOffersResponse response = inventoryApiService.getOffersService(sku).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.getOffersService(sku).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -217,9 +279,15 @@ namespace UnitTestProject1
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string offerId = "36445435465";
-            GetofferResponse response = inventoryApiService.getOfferService(offerId).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            var response = inventoryApiService.getOfferService(offerId).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         [TestMethod]
         public void deleteOffer()
@@ -227,8 +295,14 @@ namespace UnitTestProject1
             InventoryApiService inventoryApiService = new InventoryApiService();
             string offerId = "3455632452345";
             var response = inventoryApiService.deleteOffersService(offerId).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         [TestMethod]
         public void publishOffer()
@@ -245,8 +319,14 @@ namespace UnitTestProject1
             InventoryApiService inventoryApiService = new InventoryApiService();
             string get_listing_fees = "get_listing_fees";
             var response = inventoryApiService.getListingFeesService(get_listing_fees).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         [TestMethod]
         public void publishOfferByInventoryItemGroup()
@@ -254,8 +334,14 @@ namespace UnitTestProject1
             InventoryApiService inventoryApiService = new InventoryApiService();
             string get_listing_fees = "get_listing_fees";
             var response = inventoryApiService.publishOfferByInventoryItemGroupService(get_listing_fees).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
 
@@ -265,8 +351,14 @@ namespace UnitTestProject1
             InventoryApiService inventoryApiService = new InventoryApiService();
             string Listing_Id = "3455632452346";
             var response = inventoryApiService.WithdrawOfferService(Listing_Id).Result;
-            Assert.IsNotNull(response);
-            Assert.Fail();
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         #endregion
@@ -276,16 +368,30 @@ namespace UnitTestProject1
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string sku = "GP-Cam-01";
-            var response = inventoryApiService.getInventoryItemService(sku);
-            Assert.IsNotNull(response);
+            var response = inventoryApiService.getInventoryItemService(sku).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         [TestMethod]
         public void getInventoryItems()
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
 
-            GetInventoryItemsResponse response = inventoryApiService.getInventoryItemsService().Result;
-            Assert.IsNotNull(response);
+            var response = inventoryApiService.getInventoryItemsService().Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -294,7 +400,14 @@ namespace UnitTestProject1
             InventoryApiService inventoryApiService = new InventoryApiService();
             string sku = "GP-Cam-01";
             var response = inventoryApiService.deleteInventoryItemService(sku).Result;
-            Assert.IsNotNull(response);
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -314,7 +427,14 @@ namespace UnitTestProject1
                         };
 
             var response = inventoryApiService.bulkUpdatePriceQualityService(bulkUpdatePriceQualityRequest).Result;
-            Assert.IsNotNull(response);
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         [TestMethod]
         public void CreateorReplaceItem()
@@ -337,8 +457,15 @@ namespace UnitTestProject1
                 description = "New GoPro Hero4 Helmet Cam. Unopened box."
             };
 
-            var response = inventoryApiService.CreateorReplaceItemService(createorReplaceInventoryItemrequest,sku).Result;
-            Assert.IsNotNull(response);
+            var response = inventoryApiService.CreateorReplaceItemService(createorReplaceInventoryItemrequest, sku).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         #endregion
         #region InventoryItemGrp
@@ -367,8 +494,15 @@ namespace UnitTestProject1
         "MSPS-BkM",
         "MSPS-BkL"
             };
-            CreateorReplaceItemResponse response = inventoryApiService.CreateorReplaceItemgrpProdService(createorReplaceInventoryItemrequest, inventoryItemGroupKey).Result;
-            Assert.IsNotNull(response);
+            var response = inventoryApiService.CreateorReplaceItemgrpProdService(createorReplaceInventoryItemrequest, inventoryItemGroupKey).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
         [TestMethod]
@@ -376,8 +510,15 @@ namespace UnitTestProject1
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string inventoryItemGroupKey = "Mens_Solid_Polo_Shirts";
-            GetinventoryItemGroupResponse response = inventoryApiService.getInventoryItemGroupService(inventoryItemGroupKey).Result;
-            Assert.IsNotNull(response);
+            var response = inventoryApiService.getInventoryItemGroupService(inventoryItemGroupKey).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         [TestMethod]
         public void deleteInventoryItemGroup()
@@ -385,7 +526,14 @@ namespace UnitTestProject1
             InventoryApiService inventoryApiService = new InventoryApiService();
             string inventoryItemGroupKey = "Mens_Solid_Polo_Shirts";
             var response = inventoryApiService.deleteInventoryItemgrpService(inventoryItemGroupKey).Result;
-            Assert.IsNotNull(response);
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         #endregion
         #region Listing
@@ -412,8 +560,15 @@ namespace UnitTestProject1
                 }
 
             };
-            BulkMigratelistingresponse response = inventoryApiService.bulkMigrateListingService(bulkMigrateListingRequest).Result;
-            Assert.IsNotNull(response);
+            var response = inventoryApiService.bulkMigrateListingService(bulkMigrateListingRequest).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
 
 
@@ -442,15 +597,29 @@ namespace UnitTestProject1
 
             };
             var response = inventoryApiService.CreateOrReplaceProductCompatibilityService(createOrReplaceProductCompatibilityRequest, sku).Result;
-            Assert.IsNotNull(response);
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         [TestMethod]
         public void getProdCompatibility()
             {
             InventoryApiService inventoryApiService = new InventoryApiService();
             string sku = "Al-8730";
-            GetProductCompatibilityResponse response = inventoryApiService.getProductCompatibilityService(sku).Result;
-            Assert.IsNotNull(response);
+            var response = inventoryApiService.getProductCompatibilityService(sku).Result;
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
         [TestMethod]
         public void deleteProdCompatibility()
@@ -458,9 +627,16 @@ namespace UnitTestProject1
             InventoryApiService inventoryApiService = new InventoryApiService();
             string sku = "Al-8730";
             var response = inventoryApiService.deleteProductCompatibilityService(sku).Result;
-            Assert.IsNotNull(response);
+            if (response.Item2.ToString() == "OK")
+                {
+                Assert.IsNotNull(response.Item1);
+                }
+            else
+                {
+                Assert.Fail(response.Item2.ToString());
+                }
             }
-      
-        #endregion 
+
+        #endregion
         }
     }
