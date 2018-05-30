@@ -18,7 +18,7 @@ namespace UnitTestProject1
             MetadataAPIService metadataAPIService = new MetadataAPIService();
             string countrycode = EbaySdkLib.Enums.CountryCodeEnum.CA.ToString();
             var response = metadataAPIService.getSalesTaxJurisdictionsService(countrycode).Result;
-            Assert.IsNotNull(response);
+             if (response.Item2.ToString() == "OK") { Assert.IsNotNull(response.Item1); } else { Assert.Fail(response.Item2.ToString()); }
             
             }
         [TestMethod]
@@ -29,7 +29,7 @@ namespace UnitTestProject1
 
             string filter = System.Net.WebUtility.UrlEncode("80740|33548");
             var response = metadataAPIService.getAutomotivePartsCompatibilityService(marketPlaceId, filter).Result;
-            Assert.IsNotNull(response);
+             if (response.Item2.ToString() == "OK") { Assert.IsNotNull(response.Item1); } else { Assert.Fail(response.Item2.ToString()); }
             
             }
         [TestMethod]
@@ -40,7 +40,7 @@ namespace UnitTestProject1
 
             string filter = System.Net.WebUtility.UrlEncode("80740|33548");
             var response = metadataAPIService.getItemConditionPoliciesService(marketPlaceId, filter).Result;
-            Assert.IsNotNull(response);
+             if (response.Item2.ToString() == "OK") { Assert.IsNotNull(response.Item1); } else { Assert.Fail(response.Item2.ToString()); }
             
             }
 
@@ -52,7 +52,7 @@ namespace UnitTestProject1
 
             string filter = System.Net.WebUtility.UrlEncode("75592|90638");
             var response = metadataAPIService.GetListingStructurePoliciesService(marketPlaceId, filter).Result;
-            Assert.IsNotNull(response);
+             if (response.Item2.ToString() == "OK") { Assert.IsNotNull(response.Item1); } else { Assert.Fail(response.Item2.ToString()); }
            
             }
         [TestMethod]
@@ -63,7 +63,7 @@ namespace UnitTestProject1
 
             string filter = System.Net.WebUtility.UrlEncode("75592|90638");
             var response = metadataAPIService.getNegotiatedPricePoliciesService(marketPlaceId, filter).Result;
-            Assert.IsNotNull(response);
+             if (response.Item2.ToString() == "OK") { Assert.IsNotNull(response.Item1); } else { Assert.Fail(response.Item2.ToString()); }
            
             }
         [TestMethod]
@@ -74,7 +74,7 @@ namespace UnitTestProject1
 
             string filter = System.Net.WebUtility.UrlEncode("75592|90638");
             var response = metadataAPIService.getProductAdoptionPoliciesService(marketPlaceId, filter).Result;
-            Assert.IsNotNull(response);
+             if (response.Item2.ToString() == "OK") { Assert.IsNotNull(response.Item1); } else { Assert.Fail(response.Item2.ToString()); }
            
             }
         [TestMethod]
@@ -85,7 +85,7 @@ namespace UnitTestProject1
 
             string filter = System.Net.WebUtility.UrlEncode("80740|33548");
             var response = metadataAPIService.metadataGetreturnPolicyService(marketPlaceId, filter).Result;
-            Assert.IsNotNull(response);
+             if (response.Item2.ToString() == "OK") { Assert.IsNotNull(response.Item1); } else { Assert.Fail(response.Item2.ToString()); }
             
             }
 

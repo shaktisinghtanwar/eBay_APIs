@@ -58,7 +58,8 @@ namespace UnitTestProject1
             };
 
             var response = accountService.FulfilmentPolicyService.CreateFulfillmentPolicy(createFulfillmentRequest).Result;       
-             if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}else{Assert.Fail(response.Item2.ToString());}
+             if(response.Item2.ToString()=="OK"){ Assert.IsNotNull(response.Item1);}
+             else{Assert.Fail(response.Item2.ToString());}
 
             Assert.IsNotNull(response);
             // Assert.AreEqual(response.marketplaceId);
