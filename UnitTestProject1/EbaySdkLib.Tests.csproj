@@ -59,6 +59,7 @@
     <Compile Include="AnalyticsServiceTest.cs" />
     <Compile Include="CommerceCatalogApiTest.cs" />
     <Compile Include="CpmplianceAPIServiceTest.cs" />
+    <Compile Include="FullfillmentApiTest.cs" />
     <Compile Include="InventoryApiTest.cs" />
     <Compile Include="MarketingServiceTest.cs" />
     <Compile Include="MetadataSericeTest.cs" />
