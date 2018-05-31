@@ -64,11 +64,11 @@ namespace EbaySdkLib.Services
 
             }
 
-        public async Task<Tuple<GetCategoryTreeResponse, HttpStatusCode>> GetCategoryTree(GetCategoryTreeRequest request)
+        public async Task<Tuple<GetCategoryTreeResponse, HttpStatusCode>> GetCategoryTree()
             {
         string url = "commerce/taxonomy/v1_beta/category_tree/{0}";
 
-        RestHelper helper = new RestHelper(string.Format(url, request.category_tree_id));
+        RestHelper helper = new RestHelper(string.Format(url));
         var response = await helper.Get();
 
         GetCategoryTreeResponse serlializedResponse = JsonConvert.DeserializeObject<GetCategoryTreeResponse>(response.Item1);
