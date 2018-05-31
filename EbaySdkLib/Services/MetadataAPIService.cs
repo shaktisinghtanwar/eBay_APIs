@@ -12,6 +12,12 @@ namespace EbaySdkLib.Services
     {
   public  class MetadataAPIService
         {
+       public string Token { get; private set; }
+       public MetadataAPIService(string token)
+            {
+        this.Token = Token;
+            }
+
       public async Task<Tuple<GetSalesTaxJurisdictions,HttpStatusCode>> getSalesTaxJurisdictionsService( string countrycode)
       {
       RestHelper helper = new RestHelper(ApplicationConstants.JURISDICTION_URL +countrycode+"/sales_tax_jurisdiction");

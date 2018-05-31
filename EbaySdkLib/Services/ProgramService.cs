@@ -10,6 +10,13 @@ namespace EbaySdkLib
 {
   public  class   ProgramService
     {
+      private string Token;
+
+      public ProgramService(string Token)
+          {
+      // TODO: Complete member initialization
+      this.Token = Token;
+          }
 
       public async Task<Tuple<GetOptedInProgramsResponse, HttpStatusCode>> GetOptedprogram(GetOptedInProgramsRequest getOptedInProgramsRequest)
       {

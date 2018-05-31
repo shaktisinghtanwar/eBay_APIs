@@ -13,10 +13,12 @@ namespace EbaySdkLib.Services
     {
     public class InventoryApiService
         {
-        public InventoryApiService()
+         public string Token { get;private set; }
+         public InventoryApiService(string token)
             {
+             this.Token = Token;
+          }
 
-            }
         #region InventoryLocations
     
 

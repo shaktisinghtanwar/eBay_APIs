@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
@@ -62,12 +63,16 @@
     <Compile Include="MarketingServiceTest.cs" />
     <Compile Include="MetadataSericeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaxonomyApiServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EbaySdkLib\EbaySdkLib.csproj">
       <Project>{76d94166-6612-447f-8033-f1c500a9d868}</Project>
       <Name>EbaySdkLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

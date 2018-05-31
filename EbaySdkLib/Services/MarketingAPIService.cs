@@ -11,6 +11,11 @@ namespace EbaySdkLib.Services
 {
    public  class MarketingAPIService
     {
+         public string Token { get;private set; }
+         public MarketingAPIService(string token)
+            {
+             this.Token = Token;
+          }
 
       
        

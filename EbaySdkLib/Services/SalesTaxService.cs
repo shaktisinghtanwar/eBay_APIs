@@ -8,6 +8,13 @@ namespace EbaySdkLib
 {
     public class SalesTaxService
     {
+        private string Token;
+
+        public SalesTaxService(string Token)
+            {
+        // TODO: Complete member initialization
+        this.Token = Token;
+            }
        
         public async Task<Tuple<CreateOrReplaceSalesTaxResponse,HttpStatusCode>>CreateorReplaceSalesTax(CreateOrReplaceSalesTaxRequest createOrReplaceSalesTaxRequest, string countryCode, string jurisdictionId)
         {

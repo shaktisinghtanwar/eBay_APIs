@@ -9,39 +9,41 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EbaySdkLib.Services
-{
-  public  class AnalyticsService
     {
-        public AnalyticsService()
+    public class AnalyticsService
         {
-
-        }
-
-      //Shilpa Work
-        public async Task<Tuple<GetTrafficReportResponse,HttpStatusCode>> getAnalyticsService(string filter, string dimension, string metric, string sort)
+        public string Token { get; private set; }
+        public AnalyticsService(string token)
             {
-            RestHelper helper = new RestHelper(ApplicationConstants.ANALYTICS_URL + filter + dimension + metric);
-            var response = await helper.Get();
-            GetTrafficReportResponse getAnalyticsResponse = JsonConvert.DeserializeObject<GetTrafficReportResponse>(response.Item1);
-            return new Tuple<GetTrafficReportResponse, HttpStatusCode>(getAnalyticsResponse, response.Item2);
+        this.Token = Token;
             }
 
 
-        public async Task<Tuple<FindSellerStandardsProfilesResponse,HttpStatusCode>> findSellerStandardsProfilesResponseAnalyticsService()
-        {
-            RestHelper helper = new RestHelper(ApplicationConstants.SELLER_STANDARDS_URL);
-            var response = await helper.Get();
-            FindSellerStandardsProfilesResponse findSellerStandardsProfilesAnalyticsResponse = JsonConvert.DeserializeObject<FindSellerStandardsProfilesResponse>(response.Item1);
-            return new Tuple<FindSellerStandardsProfilesResponse, HttpStatusCode>(findSellerStandardsProfilesAnalyticsResponse, response.Item2);
-        }
-
-      //LodhiSir
-        public async Task<Tuple<getSellerStandardsProfileResponse,HttpStatusCode>> getSellerStandards(getSellerStandardsProfileResponse getSellerStandards, string cycle)
+        //Shilpa Work
+        public async Task<Tuple<GetTrafficReportResponse, HttpStatusCode>> getAnalyticsService(string filter, string dimension, string metric, string sort)
             {
-            RestHelper helper = new RestHelper(ApplicationConstants.SELLER_ANALYTICS_URL + "/" + getSellerStandards.cycle + "/" + cycle);
-            var response = await helper.Get();
-            getSellerStandardsProfileResponse getSellerStandardsResponse = JsonConvert.DeserializeObject<getSellerStandardsProfileResponse>(response.Item1);
-            return new Tuple<getSellerStandardsProfileResponse, HttpStatusCode>(getSellerStandardsResponse, response.Item2);
+        RestHelper helper = new RestHelper(ApplicationConstants.ANALYTICS_URL + filter + dimension + metric);
+        var response = await helper.Get();
+        GetTrafficReportResponse getAnalyticsResponse = JsonConvert.DeserializeObject<GetTrafficReportResponse>(response.Item1);
+        return new Tuple<GetTrafficReportResponse, HttpStatusCode>(getAnalyticsResponse, response.Item2);
             }
+
+
+        public async Task<Tuple<FindSellerStandardsProfilesResponse, HttpStatusCode>> findSellerStandardsProfilesResponseAnalyticsService()
+            {
+        RestHelper helper = new RestHelper(ApplicationConstants.SELLER_STANDARDS_URL);
+        var response = await helper.Get();
+        FindSellerStandardsProfilesResponse findSellerStandardsProfilesAnalyticsResponse = JsonConvert.DeserializeObject<FindSellerStandardsProfilesResponse>(response.Item1);
+        return new Tuple<FindSellerStandardsProfilesResponse, HttpStatusCode>(findSellerStandardsProfilesAnalyticsResponse, response.Item2);
+            }
+
+        //LodhiSir
+        public async Task<Tuple<getSellerStandardsProfileResponse, HttpStatusCode>> getSellerStandards(getSellerStandardsProfileResponse getSellerStandards, string cycle)
+            {
+        RestHelper helper = new RestHelper(ApplicationConstants.SELLER_ANALYTICS_URL + "/" + getSellerStandards.cycle + "/" + cycle);
+        var response = await helper.Get();
+        getSellerStandardsProfileResponse getSellerStandardsResponse = JsonConvert.DeserializeObject<getSellerStandardsProfileResponse>(response.Item1);
+        return new Tuple<getSellerStandardsProfileResponse, HttpStatusCode>(getSellerStandardsResponse, response.Item2);
+            }
+        }
     }
-}

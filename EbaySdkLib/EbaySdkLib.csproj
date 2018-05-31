@@ -143,8 +143,16 @@
     <Compile Include="Messages\GetCampaignResponse.cs" />
     <Compile Include="Messages\GetCampaignsRequest.cs" />
     <Compile Include="Messages\GetCampaignsResponse.cs" />
+    <Compile Include="Messages\GetCategorySubtreeRequest.cs" />
+    <Compile Include="Messages\GetCategorySubtreeResponse.cs" />
+    <Compile Include="Messages\GetCategorySuggestionsRequest.cs" />
+    <Compile Include="Messages\GetCategorySuggestionsResponse.cs" />
+    <Compile Include="Messages\GetCategoryTreeRequest.cs" />
+    <Compile Include="Messages\GetCategoryTreeResponse.cs" />
     <Compile Include="Messages\GetChangeRequestResponse.cs" />
     <Compile Include="Messages\GetChangeRequestsResponse.cs" />
+    <Compile Include="Messages\GetDefaultCategoryTreeIdRequest.cs" />
+    <Compile Include="Messages\GetDefaultCategoryTreeIdResponse.cs" />
     <Compile Include="Messages\GetFulfillmentPolicyByNameRequest.cs" />
     <Compile Include="Messages\GetFulfillmentpolicyByNameResponse.cs" />
     <Compile Include="Messages\GetFulfillmentPolicyRequest.cs" />
@@ -157,6 +165,8 @@
     <Compile Include="Messages\GetInventoryItemsResponse.cs" />
     <Compile Include="Messages\GetInventoryLocationsResponce.cs" />
     <Compile Include="Messages\GetInventryLocationResponse.cs" />
+    <Compile Include="Messages\GetItemAspectsForCategoryRequest.cs" />
+    <Compile Include="Messages\GetItemAspectsForCategoryResponse.cs" />
     <Compile Include="Messages\GetItemConditionPoliciesResponse.cs" />
     <Compile Include="Messages\GetItemPriceMarkdownPromotionResponse.cs" />
     <Compile Include="Messages\GetItemPromotionRequest.cs" />
@@ -232,12 +242,15 @@
     <Compile Include="Messages\UpdateItemPromotionResponse.cs" />
     <Compile Include="Models\Ad.cs" />
     <Compile Include="Models\AdditionalImage.cs" />
+    <Compile Include="Models\AncestorReference.cs" />
     <Compile Include="Models\Aspect.cs" />
     <Compile Include="Models\AspectDistribution.cs" />
     <Compile Include="Models\AspectValueDistribution.cs" />
     <Compile Include="Models\AspectValues.cs" />
     <Compile Include="Models\Campaign.cs" />
     <Compile Include="Models\CampaignCriterion.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategorySuggestion.cs" />
     <Compile Include="Models\ChangeRequest.cs" />
     <Compile Include="Models\CompatibleProduct.cs" />
     <Compile Include="Models\ComplianceSummaryInfo.cs" />
@@ -409,6 +422,7 @@
     <Compile Include="Services\ProgramService.cs" />
     <Compile Include="Services\ReturnPolicyService.cs" />
     <Compile Include="Services\SalesTaxService.cs" />
+    <Compile Include="Services\TaxonomyApiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

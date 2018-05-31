@@ -8,8 +8,15 @@ namespace EbaySdkLib
 {
    public  class PrivilegeService
     {
+       private string Token;
+
+       public PrivilegeService(string Token)
+           {
+       // TODO: Complete member initialization
+       this.Token = Token;
+           }
       
-     public async Task<Tuple<GetPrivilegesResponse,HttpStatusCode>>  GetPrivilage(GetPrivilegesRequest getPrivilegesRequest)
+     public async Task<Tuple<GetPrivilegesResponse,HttpStatusCode>>  GetPrivilage()
      {
 
 

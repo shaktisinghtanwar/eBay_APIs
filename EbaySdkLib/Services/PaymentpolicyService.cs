@@ -13,9 +13,17 @@ namespace EbaySdkLib.Services
     {
     public class PaymentpolicyService
         {
+        private string Token;
+
         public PaymentpolicyService()
             {
 
+            }
+
+        public PaymentpolicyService(string Token)
+            {
+        // TODO: Complete member initialization
+        this.Token = Token;
             }
 
         public async Task<Tuple<GetPaymentpolicyresponse,HttpStatusCode>> getPaymentpolicyService(string policyId)

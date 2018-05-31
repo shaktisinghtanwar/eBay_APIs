@@ -13,10 +13,18 @@ namespace EbaySdkLib.Services
     {
   public  class ReturnPolicyService
         {
+      private string Token;
+
       public ReturnPolicyService()
            {
 
            }
+
+      public ReturnPolicyService(string Token)
+          {
+      // TODO: Complete member initialization
+      this.Token = Token;
+          }
 
       public async Task<Tuple<GetReturnPolicyResponse,HttpStatusCode>>   getReturnPolicy(string return_policy_id)
            {

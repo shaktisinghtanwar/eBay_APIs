@@ -10,6 +10,13 @@ namespace EbaySdkLib
 {
     public class FulfilmentPolicyService
     {
+        private string Token;
+
+        public FulfilmentPolicyService(string Token)
+            {
+        // TODO: Complete member initialization
+        this.Token = Token;
+            }
 
 
         public async Task<Tuple<CreateFulfillmentResponse,HttpStatusCode>> CreateFulfillmentPolicy(CreateFulfillmentRequest createFulfillmentRequest)
